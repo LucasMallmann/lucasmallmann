@@ -1,5 +1,5 @@
 module.exports = {
   singleQuote: true,
-  arrowParams: "avoid",
-  endOfLine: "auto",
+  arrowParams: 'avoid',
+  endOfLine: 'auto',
 };
