@@ -30,9 +30,17 @@ module.exports = {
     'arrow-body-style': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/jsx-props-no-spreading': 'off',
+    camelcase: 'off',
+    semi: 'off',
+    '@typescript-eslint/semi': ['error'],
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };
