@@ -17,6 +17,7 @@ const customTheme: DefaultTheme = {
     ...theme.radii,
     sm: '5px',
     md: '8px',
+    full: '50%',
   },
   colors: {
     ...theme.colors,

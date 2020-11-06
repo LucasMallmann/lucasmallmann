@@ -1,12 +1,17 @@
 import React from 'react';
 import { AppProps } from 'next/app';
+import 'focus-visible/dist/focus-visible';
 
 import ThemeContainer from 'contexts/theme/ThemeContainer';
+
+import Layout from 'components/Layout';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeContainer>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeContainer>
   );
 };
