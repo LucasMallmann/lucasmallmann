@@ -11,6 +11,10 @@ import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import theme from 'styles/theme';
 
 const GlobalStyles = css`
+  a {
+    cursor: pointer;
+  }
+
   .js-focus-visible :focus:not([data-focus-visible-added]) {
     outline: none;
     box-shadow: none;
