@@ -30,6 +30,7 @@ module.exports = {
     'arrow-body-style': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/jsx-props-no-spreading': 'off',
+    'import/prefer-default-export': 'off',
     'object-curly-newline': 'off',
     camelcase: 'off',
     semi: 'off',

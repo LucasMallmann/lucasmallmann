@@ -5,9 +5,9 @@ import {
   useColorMode,
   Text,
   Link,
-  PseudoBox,
   Avatar,
-} from '@chakra-ui/core';
+  Box,
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const Header: React.FC = () => {
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
           >
             <Flex align="center">
               <Avatar name="Lucas Mallmann" src="/me.jpeg" size="sm" />
-              <PseudoBox
+              <Box
                 _hover={{
                   opacity: 0.8,
                 }}
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                 >
                   mallmann
                 </Text>
-              </PseudoBox>
+              </Box>
             </Flex>
           </Link>
         </NextLink>

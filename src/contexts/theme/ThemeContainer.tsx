@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  ThemeProvider as ChackraThemeProvider,
-  ColorModeProvider,
-  CSSReset,
-} from '@chakra-ui/core';
-import { Global, css } from '@emotion/core';
-
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
+import { Global, css } from '@emotion/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import theme from 'styles/theme';
 
@@ -23,15 +17,10 @@ const GlobalStyles = css`
 
 const ThemeContainer: React.FC = ({ children }) => {
   return (
-    <ChackraThemeProvider theme={theme}>
-      <ColorModeProvider value="dark">
-        <EmotionThemeProvider theme={theme}>
-          <CSSReset />
-          <Global styles={GlobalStyles} />
-          {children}
-        </EmotionThemeProvider>
-      </ColorModeProvider>
-    </ChackraThemeProvider>
+    <ChakraProvider resetCSS theme={theme}>
+      <Global styles={GlobalStyles} />
+      {children}
+    </ChakraProvider>
   );
 };
 
