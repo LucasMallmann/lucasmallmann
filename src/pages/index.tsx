@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { PostsOrPages } from '@tryghost/content-api';
 
 import api from 'services/api';
-import { AnimatedLink } from 'components/Animated';
+import AnimatedLink from 'components/Animated';
 
 async function getPosts(): Promise<PostsOrPages> {
   const posts = await api.posts.browse({ order: 'created_at DESC' });
@@ -35,8 +35,6 @@ const Home: NextPage<Props> = ({ posts }) => {
         paddingY={2}
         transition="all 0.3s ease-in-out"
         borderRadius="sm"
-        // border="1px"
-        // borderColor="red.500"
         _hover={{
           transform: 'scale(1.2)',
           border: '1px solid red',
@@ -46,8 +44,25 @@ const Home: NextPage<Props> = ({ posts }) => {
       </Box>
 
       <Box marginX="auto" width="50%">
-        <AnimatedLink>oi</AnimatedLink>
+        <AnimatedLink>
+          <Box
+            transition="all 0.3s ease-in-out"
+            borderRadius="sm"
+            border="1px"
+            borderColor="red.500"
+            _hover={{
+              transform: 'scale(1.2)',
+              border: '1px solid red',
+            }}
+          >
+            <Text>oi</Text>
+          </Box>
+        </AnimatedLink>
       </Box>
+
+      <AnimatedLink>
+        <Heading>teste</Heading>
+      </AnimatedLink>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  Button,
+  // Button,
   Flex,
-  useColorMode,
+  // useColorMode,
   Text,
   Link,
   Avatar,
@@ -11,7 +11,7 @@ import {
 import NextLink from 'next/link';
 
 const Header: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Flex as="header" height={12} paddingX={4} backgroundColor="blue.900">
@@ -55,18 +55,70 @@ const Header: React.FC = () => {
           </Link>
         </NextLink>
 
-        <Button
-          onClick={toggleColorMode}
-          outline="none"
-          _active={{
-            backgroundColor: 'purple.500',
-          }}
-          _focus={{
-            backgroundColor: 'purple.500',
-          }}
-        >
-          Toggle {colorMode === 'light' ? 'dark' : 'light'}
-        </Button>
+        <Flex as="nav" alignItems="center">
+          <NextLink href="/">
+            <Link
+              href="/"
+              position="relative"
+              transition="all 0.2s ease"
+              marginX={2}
+              color="white"
+              _before={{
+                content: '""',
+                position: 'absolute',
+                width: '100%',
+                marginTop: '10px',
+                height: '2px',
+                bottom: '-2px',
+                left: 0,
+                backgroundColor: 'gray.200',
+                visibility: 'hidden',
+                transform: 'scaleX(0)',
+                transition: 'all 0.3s ease-in-out 0s',
+              }}
+              _hover={{
+                color: 'gray.200',
+                _before: {
+                  visibility: 'visible',
+                  transform: 'scaleX(1)',
+                },
+              }}
+            >
+              <Text as="span">blog</Text>
+            </Link>
+          </NextLink>
+
+          <NextLink href="/">
+            <Link
+              href="/"
+              position="relative"
+              transition="all 0.2s ease"
+              color="white"
+              _before={{
+                content: '""',
+                position: 'absolute',
+                width: '100%',
+                marginTop: '10px',
+                height: '2px',
+                bottom: '-2px',
+                left: 0,
+                backgroundColor: 'gray.200',
+                visibility: 'hidden',
+                transform: 'scaleX(0)',
+                transition: 'all 0.3s ease-in-out 0s',
+              }}
+              _hover={{
+                color: 'gray.200',
+                _before: {
+                  visibility: 'visible',
+                  transform: 'scaleX(1)',
+                },
+              }}
+            >
+              <Text as="span">projects</Text>
+            </Link>
+          </NextLink>
+        </Flex>
       </Flex>
     </Flex>
   );

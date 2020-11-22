@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from '@emotion/styled';
 
-export const AnimatedLink = styled.div`
+export const Container = styled.div`
   position: relative;
   &:before,
   &:after {
@@ -43,3 +44,9 @@ export const AnimatedLink = styled.div`
     transform: scale(1, 1);
   }
 `;
+
+const AnimatedLink: React.FC = ({ children }) => {
+  return <Container>{children}</Container>;
+};
+
+export default AnimatedLink;
