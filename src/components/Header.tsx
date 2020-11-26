@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  // Button,
+  Button,
   Flex,
-  // useColorMode,
+  useColorMode,
   Text,
   Link,
   Avatar,
@@ -11,10 +11,19 @@ import {
 import NextLink from 'next/link';
 
 const Header: React.FC = () => {
-  // const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Flex as="header" height={12} paddingX={4} backgroundColor="blue.900">
+    <Flex
+      as="header"
+      height={12}
+      paddingX={4}
+      backgroundColor="blue.900"
+      position="fixed"
+      top={0}
+      left={0}
+      width="100vw"
+    >
       <Flex
         align="center"
         justify="space-between"
@@ -46,7 +55,7 @@ const Header: React.FC = () => {
                   fontSize="md"
                   marginLeft={2}
                   color="white"
-                  fontWeight="bold"
+                  fontWeight={600}
                 >
                   mallmann
                 </Text>
@@ -119,6 +128,8 @@ const Header: React.FC = () => {
             </Link>
           </NextLink>
         </Flex>
+
+        <Button onClick={toggleColorMode}>Toggle theme</Button>
       </Flex>
     </Flex>
   );
