@@ -6,6 +6,7 @@ import { PostsOrPages } from '@tryghost/content-api';
 
 import api from 'services/api';
 import AnimatedLink from 'components/Animated';
+import ArticleCard from 'components/ArticleCard';
 
 async function getPosts(): Promise<PostsOrPages> {
   const posts = await api.posts.browse({ order: 'created_at DESC' });
@@ -38,13 +39,13 @@ const Home: NextPage<Props> = ({ posts }) => {
           Lucas Mallmann
         </Heading>
         <Text
-          // color="purple.300"
+          color="pink.500"
           fontStyle="italic"
           fontSize="xl"
           fontWeight="semi-bold"
           marginTop={4}
-          borderBottomWidth="2px"
-          borderBottomColor="purple.500"
+          // borderBottomWidth="2px"
+          // borderBottomColor="purple.500"
         >
           Ensinando as pessoas a se apaixonarem cada vez mais por tecnologia!
         </Text>
@@ -67,8 +68,9 @@ const Home: NextPage<Props> = ({ posts }) => {
           <Link
             href="https://pling.net.br"
             isExternal
-            color="purple.500"
-            fontWeight="bold"
+            // color="purple.500"
+            color="pink.500"
+            fontWeight="600"
             _hover={{
               textDecoration: 'none',
               opacity: 0.8,
@@ -102,6 +104,10 @@ const Home: NextPage<Props> = ({ posts }) => {
       <Heading fontWeight="normal" fontSize="3xl" marginTop={9}>
         Artigos recentes
       </Heading>
+
+      <Box marginTop={6}>
+        <ArticleCard />
+      </Box>
     </>
   );
 };

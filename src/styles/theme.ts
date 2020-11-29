@@ -23,7 +23,6 @@ const customTheme = extendTheme({
   },
   colors: {
     purple: {
-      // 500: '',
       500: '#9466FF',
     },
     pantone: {
@@ -33,7 +32,16 @@ const customTheme = extendTheme({
       300: '#e1e1e6',
       600: '#29292e',
       700: '#202024',
-      800: '#121214',
+      800: '#1D1D1D',
+    },
+    blue: {
+      900: '#414361',
+    },
+    pink: {
+      500: '#F17D99',
+    },
+    darkGrey: {
+      500: '#272A2B',
     },
   },
   radii: {
