@@ -1,11 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
-import { Box, Flex, Heading, Text, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
+
+import { Box, Flex, Heading, Text, Link, VStack } from '@chakra-ui/react';
 import { PostsOrPages } from '@tryghost/content-api';
 
 import api from 'services/api';
-import AnimatedLink from 'components/Animated';
+
 import ArticleCard from 'components/ArticleCard';
 
 async function getPosts(): Promise<PostsOrPages> {
@@ -23,7 +25,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   console.log(posts);
 
   return (
-    <Flex direction="column" padding={[4, 4, 0, 0]}>
+    <Flex direction="column" padding={[3, 4, 0, 0]}>
       <Head>
         <title>Home page</title>
         <link rel="icon" href="/favicon.ico" />
@@ -35,7 +37,7 @@ const Home: NextPage<Props> = ({ posts }) => {
           fontSize={['3xl', '3xl', '4xl', '5xl']}
           letterSpacing="wide"
           fontWeight={600}
-          marginTop={[2, 2, 9, 9]}
+          marginTop={[-2, 2, 9, 9]}
           textAlign="center"
         >
           Lucas Mallmann
@@ -43,7 +45,7 @@ const Home: NextPage<Props> = ({ posts }) => {
         <Text
           color="pink.500"
           fontStyle="italic"
-          fontSize={['sm', 'md', 'xl']}
+          fontSize={['md', 'md', 'xl']}
           fontWeight="semi-bold"
           marginTop={[2, 4]}
           textAlign="center"
@@ -53,18 +55,28 @@ const Home: NextPage<Props> = ({ posts }) => {
       </Flex>
 
       <Box marginTop={[4, 4, 9, 9]}>
-        <Heading as="h1" fontSize={['3xl', '3xl', '4xl']} fontWeight="normal">
+        <Heading as="h1" fontSize={['2xl', '3xl', '4xl']} fontWeight="normal">
           Quem sou eu?
         </Heading>
 
-        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
+        <Text
+          as="p"
+          marginY={PARAGRAPH_MARGIN}
+          lineHeight={6}
+          fontSize={['15px', 16]}
+        >
           Olá, seja muito bem vindo(a) ao meu blog! Meu nome é Lucas Mallmann.
           Trabalho como engenheiro de software desde 2017. Acredito que a
           educação, a divulgação de conhecimento e de boas ideias é o caminho
           mais rápido e eficaz para melhorar o mundo!
         </Text>
 
-        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
+        <Text
+          as="p"
+          marginY={PARAGRAPH_MARGIN}
+          lineHeight={6}
+          fontSize={['15px', 16]}
+        >
           Atualmente trabalho como Software Enginner na{' '}
           <Link
             href="https://pling.net.br"
@@ -86,14 +98,24 @@ const Home: NextPage<Props> = ({ posts }) => {
           aprender seja ensinar.
         </Text>
 
-        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
+        <Text
+          as="p"
+          marginY={PARAGRAPH_MARGIN}
+          lineHeight={6}
+          fontSize={['15px', 16]}
+        >
           Gosto muito de música, apaixonado por games, um aventureiro na
           culinária, e nos tempos livres adoro filosofar sobre a vida. Apesar de
           ser um blog voltado para tecnologia, não se surpreenda se trouxermos
           algumas reflexões por aqui.
         </Text>
 
-        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
+        <Text
+          as="p"
+          marginY={PARAGRAPH_MARGIN}
+          lineHeight={6}
+          fontSize={['15px', 16]}
+        >
           Muitos sonhos e objetivos meus nasceram de recursos online que eu
           encontrei sobre tecnologia. Acredito que seja o meu dever, e eu
           ficarei extremamente feliz se conseguir retribuir pra vocês um pouco
@@ -101,13 +123,49 @@ const Home: NextPage<Props> = ({ posts }) => {
         </Text>
       </Box>
 
-      <Heading fontWeight="normal" fontSize="3xl" marginTop={9}>
+      <Heading
+        fontWeight="normal"
+        fontSize={['2xl', '3xl', '4xl']}
+        marginTop={4}
+      >
         Artigos recentes
       </Heading>
 
-      <Box marginTop={6}>
+      <VStack marginTop={6} spacing={4}>
         <ArticleCard />
-      </Box>
+        <ArticleCard />
+      </VStack>
+
+      <NextLink href="/">
+        <Box marginTop={4} marginBottom={10}>
+          <Link
+            href="/"
+            color="pink.500"
+            position="relative"
+            fontWeight="semi-bold"
+            _before={{
+              content: '""',
+              position: 'absolute',
+              width: '100%',
+              marginTop: '10px',
+              height: '2px',
+              bottom: '-2px',
+              backgroundColor: 'pink.500',
+              visibility: 'hidden',
+              transform: 'scaleX(0)',
+              transition: 'all 0.3s ease-in-out',
+            }}
+            _hover={{
+              _before: {
+                visibility: 'visible',
+                transform: 'scaleX(1)',
+              },
+            }}
+          >
+            Ver todos os posts
+          </Link>
+        </Box>
+      </NextLink>
     </Flex>
   );
 };

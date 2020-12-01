@@ -17,7 +17,7 @@ const Header: React.FC = () => {
     <Flex
       as="header"
       height={12}
-      paddingX={4}
+      paddingX={[3, 4]}
       backgroundColor="blue.900"
       position="fixed"
       top={0}

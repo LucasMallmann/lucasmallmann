@@ -16,10 +16,12 @@ const customTheme = extendTheme({
     mono: 'Menlo, monospace',
   },
   fontWeights: {
+    thin: 300,
     'semi-bold': 600,
   },
   fontSizes: {
     '4xl': '32px',
+    '2md': '14px',
   },
   colors: {
     purple: {
@@ -29,16 +31,18 @@ const customTheme = extendTheme({
       500: '#9A01CD',
     },
     gray: {
-      300: '#e1e1e6',
+      300: '#eeeeee',
+      400: '#8C8C8C',
       600: '#29292e',
-      700: '#202024',
+      700: '#404040',
       800: '#1D1D1D',
     },
     blue: {
       900: '#414361',
     },
     pink: {
-      500: '#F17D99',
+      400: '#F17D99',
+      500: '#ef476f',
     },
     darkGrey: {
       500: '#272A2B',
