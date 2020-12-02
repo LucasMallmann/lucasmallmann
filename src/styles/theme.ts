@@ -31,10 +31,11 @@ const customTheme = extendTheme({
       500: '#9A01CD',
     },
     gray: {
+      100: '#F3F3F3',
       300: '#eeeeee',
       400: '#8C8C8C',
-      600: '#29292e',
-      700: '#404040',
+      600: '#404040',
+      700: '#29292e',
       800: '#1D1D1D',
     },
     blue: {
@@ -44,7 +45,8 @@ const customTheme = extendTheme({
       400: '#F17D99',
       500: '#ef476f',
     },
-    darkGrey: {
+    darkGray: {
+      400: '#373737',
       500: '#272A2B',
     },
   },

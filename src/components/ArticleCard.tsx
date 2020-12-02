@@ -2,7 +2,6 @@ import React from 'react';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import {
-  Box,
   Flex,
   Heading,
   HStack,
@@ -17,7 +16,7 @@ import { Icon } from '@chakra-ui/icons';
 const ArticleCard: React.FC = () => {
   const boxShadow = useColorModeValue('0px 2px 4px rgba(0, 0, 0, 0.1)', 'none');
   const borderColor = useColorModeValue('gray.200', 'transparent');
-  const articleBackgroundColor = useColorModeValue('inherit', 'darkGrey.500');
+  const articleBackgroundColor = useColorModeValue('inherit', 'darkGray.500');
   const tagBackgroundColor = useColorModeValue('gray.300', 'gray.700');
   const tagTextColor = useColorModeValue('gray.800', 'gray.100');
   const tagIconBgColor = useColorModeValue('gray.800', 'gray.400');

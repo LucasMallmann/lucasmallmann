@@ -3,8 +3,8 @@ import { Flex, Heading } from '@chakra-ui/react';
 
 const NotFound: React.FC = () => {
   return (
-    <Flex height="100vh" width="100vw" justify="center" align="center">
-      <Heading>This page was not found</Heading>
+    <Flex direction="column" height="calc(100vh - 48px)" justify="center">
+      <Heading textAlign="center">This page was not found</Heading>
     </Flex>
   );
 };

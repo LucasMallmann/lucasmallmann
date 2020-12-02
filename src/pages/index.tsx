@@ -137,7 +137,7 @@ const Home: NextPage<Props> = ({ posts }) => {
       </VStack>
 
       <NextLink href="/">
-        <Box marginTop={4} marginBottom={10}>
+        <Box marginTop={4} marginBottom={16}>
           <Link
             href="/"
             color="pink.500"
