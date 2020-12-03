@@ -3,7 +3,7 @@ import { Flex, Icon, Link, useColorModeValue } from '@chakra-ui/react';
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
-  const backgroundColor = useColorModeValue('gray.100', 'darkGray.400');
+  const backgroundColor = useColorModeValue('gray.100', 'darkGray.600');
   const borderTop = useColorModeValue('1px solid #ddd', 'none');
 
   return (

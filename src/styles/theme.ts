@@ -5,7 +5,7 @@ const customTheme = extendTheme({
   styles: {
     global: (props) => ({
       body: {
-        color: mode('gray.800', 'whiteAlpha.900')(props),
+        color: mode('gray.800', 'gray.200')(props),
         bg: mode('white', 'gray.800')(props),
       },
     }),
@@ -48,6 +48,7 @@ const customTheme = extendTheme({
     darkGray: {
       400: '#373737',
       500: '#272A2B',
+      600: '#262626',
     },
   },
   radii: {

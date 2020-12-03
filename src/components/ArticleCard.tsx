@@ -6,19 +6,18 @@ import {
   Heading,
   HStack,
   Link,
-  Tag,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { FaTag } from 'react-icons/fa';
 import { Icon } from '@chakra-ui/icons';
 
+import Tag from 'components/Tag';
+
 const ArticleCard: React.FC = () => {
   const boxShadow = useColorModeValue('0px 2px 4px rgba(0, 0, 0, 0.1)', 'none');
   const borderColor = useColorModeValue('gray.200', 'transparent');
   const articleBackgroundColor = useColorModeValue('inherit', 'darkGray.500');
-  const tagBackgroundColor = useColorModeValue('gray.300', 'gray.700');
-  const tagTextColor = useColorModeValue('gray.800', 'gray.100');
   const tagIconBgColor = useColorModeValue('gray.800', 'gray.400');
 
   return (
@@ -97,16 +96,7 @@ const ArticleCard: React.FC = () => {
 
             <HStack spacing={2} alignItems="center" marginTop={4}>
               <Icon as={FaTag} width={3} height={3} color={tagIconBgColor} />
-              <Tag
-                size="sm"
-                variant="solid"
-                borderRadius="sm"
-                backgroundColor={tagBackgroundColor}
-                color={tagTextColor}
-                fontWeight="thin"
-              >
-                nodejs
-              </Tag>
+              <Tag>nodejs</Tag>
             </HStack>
             <Text fontSize="xs" fontWeight="thin">
               02 de junho de 2020 - Leitura de 1 minuto

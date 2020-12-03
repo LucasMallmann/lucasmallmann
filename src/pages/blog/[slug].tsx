@@ -1,12 +1,27 @@
 import React from 'react';
-import Head from 'next/head';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
-// import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import NextLink from 'next/link';
 
-import { Box, Flex, HStack, Icon } from '@chakra-ui/react';
+import { MdKeyboardBackspace } from 'react-icons/md';
+
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Text,
+  Link,
+} from '@chakra-ui/react';
+import Tag from 'components/Tag';
 
 const Post: NextPage = () => {
+  const router = useRouter();
+
   return (
     <Flex direction="column" padding={[3, 4, 0, 0]}>
       <Head>
@@ -37,6 +52,86 @@ const Post: NextPage = () => {
           objectFit="cover"
           quality={100}
         />
+      </Box>
+
+      <Box marginTop="25vh">
+        <Button
+          onClick={() => router.back()}
+          variant="link"
+          color="pink.500"
+          position="relative"
+          fontWeight="semi-bold"
+          marginTop={8}
+          _before={{
+            content: '""',
+            position: 'absolute',
+            width: '100%',
+            marginTop: '10px',
+            height: '2px',
+            bottom: '-2px',
+            backgroundColor: 'pink.500',
+            visibility: 'hidden',
+            transform: 'scaleX(0)',
+            transition: 'all 0.3s ease-in-out',
+          }}
+          _hover={{
+            _before: {
+              visibility: 'visible',
+              transform: 'scaleX(1)',
+            },
+          }}
+          _active={{
+            color: 'pink.500',
+            transform: 'scaleX(0.9)',
+          }}
+        >
+          <HStack>
+            <Icon as={MdKeyboardBackspace} />
+            <Text>Voltar</Text>
+          </HStack>
+        </Button>
+
+        <Text
+          marginTop={3}
+          fontWeight="thin"
+          fontSize="15px"
+          letterSpacing="wider"
+        >
+          20 de maio de 2020 - Leitura de 2 minutos
+        </Text>
+
+        <Heading
+          as="h1"
+          fontSize={['2xl', '3xl', '4xl']}
+          letterSpacing="wide"
+          fontWeight="semi-bold"
+          marginTop={2}
+        >
+          Another day another dollar
+        </Heading>
+
+        <Text
+          marginTop={1}
+          fontWeight="thin"
+          fontSize="15px"
+          letterSpacing="wider"
+        >
+          Super cool way of living
+        </Text>
+
+        <HStack spacing={4} marginTop={6}>
+          <NextLink href="/">
+            <Link href="/" _hover={{ textDecoration: 'none', opacity: 0.8 }}>
+              <Tag>nodejs</Tag>
+            </Link>
+          </NextLink>
+
+          <NextLink href="/">
+            <Link href="/" _hover={{ textDecoration: 'none', opacity: 0.8 }}>
+              <Tag>nodejs</Tag>
+            </Link>
+          </NextLink>
+        </HStack>
       </Box>
     </Flex>
   );
