@@ -17,7 +17,9 @@ import {
   Text,
   Link,
 } from '@chakra-ui/react';
+
 import Tag from 'components/Tag';
+import Author from 'components/Author';
 
 const Post: NextPage = () => {
   const router = useRouter();
@@ -61,7 +63,7 @@ const Post: NextPage = () => {
           color="pink.500"
           position="relative"
           fontWeight="semi-bold"
-          marginTop={8}
+          marginTop={[2, 8]}
           _before={{
             content: '""',
             position: 'absolute',
@@ -87,7 +89,7 @@ const Post: NextPage = () => {
         >
           <HStack>
             <Icon as={MdKeyboardBackspace} />
-            <Text>Voltar</Text>
+            <Text fontSize="md">Voltar</Text>
           </HStack>
         </Button>
 
@@ -96,18 +98,19 @@ const Post: NextPage = () => {
           fontWeight="thin"
           fontSize="15px"
           letterSpacing="wider"
+          fontSizes={['xs', 'md']}
         >
           20 de maio de 2020 - Leitura de 2 minutos
         </Text>
 
         <Heading
           as="h1"
-          fontSize={['2xl', '3xl', '4xl']}
+          fontSize={['3xl', '4xl']}
           letterSpacing="wide"
           fontWeight="semi-bold"
-          marginTop={2}
+          marginTop={4}
         >
-          Another day another dollar
+          Another day another dollar with some money
         </Heading>
 
         <Text
@@ -133,6 +136,8 @@ const Post: NextPage = () => {
           </NextLink>
         </HStack>
       </Box>
+
+      <Author />
     </Flex>
   );
 };

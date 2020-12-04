@@ -23,6 +23,7 @@ const Header: React.FC = () => {
       top={0}
       left={0}
       width="100vw"
+      zIndex="docked"
     >
       <Flex
         align="center"

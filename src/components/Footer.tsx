@@ -17,6 +17,7 @@ const Footer: React.FC = () => {
       alignItems="center"
       justifyContent="center"
       borderTop={borderTop}
+      zIndex="docked"
     >
       <Link
         href="https://www.linkedin.com/in/lucas-mallmann-372745148/"

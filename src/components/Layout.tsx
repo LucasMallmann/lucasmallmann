@@ -8,7 +8,12 @@ const HEADER_HEIGHT_PROPORTION = 12;
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <Box maxWidth="700px" marginTop={HEADER_HEIGHT_PROPORTION} marginX="auto">
+    <Box
+      maxWidth="700px"
+      marginTop={HEADER_HEIGHT_PROPORTION}
+      marginX="auto"
+      paddingBottom={40}
+    >
       <Header />
       {children}
       <Footer />
