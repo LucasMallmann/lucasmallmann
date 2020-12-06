@@ -1,6 +1,8 @@
 import { extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
+import articlePostStyle from 'styles/custom/articlePost';
+
 const customTheme = extendTheme({
   styles: {
     global: (props) => ({
@@ -55,6 +57,9 @@ const customTheme = extendTheme({
     sm: '4px',
     md: '8px',
     full: '50%',
+  },
+  components: {
+    ArticlePost: articlePostStyle,
   },
 });
 

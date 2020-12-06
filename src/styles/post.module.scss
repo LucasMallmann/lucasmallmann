@@ -1,0 +1,24 @@
+.container {
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 16px;
+  }
+
+  h2 + p:not(:first-child) {
+    margin-top: 4px;
+  }
+
+  p {
+    margin: 16px auto;
+  }
+
+  code {
+    border-radius: 2px;
+    color: inherit;
+    line-height: 1em;
+    padding: 0.4rem 0.4rem 0.2rem;
+    vertical-align: middle;
+    white-space: pre-wrap;
+  }
+}

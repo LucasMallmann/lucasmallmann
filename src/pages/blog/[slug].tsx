@@ -1,11 +1,16 @@
-import React from 'react';
-import { NextPage } from 'next';
+import React, { useMemo } from 'react';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-
 import { MdKeyboardBackspace } from 'react-icons/md';
+import { PostOrPage } from '@tryghost/content-api';
+
+// Styles
+// import postStyles from 'styles/post.module.scss';
+
+import api from 'services/api';
 
 import {
   Box,
@@ -16,13 +21,32 @@ import {
   Icon,
   Text,
   Link,
+  useStyleConfig,
 } from '@chakra-ui/react';
 
 import Tag from 'components/Tag';
-import Author from 'components/Author';
+// import Author from 'components/Author';
 
-const Post: NextPage = () => {
+import { dayjs } from 'utils/date';
+
+interface Props {
+  post: PostOrPage;
+}
+
+const Post: NextPage<Props> = ({ post }) => {
   const router = useRouter();
+
+  const postStyles = useStyleConfig('ArticlePost', {});
+
+  const formattedDate = useMemo(() => {
+    return dayjs(post.published_at).format('DD [de] MMMM [de] YYYY');
+  }, [post.published_at]);
+
+  const formattedReadingTime = useMemo(() => {
+    return post.reading_time <= 1
+      ? `Leitura de ${post.reading_time} minuto`
+      : `Leitura de ${post.reading_time} minutos`;
+  }, [post.reading_time]);
 
   return (
     <Flex direction="column" padding={[3, 4, 0, 0]}>
@@ -49,7 +73,7 @@ const Post: NextPage = () => {
         }}
       >
         <Image
-          src="/marvin.jpg"
+          src={post.feature_image}
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -96,21 +120,20 @@ const Post: NextPage = () => {
         <Text
           marginTop={3}
           fontWeight="thin"
-          fontSize="15px"
           letterSpacing="wider"
-          fontSizes={['xs', 'md']}
+          fontSize={['15px', 'md']}
         >
-          20 de maio de 2020 - Leitura de 2 minutos
+          {formattedDate} - {formattedReadingTime}
         </Text>
 
         <Heading
           as="h1"
-          fontSize={['3xl', '4xl']}
+          fontSize={['3xl', '5xl']}
           letterSpacing="wide"
           fontWeight="semi-bold"
           marginTop={4}
         >
-          Another day another dollar with some money
+          {post.title}
         </Heading>
 
         <Text
@@ -119,27 +142,61 @@ const Post: NextPage = () => {
           fontSize="15px"
           letterSpacing="wider"
         >
-          Super cool way of living
+          {post.excerpt}
         </Text>
 
-        <HStack spacing={4} marginTop={6}>
-          <NextLink href="/">
-            <Link href="/" _hover={{ textDecoration: 'none', opacity: 0.8 }}>
-              <Tag>nodejs</Tag>
-            </Link>
-          </NextLink>
-
-          <NextLink href="/">
-            <Link href="/" _hover={{ textDecoration: 'none', opacity: 0.8 }}>
-              <Tag>nodejs</Tag>
-            </Link>
-          </NextLink>
-        </HStack>
+        {post.tags && (
+          <HStack spacing={4} marginTop={6}>
+            {post.tags.map((tag) => (
+              <NextLink href="/" key={tag.id}>
+                <Link
+                  href="/"
+                  _hover={{ textDecoration: 'none', opacity: 0.8 }}
+                >
+                  <Tag>{tag.name}</Tag>
+                </Link>
+              </NextLink>
+            ))}
+          </HStack>
+        )}
       </Box>
 
-      <Author />
+      <Box dangerouslySetInnerHTML={{ __html: post.html }} sx={postStyles} />
+
+      {/* <Author /> */}
     </Flex>
   );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await api.posts.browse();
+
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
+  params,
+}) => {
+  const { slug } = params;
+
+  const post = await api.posts.read({ slug }, { include: 'tags' });
+
+  return {
+    props: {
+      post,
+    },
+  };
 };
 
 export default Post;

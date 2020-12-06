@@ -10,11 +10,6 @@ import api from 'services/api';
 
 import ArticleCard from 'components/ArticleCard';
 
-async function getPosts(): Promise<PostsOrPages> {
-  const posts = await api.posts.browse({ order: 'created_at DESC' });
-  return posts;
-}
-
 interface Props {
   posts: PostsOrPages;
 }
@@ -22,8 +17,6 @@ interface Props {
 const PARAGRAPH_MARGIN = 4;
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log(posts);
-
   return (
     <Flex direction="column" padding={[3, 4, 0, 0]}>
       <Head>
@@ -132,8 +125,25 @@ const Home: NextPage<Props> = ({ posts }) => {
       </Heading>
 
       <VStack marginTop={6} spacing={4}>
-        <ArticleCard />
-        <ArticleCard />
+        {posts.map((post) => (
+          <NextLink href={`/blog/${post.slug}`} key={post.uuid}>
+            <Link
+              href={`/blog/${post.slug}`}
+              _hover={{
+                textDecoration: 'none',
+              }}
+              display="block"
+              width="100%"
+            >
+              <ArticleCard
+                title={post.title}
+                readingTime={post.reading_time}
+                featureImage={post.feature_image}
+                publishedAt={post.published_at}
+              />
+            </Link>
+          </NextLink>
+        ))}
       </VStack>
 
       <NextLink href="/">
@@ -171,7 +181,11 @@ const Home: NextPage<Props> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getPosts();
+  const posts = await api.posts.browse({
+    order: 'created_at DESC',
+    // limit: 2,
+    include: 'tags',
+  });
 
   return {
     props: {

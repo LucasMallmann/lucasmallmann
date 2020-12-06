@@ -12,6 +12,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/standard',
     'prettier/react',
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -32,6 +33,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'import/prefer-default-export': 'off',
     'object-curly-newline': 'off',
+    'comma-dangle': 'off',
     camelcase: 'off',
     semi: 'off',
     '@typescript-eslint/semi': ['error'],
