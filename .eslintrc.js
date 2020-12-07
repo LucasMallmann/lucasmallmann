@@ -35,6 +35,7 @@ module.exports = {
     'object-curly-newline': 'off',
     'comma-dangle': 'off',
     camelcase: 'off',
+    'react/no-danger': 'off',
     semi: 'off',
     '@typescript-eslint/semi': ['error'],
     'react/jsx-filename-extension': [

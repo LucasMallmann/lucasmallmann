@@ -25,6 +25,17 @@ class MyDocument extends Document<DocumentProps> {
         <body>
           <Main />
           <NextScript />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.addEventListener('DOMContentLoaded', (event) => {      
+              document.querySelectorAll('pre[class*=language-]').forEach(function(node) {
+                  node.classList.add('line-numbers');
+            });
+          });
+            `,
+            }}
+          />
         </body>
       </Html>
     );

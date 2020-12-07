@@ -120,7 +120,7 @@ const Post: NextPage<Props> = ({ post }) => {
         <Text
           marginTop={3}
           fontWeight="thin"
-          letterSpacing="wider"
+          letterSpacing={['normal', 'wider']}
           fontSize={['15px', 'md']}
         >
           {formattedDate} - {formattedReadingTime}
@@ -128,7 +128,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
         <Heading
           as="h1"
-          fontSize={['3xl', '5xl']}
+          fontSize={['4xl', '5xl']}
           letterSpacing="wide"
           fontWeight="semi-bold"
           marginTop={4}

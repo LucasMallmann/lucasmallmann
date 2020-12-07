@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import {
   Box,
@@ -15,29 +14,30 @@ import { Icon } from '@chakra-ui/icons';
 // Components
 import Tag from 'components/Tag';
 
-// Services
-import api from 'services/api';
-
 // Utils
 import { dayjs } from 'utils/date';
+import { PostOrPage } from '@tryghost/content-api';
 
 interface Props {
-  title: string;
-  readingTime: number;
-  featureImage?: string;
-  publishedAt: string;
+  post: PostOrPage;
 }
 
-const ArticleCard: React.FC<Props> = ({ title, featureImage, publishedAt }) => {
+const ArticleCard: React.FC<Props> = ({ post }) => {
   const boxShadow = useColorModeValue('0px 2px 4px rgba(0, 0, 0, 0.1)', 'none');
   const borderColor = useColorModeValue('gray.200', 'transparent');
   const articleBackgroundColor = useColorModeValue('inherit', 'darkGray.500');
   const tagIconBgColor = useColorModeValue('gray.800', 'gray.400');
 
   const formattedDate = useMemo(
-    () => dayjs(publishedAt).format('DD [de] MMMM [de] YYYY'),
-    [publishedAt]
+    () => dayjs(post.published_at).format('DD [de] MMMM [de] YYYY'),
+    [post.published_at]
   );
+
+  const formattedReadingTime = useMemo(() => {
+    return post.reading_time <= 1
+      ? `Leitura de ${post.reading_time} minuto`
+      : `Leitura de ${post.reading_time} minutos`;
+  }, [post.reading_time]);
 
   return (
     <Flex
@@ -93,7 +93,7 @@ const ArticleCard: React.FC<Props> = ({ title, featureImage, publishedAt }) => {
     >
       <Flex direction="column" flex="1">
         <Heading as="h3" fontSize={['md', 'xl']} fontWeight={600}>
-          {title}
+          {post.title}
         </Heading>
         <Text
           fontSize="2md"
@@ -101,22 +101,28 @@ const ArticleCard: React.FC<Props> = ({ title, featureImage, publishedAt }) => {
           lineHeight="22px"
           minHeight="60px"
         >
-          Hey yo, give me a dollar
+          {post.excerpt}
         </Text>
 
-        <HStack spacing={2} alignItems="center" marginTop={4}>
-          <Icon as={FaTag} width={3} height={3} color={tagIconBgColor} />
-          <Tag>nodejs</Tag>
-        </HStack>
+        {post.tags && (
+          <HStack spacing={2} alignItems="center" marginTop={4}>
+            <Icon as={FaTag} width={3} height={3} color={tagIconBgColor} />
+
+            {post.tags.map((tag) => (
+              <Tag key={tag.id}>{tag.name}</Tag>
+            ))}
+          </HStack>
+        )}
+
         <Text fontSize="xs" fontWeight="thin" as="p">
-          {formattedDate} - Leitura de 1 minuto
+          {formattedDate} - {formattedReadingTime}
         </Text>
       </Flex>
 
       <Box display={['none', 'block']}>
         <Image
           alt="Mountains"
-          src={featureImage}
+          src={post.feature_image}
           width={180}
           height={150}
           quality={100}
@@ -125,38 +131,6 @@ const ArticleCard: React.FC<Props> = ({ title, featureImage, publishedAt }) => {
       </Box>
     </Flex>
   );
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await api.posts.browse();
-
-  const paths = posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-    };
-  });
-
-  console.log(paths);
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(params);
-
-  const posts = await api.posts.browse({ order: 'created_at DESC', limit: 2 });
-
-  return {
-    props: {
-      posts,
-    },
-    revalidate: 1,
-  };
 };
 
 export default ArticleCard;

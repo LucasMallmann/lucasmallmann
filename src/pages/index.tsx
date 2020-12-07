@@ -30,7 +30,7 @@ const Home: NextPage<Props> = ({ posts }) => {
           fontSize={['3xl', '3xl', '4xl', '5xl']}
           letterSpacing="wide"
           fontWeight={600}
-          marginTop={[-2, 2, 9, 9]}
+          marginTop={[4, 9, 9]}
           textAlign="center"
         >
           Lucas Mallmann
@@ -52,24 +52,14 @@ const Home: NextPage<Props> = ({ posts }) => {
           Quem sou eu?
         </Heading>
 
-        <Text
-          as="p"
-          marginY={PARAGRAPH_MARGIN}
-          lineHeight={6}
-          fontSize={['15px', 16]}
-        >
+        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
           Olá, seja muito bem vindo(a) ao meu blog! Meu nome é Lucas Mallmann.
           Trabalho como engenheiro de software desde 2017. Acredito que a
           educação, a divulgação de conhecimento e de boas ideias é o caminho
           mais rápido e eficaz para melhorar o mundo!
         </Text>
 
-        <Text
-          as="p"
-          marginY={PARAGRAPH_MARGIN}
-          lineHeight={6}
-          fontSize={['15px', 16]}
-        >
+        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
           Atualmente trabalho como Software Enginner na{' '}
           <Link
             href="https://pling.net.br"
@@ -91,24 +81,14 @@ const Home: NextPage<Props> = ({ posts }) => {
           aprender seja ensinar.
         </Text>
 
-        <Text
-          as="p"
-          marginY={PARAGRAPH_MARGIN}
-          lineHeight={6}
-          fontSize={['15px', 16]}
-        >
+        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
           Gosto muito de música, apaixonado por games, um aventureiro na
           culinária, e nos tempos livres adoro filosofar sobre a vida. Apesar de
           ser um blog voltado para tecnologia, não se surpreenda se trouxermos
           algumas reflexões por aqui.
         </Text>
 
-        <Text
-          as="p"
-          marginY={PARAGRAPH_MARGIN}
-          lineHeight={6}
-          fontSize={['15px', 16]}
-        >
+        <Text as="p" marginY={PARAGRAPH_MARGIN} lineHeight={6}>
           Muitos sonhos e objetivos meus nasceram de recursos online que eu
           encontrei sobre tecnologia. Acredito que seja o meu dever, e eu
           ficarei extremamente feliz se conseguir retribuir pra vocês um pouco
@@ -135,12 +115,7 @@ const Home: NextPage<Props> = ({ posts }) => {
               display="block"
               width="100%"
             >
-              <ArticleCard
-                title={post.title}
-                readingTime={post.reading_time}
-                featureImage={post.feature_image}
-                publishedAt={post.published_at}
-              />
+              <ArticleCard post={post} />
             </Link>
           </NextLink>
         ))}
