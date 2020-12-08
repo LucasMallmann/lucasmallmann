@@ -9,15 +9,15 @@ const articlePostStyle = {
     'h2:not(:first-of-type)': {
       marginTop: 4,
     },
+    'h3:not(:first-of-type)': {
+      marginTop: 1,
+    },
     h3: {
       fontSize: ['2xl', '4xl'],
       fontWeight: 'semi-bold',
       marginTop: 4,
     },
     'h2 + p:not(:first-of-type)': {
-      marginTop: 1,
-    },
-    'h3 + p:not(:first-of-type)': {
       marginTop: 1,
     },
     p: {
