@@ -15,7 +15,10 @@ const articlePostStyle = {
       marginTop: 4,
     },
     'h2 + p:not(:first-of-type)': {
-      marginTop: '4px',
+      marginTop: 1,
+    },
+    'h3 + p:not(:first-of-type)': {
+      marginTop: 1,
     },
     p: {
       marginY: 4,
