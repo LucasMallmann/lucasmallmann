@@ -21,13 +21,6 @@ const articlePostStyle = {
       marginY: 4,
       lineHeight: 'tall',
     },
-    // code: {
-    //   borderRadius: 'sm',
-    //   padding: '2px',
-    //   background: colorMode === 'dark' ? 'darkGray.400' : 'gray.100',
-    //   color: 'red.400',
-    //   fontSize: 'sm',
-    // },
     blockquote: {
       margin: '32px auto',
       borderLeftWidth: '2px',
@@ -54,6 +47,23 @@ const articlePostStyle = {
       },
     },
     ul: {
+      marginTop: 4,
+      padding: 0,
+
+      li: {
+        padding: 0,
+        marginLeft: '24px',
+        marginY: 4,
+        ul: {
+          marginTop: '0',
+          li: {
+            marginTop: 1,
+          },
+        },
+      },
+    },
+
+    ol: {
       marginTop: '16px',
       padding: 0,
 
@@ -95,9 +105,10 @@ const articlePostStyle = {
     },
     '.kg-bookmark-container': {
       display: 'flex',
-      padding: 4,
-      borderWidth: '1px',
-      borderColor: colorMode === 'dark' ? 'gray.600' : 'gray.350',
+      // padding: 4,
+      // borderWidth: '1px',
+      // borderColor: colorMode === 'dark' ? 'gray.600' : 'gray.350',
+      boxShadow: colorMode === 'dark' ? '0 0 1px #eee' : '0 0 1px #404040',
       marginY: 4,
       textDecoration: 'none',
       div: {
@@ -112,6 +123,7 @@ const articlePostStyle = {
       },
     },
     '.kg-bookmark-content': {
+      padding: 4,
       fontSize: '15px',
       transition: 'opacity 0.2s ease-in-out',
       _hover: {
