@@ -161,7 +161,11 @@ const Post: NextPage<Props> = ({ post }) => {
         )}
       </Box>
 
-      <Box dangerouslySetInnerHTML={{ __html: post.html }} sx={postStyles} />
+      <Box
+        marginTop={8}
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        sx={postStyles}
+      />
 
       {/* <Author /> */}
     </Flex>

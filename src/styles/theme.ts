@@ -35,6 +35,7 @@ const customTheme = extendTheme({
     gray: {
       100: '#F3F3F3',
       300: '#eeeeee',
+      350: '#dedede',
       400: '#8C8C8C',
       600: '#404040',
       700: '#29292e',

@@ -114,7 +114,7 @@ const ArticleCard: React.FC<Props> = ({ post }) => {
           </HStack>
         )}
 
-        <Text fontSize="xs" fontWeight="thin" as="p">
+        <Text fontSize="xs" fontWeight="thin" as="p" marginTop={4}>
           {formattedDate} - {formattedReadingTime}
         </Text>
       </Flex>

@@ -1,21 +1,24 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 const articlePostStyle = {
   baseStyle: ({ colorMode }) => ({
     borderRadius: '2px',
     h2: {
       fontSize: ['2xl', '4xl'],
       fontWeight: 'semi-bold',
-      marginTop: '16px',
+    },
+    'h2:not(:first-of-type)': {
+      marginTop: 4,
     },
     h3: {
-      fontSize: ['xl', '4xl'],
+      fontSize: ['2xl', '4xl'],
       fontWeight: 'semi-bold',
-      marginTop: '16px',
+      marginTop: 4,
     },
     'h2 + p:not(:first-of-type)': {
       marginTop: '4px',
     },
     p: {
-      marginY: '16px',
+      marginY: 4,
       lineHeight: 'tall',
     },
     // code: {
@@ -90,8 +93,62 @@ const articlePostStyle = {
         },
       },
     },
-    'kg-bookmark-card': {
+    '.kg-bookmark-container': {
       display: 'flex',
+      padding: 4,
+      borderWidth: '1px',
+      borderColor: colorMode === 'dark' ? 'gray.600' : 'gray.350',
+      marginY: 4,
+      textDecoration: 'none',
+      div: {
+        boxShadow: 'none',
+      },
+      _before: {
+        content: '""',
+        backgroundColor: 'transparent',
+      },
+      _hover: {
+        opacity: 1,
+      },
+    },
+    '.kg-bookmark-content': {
+      fontSize: '15px',
+      transition: 'opacity 0.2s ease-in-out',
+      _hover: {
+        opacity: 0.8,
+      },
+    },
+    '.kg-bookmark-title': {
+      fontWeight: 'bold',
+      fontSize: '18px',
+      transition: 'color 0.1s ease-in-out',
+      _hover: {
+        color: '#3eb0ef',
+      },
+    },
+    '.kg-bookmark-metadata': {
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: 4,
+    },
+    '.kg-bookmark-icon': {
+      width: '22px',
+      height: '22px',
+      marginRight: 2,
+    },
+    '.kg-bookmark-thumbnail': {
+      position: 'relative',
+      display: ['none', 'inline-block'],
+      minWidth: '33%',
+      maxHeight: '100%',
+      img: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      },
     },
   }),
   defaultProps: {},
