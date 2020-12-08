@@ -11,7 +11,9 @@ const HEADER_HEIGHT_PROPORTION = 12;
 
 const Layout: React.FC = ({ children }) => {
   useEffect(() => {
-    Prism.highlightAll();
+    setTimeout(() => {
+      Prism.highlightAll();
+    }, 0);
   }, []);
 
   return (
