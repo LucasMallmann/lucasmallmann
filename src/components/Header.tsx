@@ -5,65 +5,52 @@ import {
   useColorMode,
   Text,
   Link,
+  Heading,
+  useColorModeValue,
   Avatar,
   Box,
 } from '@chakra-ui/react';
+
 import NextLink from 'next/link';
 
+import { HeaderSizes } from 'styles/constants';
+
 const Header: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
+  const boxShadow = useColorModeValue('0px 1px rgba(0, 0, 0, 0.1)', 'none');
+  const backgroundColor = useColorModeValue('white', 'darkGray.600');
 
   return (
-    <Flex
+    <Box
       as="header"
-      height={12}
-      paddingX={[3, 4]}
-      backgroundColor="blue.900"
+      height={HeaderSizes.height}
+      backgroundColor={backgroundColor}
       position="fixed"
       top={0}
       left={0}
       width="100vw"
       zIndex="docked"
+      boxShadow={boxShadow}
+      transition="all 0.1s ease-in-out"
     >
       <Flex
-        align="center"
-        justify="space-between"
-        width="100%"
-        maxWidth={[
-          '100%', // base
-          '100%', // 480px upwards
-          '950px', // 768px upwards
-        ]}
-        marginY={0}
+        alignItems="center"
+        height="100%"
+        justifyContent="space-between"
+        maxWidth="5xl"
         marginX="auto"
       >
-        <NextLink href="/">
-          <Link
-            href="/"
-            textDecoration="none"
-            _hover={{
-              textDecoration: 'none',
-            }}
-          >
-            <Flex align="center">
-              <Avatar name="Lucas Mallmann" src="/me.jpeg" size="sm" />
-              <Box
-                _hover={{
-                  opacity: 0.8,
-                }}
-              >
-                <Text
-                  fontSize="md"
-                  marginLeft={2}
-                  color="white"
-                  fontWeight={600}
-                >
-                  mallmann
-                </Text>
-              </Box>
-            </Flex>
-          </Link>
-        </NextLink>
+        <Flex alignItems="center">
+          <Avatar
+            name="Lucas Mallmann"
+            src="/me.jpeg"
+            borderColor="blue.500"
+            borderWidth="2px"
+          />
+          <Heading as="h1" fontSize="2xl" marginLeft={2}>
+            Lucas Mallmann
+          </Heading>
+        </Flex>
 
         <Flex as="nav" alignItems="center">
           <NextLink href="/">
@@ -72,7 +59,6 @@ const Header: React.FC = () => {
               position="relative"
               transition="all 0.2s ease"
               marginX={2}
-              color="white"
               _before={{
                 content: '""',
                 position: 'absolute',
@@ -81,13 +67,13 @@ const Header: React.FC = () => {
                 height: '2px',
                 bottom: '-2px',
                 left: 0,
-                backgroundColor: 'gray.200',
+                backgroundColor: 'black',
                 visibility: 'hidden',
                 transform: 'scaleX(0)',
                 transition: 'all 0.3s ease-in-out 0s',
               }}
               _hover={{
-                color: 'gray.200',
+                color: 'black',
                 _before: {
                   visibility: 'visible',
                   transform: 'scaleX(1)',
@@ -103,7 +89,7 @@ const Header: React.FC = () => {
               href="/"
               position="relative"
               transition="all 0.2s ease"
-              color="white"
+              marginX={2}
               _before={{
                 content: '""',
                 position: 'absolute',
@@ -112,13 +98,13 @@ const Header: React.FC = () => {
                 height: '2px',
                 bottom: '-2px',
                 left: 0,
-                backgroundColor: 'gray.200',
+                backgroundColor: 'black',
                 visibility: 'hidden',
                 transform: 'scaleX(0)',
                 transition: 'all 0.3s ease-in-out 0s',
               }}
               _hover={{
-                color: 'gray.200',
+                color: 'black',
                 _before: {
                   visibility: 'visible',
                   transform: 'scaleX(1)',
@@ -128,11 +114,11 @@ const Header: React.FC = () => {
               <Text as="span">projects</Text>
             </Link>
           </NextLink>
-        </Flex>
 
-        <Button onClick={toggleColorMode}>Toggle theme</Button>
+          <Button onClick={toggleColorMode}>Toggle theme</Button>
+        </Flex>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 

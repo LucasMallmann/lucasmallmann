@@ -6,6 +6,7 @@ import ThemeContainer from 'contexts/theme/ThemeContainer';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'styles/code-snippet.css';
+import 'styles/global.css';
 
 import Layout from 'components/Layout';
 

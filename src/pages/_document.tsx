@@ -12,13 +12,13 @@ class MyDocument extends Document<DocumentProps> {
     return (
       <Html>
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&family=Old+Standard+TT:ital@1&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
         </Head>

@@ -13,8 +13,8 @@ const customTheme = extendTheme({
     }),
   },
   fonts: {
-    body: 'Open Sans, system-ui, sans-serif',
-    heading: 'Open Sans, system-ui, sans-serif',
+    body: 'Lora, system-ui, sans-serif',
+    heading: 'Lora, system-ui, sans-serif',
     mono: 'Menlo, monospace',
   },
   fontWeights: {
@@ -22,7 +22,6 @@ const customTheme = extendTheme({
     'semi-bold': 600,
   },
   fontSizes: {
-    '4xl': '32px',
     '2md': '14px',
   },
   colors: {
