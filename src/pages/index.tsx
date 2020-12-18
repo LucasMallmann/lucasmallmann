@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
-import NextLink from 'next/link';
 
-import { Box, Flex, Heading, Text, Link, VStack } from '@chakra-ui/react';
+import { Box, Divider } from '@chakra-ui/react';
 import { PostOrPage, PostsOrPages } from '@tryghost/content-api';
 
 import api from 'services/api';
@@ -15,8 +14,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ spotlightPost }) => {
-  console.log(spotlightPost);
-
   return (
     <Box direction="column" padding={[0, 2, 2, 0]}>
       <Head>
@@ -25,6 +22,14 @@ const Home: NextPage<Props> = ({ spotlightPost }) => {
       </Head>
       <Box maxWidth="4xl" marginY={4} marginX="auto" flex={1} paddingTop={8}>
         <Spotlight post={spotlightPost} />
+
+        <Divider
+          marginTop={8}
+          height="1px"
+          backgroundColor="gray.700"
+          maxWidth={['90%', 'full']}
+          marginX="auto"
+        />
       </Box>
     </Box>
   );
