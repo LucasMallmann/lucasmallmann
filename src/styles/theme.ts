@@ -24,6 +24,9 @@ const customTheme = extendTheme({
   fontSizes: {
     '2md': '14px',
   },
+  sizes: {
+    '4xs': '12rem',
+  },
   colors: {
     purple: {
       500: '#9466FF',
