@@ -3,3 +3,8 @@
   height: 100%;
   border: 1px solid #3182ce;
 }
+
+.round-image {
+  border-radius: 50%;
+  height: 100%;
+}

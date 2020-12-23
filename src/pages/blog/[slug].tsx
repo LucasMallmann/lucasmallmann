@@ -22,6 +22,7 @@ import { dayjs } from 'utils/date';
 
 // Services
 import api from 'services/api';
+import PostAuthor from 'components/PostAuthor';
 
 // Components
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
@@ -52,7 +53,7 @@ const Post: NextPage<Props> = ({ post }) => {
         <title>Home page</title>
       </Head>
       <Box
-        marginTop={20}
+        marginTop={32}
         width={['full', 'full', '4xl']}
         marginX="auto"
         flex={1}
@@ -60,7 +61,7 @@ const Post: NextPage<Props> = ({ post }) => {
         <Box maxWidth="2xl" marginX="auto" paddingX={[4, 0]}>
           <HStack spacing={2}>
             {post.tags.map((tag) => (
-              <NextLink href="/">
+              <NextLink href="/" key={tag.id}>
                 <Link
                   href="/"
                   _hover={{
@@ -103,6 +104,8 @@ const Post: NextPage<Props> = ({ post }) => {
             backgroundColor="gray.700"
             marginX="auto"
           />
+
+          <PostAuthor />
         </Box>
 
         <Box

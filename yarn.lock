@@ -890,6 +890,13 @@
   dependencies:
     axios "0.20.0"
 
+"@tryghost/helpers@^1.1.35":
+  version "1.1.35"
+  resolved "https://registry.yarnpkg.com/@tryghost/helpers/-/helpers-1.1.35.tgz#309dfc15e9171f4f5be0c01c4a382c52eec6fd3a"
+  integrity sha512-A3b5isKgVAeXb+WiXapa+/6syBYyVMegcggKIslWZcMJm15eqiHWKsHShuiXJwD8Wues00ZWBu3zZ5qw8O90NQ==
+  dependencies:
+    lodash-es "^4.17.11"
+
 "@types/axios@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
@@ -4929,6 +4936,11 @@ lockfile@^1.0.4:
   integrity sha512-cvbTwETRfsFh4nHsL1eGWapU1XFi5Ot9E85sWAwia7Y7EgB7vfqcZhTKZ+l7hCGxSPoushMv5GKhT5PdLv03WA==
   dependencies:
     signal-exit "^3.0.2"
+
+lodash-es@^4.17.11:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.20.tgz#29f6332eefc60e849f869c264bc71126ad61e8f7"
+  integrity sha512-JD1COMZsq8maT6mnuz1UMV0jvYD0E0aUsSOdrr1/nAG3dhqQXwRRgeW0cSqH1U43INKcqxaiVIQNOUDld7gRDA==
 
 lodash._baseuniq@~4.6.0:
   version "4.6.0"

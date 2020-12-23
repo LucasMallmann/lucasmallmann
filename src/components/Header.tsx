@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Flex,
   useColorMode,
   Text,
@@ -9,14 +8,17 @@ import {
   useColorModeValue,
   Avatar,
   Box,
+  IconButton,
+  HStack,
 } from '@chakra-ui/react';
 
 import NextLink from 'next/link';
 
 import { HeaderSizes } from 'styles/constants';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const Header: React.FC = () => {
-  const { toggleColorMode } = useColorMode();
+  const { toggleColorMode, colorMode } = useColorMode();
   const boxShadow = useColorModeValue('0px 1px rgba(0, 0, 0, 0.1)', 'none');
   const backgroundColor = useColorModeValue('white', 'darkGray.600');
 
@@ -39,26 +41,31 @@ const Header: React.FC = () => {
         justifyContent="space-between"
         maxWidth="5xl"
         marginX="auto"
+        paddingX={2}
       >
-        <Flex alignItems="center">
-          <Avatar
-            name="Lucas Mallmann"
-            src="/me.jpeg"
-            borderColor="blue.500"
-            borderWidth="2px"
-          />
-          <Heading as="h1" fontSize="2xl" marginLeft={2}>
-            Lucas Mallmann
-          </Heading>
-        </Flex>
+        <NextLink href="/">
+          <Link href="/" _hover={{ textDecoration: 'none' }}>
+            <Flex alignItems="center">
+              <Avatar
+                name="Lucas Mallmann"
+                src="/me.jpeg"
+                borderColor="blue.500"
+                borderWidth="2px"
+                size="md"
+              />
+              <Heading as="h1" fontSize={['lg', '2xl']} marginLeft={2}>
+                Lucas Mallmann
+              </Heading>
+            </Flex>
+          </Link>
+        </NextLink>
 
-        <Flex as="nav" alignItems="center">
+        <HStack as="nav">
           <NextLink href="/">
             <Link
               href="/"
               position="relative"
               transition="all 0.2s ease"
-              marginX={2}
               _before={{
                 content: '""',
                 position: 'absolute',
@@ -89,7 +96,6 @@ const Header: React.FC = () => {
               href="/"
               position="relative"
               transition="all 0.2s ease"
-              marginX={2}
               _before={{
                 content: '""',
                 position: 'absolute',
@@ -115,8 +121,14 @@ const Header: React.FC = () => {
             </Link>
           </NextLink>
 
-          <Button onClick={toggleColorMode}>Toggle theme</Button>
-        </Flex>
+          <IconButton
+            aria-label="Call Segun"
+            backgroundColor="transparent"
+            size="sm"
+            icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+            onClick={toggleColorMode}
+          />
+        </HStack>
       </Flex>
     </Box>
   );
