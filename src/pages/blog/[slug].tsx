@@ -4,31 +4,29 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { MdKeyboardBackspace } from 'react-icons/md';
+import dynamic from 'next/dynamic';
 import { PostOrPage } from '@tryghost/content-api';
-
-// Styles
-// import postStyles from 'styles/post.module.scss';
-
-import api from 'services/api';
-
 import {
   Box,
-  Button,
-  Flex,
   Heading,
   HStack,
-  Icon,
   Text,
+  Tag,
   Link,
   useStyleConfig,
+  Divider,
 } from '@chakra-ui/react';
 
-import Tag from 'components/Tag';
-// import Author from 'components/Author';
-
+// Utils
 import { dayjs } from 'utils/date';
 
+// Services
+import api from 'services/api';
+
+// Components
+const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
+  ssr: false,
+});
 interface Props {
   post: PostOrPage;
 }
@@ -49,126 +47,85 @@ const Post: NextPage<Props> = ({ post }) => {
   }, [post.reading_time]);
 
   return (
-    <Flex direction="column" padding={[3, 4, 0, 0]}>
+    <>
       <Head>
         <title>Home page</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Box
-        height="25vh"
-        width="100vw"
-        position="absolute"
-        left={0}
-        top={0}
-        _after={{
-          backgroundColor: 'rgba(0, 0, 0, 0.45)',
-          content: '""',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          top: 0,
-          zIndex: 2,
-        }}
+        marginTop={20}
+        width={['full', 'full', '4xl']}
+        marginX="auto"
+        flex={1}
       >
-        <Image
-          src={post.feature_image}
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-      </Box>
-
-      <Box marginTop="25vh">
-        <Button
-          onClick={() => router.back()}
-          variant="link"
-          color="pink.500"
-          position="relative"
-          fontWeight="semi-bold"
-          marginTop={[2, 8]}
-          _before={{
-            content: '""',
-            position: 'absolute',
-            width: '100%',
-            marginTop: '10px',
-            height: '2px',
-            bottom: '-2px',
-            backgroundColor: 'pink.500',
-            visibility: 'hidden',
-            transform: 'scaleX(0)',
-            transition: 'all 0.3s ease-in-out',
-          }}
-          _hover={{
-            _before: {
-              visibility: 'visible',
-              transform: 'scaleX(1)',
-            },
-          }}
-          _active={{
-            color: 'pink.500',
-            transform: 'scaleX(0.9)',
-          }}
-        >
-          <HStack>
-            <Icon as={MdKeyboardBackspace} />
-            <Text fontSize="md">Voltar</Text>
-          </HStack>
-        </Button>
-
-        <Text
-          marginTop={3}
-          fontWeight="thin"
-          letterSpacing={['normal', 'wider']}
-          fontSize={['15px', 'md']}
-        >
-          {formattedDate} - {formattedReadingTime}
-        </Text>
-
-        <Heading
-          as="h1"
-          fontSize={['4xl', '5xl']}
-          letterSpacing="wide"
-          fontWeight="semi-bold"
-          marginTop={4}
-        >
-          {post.title}
-        </Heading>
-
-        <Text
-          marginTop={1}
-          fontWeight="thin"
-          fontSize="15px"
-          letterSpacing="wider"
-        >
-          {post.excerpt}
-        </Text>
-
-        {post.tags && (
-          <HStack spacing={4} marginTop={6}>
+        <Box maxWidth="2xl" marginX="auto" paddingX={[4, 0]}>
+          <HStack spacing={2}>
             {post.tags.map((tag) => (
-              <NextLink href="/" key={tag.id}>
+              <NextLink href="/">
                 <Link
                   href="/"
-                  _hover={{ textDecoration: 'none', opacity: 0.8 }}
+                  _hover={{
+                    textDecoration: 'none',
+                  }}
                 >
-                  <Tag>{tag.name}</Tag>
+                  <Tag
+                    size="md"
+                    key={tag.id}
+                    variant="solid"
+                    backgroundColor="red.400"
+                    fontWeight="bold"
+                    borderRadius="sm"
+                    color="white"
+                    transition="background-color 0.2s ease-in-out"
+                    _hover={{
+                      backgroundColor: 'red.500',
+                    }}
+                  >
+                    {tag.name}
+                  </Tag>
                 </Link>
               </NextLink>
             ))}
           </HStack>
-        )}
+          <Heading as="h1" fontSize={['4xl', '5xl']}>
+            {post.title}
+          </Heading>
+          <Text as="p" fontSize="xl" marginTop={5} lineHeight="tall">
+            {post.excerpt}
+          </Text>
+
+          <Box marginTop={4}>
+            <SocialMediaShare />
+          </Box>
+
+          <Divider
+            marginY={4}
+            height="1px"
+            backgroundColor="gray.700"
+            marginX="auto"
+          />
+        </Box>
+
+        <Box
+          position="relative"
+          width="full"
+          height={[64, '520px']}
+          marginTop={8}
+        >
+          <Image
+            alt="Mountains"
+            src={post.feature_image}
+            layout="fill"
+            objectFit="cover"
+          />
+        </Box>
       </Box>
 
-      <Box
+      {/* <Box
         marginTop={8}
         dangerouslySetInnerHTML={{ __html: post.html }}
         sx={postStyles}
-      />
-
-      {/* <Author /> */}
-    </Flex>
+      /> */}
+    </>
   );
 };
 

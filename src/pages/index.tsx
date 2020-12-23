@@ -22,7 +22,13 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
         <title>Home page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box maxWidth="4xl" marginY={4} marginX="auto" flex={1} paddingTop={8}>
+      <Box
+        maxWidth="4xl"
+        marginY={4}
+        marginX="auto"
+        flex={1}
+        paddingTop={[0, 8]}
+      >
         <Spotlight post={spotlightPost} />
 
         <Divider
@@ -46,8 +52,11 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
           paddingX={[2, 0]}
         >
           {posts.map((post) => (
-            <NextLink href="/" key={post.id}>
-              <Link href="/" _hover={{ textDecoration: 'none' }}>
+            <NextLink href={`/blog/${post.slug}`} key={post.id}>
+              <Link
+                href={`/blog/${post.slug}`}
+                _hover={{ textDecoration: 'none' }}
+              >
                 <ArticleCard post={post} />
               </Link>
             </NextLink>
