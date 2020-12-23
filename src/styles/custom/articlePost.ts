@@ -21,6 +21,7 @@ const articlePostStyle = {
       marginTop: 1,
     },
     p: {
+      fontSize: 'lg',
       marginY: 4,
       lineHeight: 'tall',
     },
@@ -87,24 +88,6 @@ const articlePostStyle = {
     '.kg-gallery-container': {
       width: '100%',
       position: 'relative',
-    },
-    '.kg-gallery-row': {
-      display: 'flex',
-      overflowX: 'auto',
-      scrollSnapType: 'x mandatory',
-      webkitOverflowScrolling: 'touch',
-      scrollBehavior: 'smooth',
-
-      '.kg-gallery-image': {
-        flex: 'none',
-        // width: '33%',
-        height: '400px',
-        scrollSnapAlign: 'start',
-        pointerEvents: 'none',
-        img: {
-          objectFit: 'cover',
-        },
-      },
     },
     '.kg-bookmark-container': {
       display: 'flex',

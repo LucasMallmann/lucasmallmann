@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useRef } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
 import { PostOrPage } from '@tryghost/content-api';
+// import useVisibilitySensor from '@rooks/use-visibility-sensor';
 import {
   Box,
   Heading,
@@ -17,14 +17,12 @@ import {
   Divider,
 } from '@chakra-ui/react';
 
-// Utils
-import { dayjs } from 'utils/date';
-
 // Services
 import api from 'services/api';
-import PostAuthor from 'components/PostAuthor';
 
 // Components
+import PostAuthor from 'components/PostAuthor';
+
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
 });
@@ -33,19 +31,18 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ post }) => {
-  const router = useRouter();
+  const $postIntroductionNode = useRef<HTMLDivElement>();
 
   const postStyles = useStyleConfig('ArticlePost', {});
 
-  const formattedDate = useMemo(() => {
-    return dayjs(post.published_at).format('DD [de] MMMM [de] YYYY');
-  }, [post.published_at]);
-
-  const formattedReadingTime = useMemo(() => {
-    return post.reading_time <= 1
-      ? `Leitura de ${post.reading_time} minuto`
-      : `Leitura de ${post.reading_time} minutos`;
-  }, [post.reading_time]);
+  // const { isVisible, visibilityRect } = useVisibilitySensor(
+  //   $postIntroductioNode,
+  //   {
+  //     intervalCheck: false,
+  //     scrollCheck: true,
+  //     resizeCheck: true,
+  //   }
+  // );
 
   return (
     <>
@@ -57,8 +54,15 @@ const Post: NextPage<Props> = ({ post }) => {
         width={['full', 'full', '4xl']}
         marginX="auto"
         flex={1}
+        // position="relative"
       >
-        <Box maxWidth="2xl" marginX="auto" paddingX={[4, 0]}>
+        <Box
+          as="div"
+          maxWidth="2xl"
+          marginX="auto"
+          paddingX={[4, 0]}
+          ref={$postIntroductionNode}
+        >
           <HStack spacing={2}>
             {post.tags.map((tag) => (
               <NextLink href="/" key={tag.id}>
@@ -77,6 +81,9 @@ const Post: NextPage<Props> = ({ post }) => {
                     borderRadius="sm"
                     color="white"
                     transition="background-color 0.2s ease-in-out"
+                    textTransform="uppercase"
+                    fontFamily="sans-serif"
+                    fontSize="12px"
                     _hover={{
                       backgroundColor: 'red.500',
                     }}
@@ -87,7 +94,7 @@ const Post: NextPage<Props> = ({ post }) => {
               </NextLink>
             ))}
           </HStack>
-          <Heading as="h1" fontSize={['4xl', '5xl']}>
+          <Heading as="h1" fontSize={['4xl', '52px']}>
             {post.title}
           </Heading>
           <Text as="p" fontSize="xl" marginTop={5} lineHeight="tall">
@@ -99,13 +106,14 @@ const Post: NextPage<Props> = ({ post }) => {
           </Box>
 
           <Divider
-            marginY={4}
+            marginTop={8}
+            marginBottom={4}
             height="1px"
             backgroundColor="gray.700"
             marginX="auto"
           />
 
-          <PostAuthor />
+          <PostAuthor post={post} />
         </Box>
 
         <Box
@@ -121,13 +129,14 @@ const Post: NextPage<Props> = ({ post }) => {
             objectFit="cover"
           />
         </Box>
+        <Box
+          width={['full', 'full', '2xl']}
+          marginTop={8}
+          marginX="auto"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          sx={postStyles}
+        />
       </Box>
-
-      {/* <Box
-        marginTop={8}
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        sx={postStyles}
-      /> */}
     </>
   );
 };
