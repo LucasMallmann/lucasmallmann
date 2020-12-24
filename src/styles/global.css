@@ -8,3 +8,23 @@
   border-radius: 50%;
   height: 100%;
 }
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'font-serif', sans-serif, 'Inter';
+}
+
+.dark body {
+  background: #1d1d1d !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

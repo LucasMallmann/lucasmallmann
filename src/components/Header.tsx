@@ -1,136 +1,74 @@
-import React from 'react';
-import {
-  Flex,
-  useColorMode,
-  Text,
-  Link,
-  Heading,
-  useColorModeValue,
-  Avatar,
-  Box,
-  IconButton,
-  HStack,
-} from '@chakra-ui/react';
-
+import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
-
-import { HeaderSizes } from 'styles/constants';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 const Header: React.FC = () => {
-  const { toggleColorMode, colorMode } = useColorMode();
-  const boxShadow = useColorModeValue('0px 1px rgba(0, 0, 0, 0.1)', 'none');
-  const backgroundColor = useColorModeValue('white', 'darkGray.600');
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  // After mounting, we have access to the theme
+  useEffect(() => setMounted(true), []);
 
   return (
-    <Box
-      as="header"
-      height={HeaderSizes.height}
-      backgroundColor={backgroundColor}
-      position="fixed"
-      top={0}
-      left={0}
-      width="100vw"
-      zIndex="docked"
-      boxShadow={boxShadow}
-      transition="all 0.1s ease-in-out"
-    >
-      <Flex
-        alignItems="center"
-        height="100%"
-        justifyContent="space-between"
-        maxWidth="5xl"
-        marginX="auto"
-        paddingX={2}
-      >
+    <div className="bg-white w-screen h-14 top-0 -left-0 m-0 fixed z-10 border-b border-gray-300 dark:bg-gray-750 dark:border-gray-750">
+      <div className="flex justify-between items-center max-w-5xl m-auto h-full">
         <NextLink href="/">
-          <Link href="/" _hover={{ textDecoration: 'none' }}>
-            <Flex alignItems="center">
-              <Avatar
-                name="Lucas Mallmann"
+          <div className="flex items-center cursor-pointer">
+            <div className="w-12 h-12 relative rounded-full border-2 border-blue-500">
+              <Image
+                alt="Lucas Mallmann"
                 src="/me.jpeg"
-                borderColor="blue.500"
-                borderWidth="2px"
-                size="md"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
               />
-              <Heading as="h1" fontSize={['lg', '2xl']} marginLeft={2}>
-                Lucas Mallmann
-              </Heading>
-            </Flex>
-          </Link>
+            </div>
+            <h1 className="ml-2 text-2xl font-bold dark:text-gray-100">
+              Lucas Mallmann
+            </h1>
+          </div>
         </NextLink>
 
-        <HStack as="nav">
+        <nav className="flex items-center">
           <NextLink href="/">
-            <Link
-              href="/"
-              position="relative"
-              transition="all 0.2s ease"
-              _before={{
-                content: '""',
-                position: 'absolute',
-                width: '100%',
-                marginTop: '10px',
-                height: '2px',
-                bottom: '-2px',
-                left: 0,
-                backgroundColor: 'black',
-                visibility: 'hidden',
-                transform: 'scaleX(0)',
-                transition: 'all 0.3s ease-in-out 0s',
-              }}
-              _hover={{
-                color: 'black',
-                _before: {
-                  visibility: 'visible',
-                  transform: 'scaleX(1)',
-                },
-              }}
-            >
-              <Text as="span">blog</Text>
-            </Link>
+            <span className="mx-1 text-md dark:text-gray-100 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+              Blog
+            </span>
           </NextLink>
-
           <NextLink href="/">
-            <Link
-              href="/"
-              position="relative"
-              transition="all 0.2s ease"
-              _before={{
-                content: '""',
-                position: 'absolute',
-                width: '100%',
-                marginTop: '10px',
-                height: '2px',
-                bottom: '-2px',
-                left: 0,
-                backgroundColor: 'black',
-                visibility: 'hidden',
-                transform: 'scaleX(0)',
-                transition: 'all 0.3s ease-in-out 0s',
-              }}
-              _hover={{
-                color: 'black',
-                _before: {
-                  visibility: 'visible',
-                  transform: 'scaleX(1)',
-                },
-              }}
-            >
-              <Text as="span">projects</Text>
-            </Link>
+            <span className="mx-1 text-md dark:text-gray-100 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+              Projects
+            </span>
           </NextLink>
-
-          <IconButton
-            aria-label="Call Segun"
-            backgroundColor="transparent"
-            size="sm"
-            icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
-            onClick={toggleColorMode}
-          />
-        </HStack>
-      </Flex>
-    </Box>
+          <button
+            aria-label="Toggle Dark Mode"
+            type="button"
+            className="rounded p-3 h-10 w-10"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {mounted && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="h-4 w-4 text-gray-800 dark:text-gray-200"
+              >
+                {theme === 'dark' ? (
+                  <path
+                    fillRule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clipRule="evenodd"
+                  />
+                ) : (
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                )}
+              </svg>
+            )}
+          </button>
+        </nav>
+      </div>
+    </div>
   );
 };
 

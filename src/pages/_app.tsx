@@ -1,22 +1,19 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import 'focus-visible/dist/focus-visible';
+import { ThemeProvider } from 'next-themes';
 
-import ThemeContainer from 'contexts/theme/ThemeContainer';
-
-import 'prismjs/themes/prism-tomorrow.css';
-import 'styles/code-snippet.css';
 import 'styles/global.css';
+import 'styles/tailwind.css';
 
 import Layout from 'components/Layout';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ThemeContainer>
+    <ThemeProvider attribute="class">
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ThemeContainer>
+    </ThemeProvider>
   );
 };
 

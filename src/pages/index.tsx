@@ -17,7 +17,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
   return (
-    <Box direction="column" padding={[0, 2, 2, 0]}>
+    <Box direction="column" padding={[0, 2, 2, 0]} marginTop="70px">
       <Head>
         <title>Home page</title>
         <link rel="icon" href="/favicon.ico" />

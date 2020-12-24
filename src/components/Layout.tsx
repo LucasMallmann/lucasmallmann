@@ -1,16 +1,13 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
 
 import Header from 'components/Header';
 
-import { HeaderSizes } from 'styles/constants';
-
 const Layout: React.FC = ({ children }) => {
   return (
-    <Box marginTop={HeaderSizes.height}>
+    <div className="mt-2">
       <Header />
       {children}
-    </Box>
+    </div>
   );
 };
 
