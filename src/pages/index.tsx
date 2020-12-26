@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
 import NextLink from 'next/link';
-import { Box, Divider, Grid, Heading, Link } from '@chakra-ui/react';
+import { Divider, Grid, Heading, Link } from '@chakra-ui/react';
 import { PostOrPage, PostsOrPages } from '@tryghost/content-api';
 
 import api from 'services/api';
@@ -17,31 +17,19 @@ interface Props {
 
 const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
   return (
-    <Box direction="column" padding={[0, 2, 2, 0]} marginTop="70px">
+    <div className="flex-col p-0 sm:p-2 lg:p-0">
       <Head>
         <title>Home page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box
-        maxWidth="4xl"
-        marginY={4}
-        marginX="auto"
-        flex={1}
-        paddingTop={[0, 8]}
-      >
+      <div className="max-w-4xl flex-1 m-auto pt-0 md:pt-8">
         <Spotlight post={spotlightPost} />
 
-        <Divider
-          marginTop={8}
-          height="1px"
-          backgroundColor="gray.700"
-          maxWidth={['90%', '80%']}
-          marginX="auto"
-        />
+        <hr className="mt-8 border-gray-700 dark:border-gray-750 h-px w-11/12 md:w-4/5 mx-auto" />
 
-        <Heading as="h2" textAlign="center" marginTop={8}>
+        <h2 className="text-center mt-8 text-3xl md:text-4xl font-semibold">
           Todos os artigos
-        </Heading>
+        </h2>
 
         <Grid
           templateColumns={['1fr', '1fr 1fr']}
@@ -62,8 +50,8 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
             </NextLink>
           ))}
         </Grid>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

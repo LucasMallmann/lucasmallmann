@@ -23,49 +23,29 @@ const Spotlight: React.FC<Props> = ({ post }) => {
   }, [post.reading_time]);
 
   return (
-    <Flex direction="column">
-      <Box position="relative" width="full" height={[64, '500px']}>
+    <div className="flex-col">
+      <div className="relative h-64 md:h-spotlight-post">
         <Image
           alt="Mountains"
           src={post.feature_image}
           layout="fill"
           objectFit="cover"
         />
-      </Box>
-      <Heading
-        as="h1"
-        textAlign="center"
-        marginTop={4}
-        fontSize={['4xl', '5xl']}
-      >
+      </div>
+      <h1 className="text-4xl md:text-5xl font-semibold text-center mt-4">
         {post.title}
-      </Heading>
+      </h1>
 
-      <Box width={['full', '65%']} marginX="auto" marginTop={[4]}>
-        <Text
-          as="p"
-          paddingX={[2, 0]}
-          textAlign="center"
-          marginX="auto"
-          fontSize={['md', 'lg']}
-          fontWeight="semi-bold"
-        >
+      <div className="mx-auto mt-4 md:w-8/12">
+        <p className="px-2 text-center text-md md:text-lg font-semibold mx-auto">
           {post.excerpt}
-        </Text>
+        </p>
 
-        <Text
-          as="small"
-          fontSize="sm"
-          textAlign="center"
-          display="block"
-          width="full"
-          marginTop={3}
-          fontWeight="thin"
-        >
+        <small className="text-sm text-center w-full mt-3 font-extralight block">
           {`${formattedDate} - ${formattedReadingTime}`}
-        </Text>
-      </Box>
-    </Flex>
+        </small>
+      </div>
+    </div>
   );
 };
 

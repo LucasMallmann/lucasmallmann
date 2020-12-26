@@ -24,7 +24,7 @@ const Header: React.FC = () => {
                 className="rounded-full"
               />
             </div>
-            <h1 className="ml-2 text-2xl font-bold dark:text-gray-100">
+            <h1 className="ml-2 text-2xl font-semibold dark:text-gray-100">
               Lucas Mallmann
             </h1>
           </div>
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="rounded p-3 h-10 w-10"
+            className="rounded p-2 h-8 w-8 focus:outline-none"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
             {mounted && (

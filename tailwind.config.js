@@ -74,6 +74,9 @@ module.exports = {
           750: '#262626',
         },
       },
+      height: {
+        'spotlight-post': '500px',
+      },
     },
   },
   variants: {
