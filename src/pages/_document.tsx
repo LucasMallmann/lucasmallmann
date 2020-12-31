@@ -18,7 +18,7 @@ class MyDocument extends Document<DocumentProps> {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
             rel="stylesheet"
           />
           <link

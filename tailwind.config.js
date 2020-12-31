@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Lora"', 'Inter'],
+        sans: ['"Merriweather"', 'Inter'],
         display: ['Inter', 'ui-sans-serif'],
       },
       typography: (theme) => ({

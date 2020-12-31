@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import Image from 'next/image';
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, color, Flex, Heading, Text } from '@chakra-ui/react';
 import { PostOrPage } from '@tryghost/content-api';
 
 // Utils
@@ -23,56 +23,31 @@ const ArticleCard: React.FC<Props> = ({ post }) => {
   }, [post.reading_time]);
 
   return (
-    <Flex direction="column" width="100%" alignItems="center" marginY={[2, 0]}>
-      <Box position="relative" width="full" height={['4xs', 44]}>
+    <div className="flex-col text-center my-2 md:my-0">
+      <div className="relative h-48 md:h-44">
         <Image
           alt="Mountains"
           src={post.feature_image}
           layout="fill"
           objectFit="cover"
         />
-      </Box>
-      <Flex
-        _hover={{ opacity: 0.8 }}
-        transition="opacity 0.2s ease-in-out"
-        direction="column"
-      >
-        <Heading as="h3" fontSize="2xl" marginTop={2} textAlign="center">
+      </div>
+      <div className="flex-col hover:opacity-80 transition-opacity duration-200">
+        <h3 className="text-xl mt-2 text-center font-semibold dark:text-gray-200">
           {post.title}
-        </Heading>
+        </h3>
 
-        <Flex
-          marginTop={2}
-          direction="column"
-          flex="1"
-          justify="space-between"
-          height="full"
-        >
-          <Text
-            as="p"
-            textAlign="center"
-            marginX="auto"
-            fontSize={['md']}
-            flex="1"
-            height="full"
-          >
+        <div className="flex-col mt-2 flex-1 justify-between h-full">
+          <p className="text-center mx-auto leading-relaxed flex-1 h-full dark:text-gray-200 font-light">
             {post.excerpt}
-          </Text>
+          </p>
 
-          <Text
-            as="small"
-            fontSize="13px"
-            textAlign="center"
-            display="block"
-            width="full"
-            marginTop={2}
-            fontWeight="thin"
-          >
+          <small className="text-center block mt-3 text-gray-700 dark:text-gray-200 font-light">
             {`${formattedDate} - ${formattedReadingTime}`}
-          </Text>
-        </Flex>
-      </Flex>
-    </Flex>
+          </small>
+        </div>
+      </div>
+    </div>
   );
 };
 

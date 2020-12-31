@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { PostOrPage } from '@tryghost/content-api';
 import Image from 'next/image';
 
@@ -32,16 +31,16 @@ const Spotlight: React.FC<Props> = ({ post }) => {
           objectFit="cover"
         />
       </div>
-      <h1 className="text-4xl md:text-5xl font-semibold text-center mt-4">
+      <h1 className="text-4xl md:text-5xl font-semibold text-center mt-4 dark:text-gray-200">
         {post.title}
       </h1>
 
       <div className="mx-auto mt-4 md:w-8/12">
-        <p className="px-2 text-center text-md md:text-lg font-semibold mx-auto">
+        <p className="px-2 text-center text-md md:text-lg mx-auto dark:text-gray-200 font-light">
           {post.excerpt}
         </p>
 
-        <small className="text-sm text-center w-full mt-3 font-extralight block">
+        <small className="text-sm text-center w-full mt-3 font-extralight block dark:text-gray-200">
           {`${formattedDate} - ${formattedReadingTime}`}
         </small>
       </div>
