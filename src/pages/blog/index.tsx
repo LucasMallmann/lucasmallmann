@@ -1,13 +1,21 @@
 import React from 'react';
-import { Flex, Heading } from '@chakra-ui/react';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
+import { getAllFilesFrontMatter } from 'lib/mdx';
 
 const Blog: NextPage = () => {
   return (
-    <Flex direction="column" height="calc(100vh - 48px)" justify="center">
-      <Heading textAlign="center">This is the blog page</Heading>
-    </Flex>
+    <div className="flex-col">
+      <h1 className="text-center">Blog page</h1>
+    </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getAllFilesFrontMatter('blog');
+
+  console.log(posts);
+
+  return { props: { posts } };
 };
 
 export default Blog;
