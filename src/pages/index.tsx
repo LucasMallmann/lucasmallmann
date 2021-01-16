@@ -2,17 +2,16 @@ import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
 import NextLink from 'next/link';
-import { Divider, Grid, Heading, Link } from '@chakra-ui/react';
-import { PostOrPage, PostsOrPages } from '@tryghost/content-api';
+import { Link } from '@chakra-ui/react';
 
-import api from 'services/api';
+import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
 
 import Spotlight from 'components/Spotlight';
 import ArticleCard from 'components/ArticleCard';
 
 interface Props {
-  posts: PostsOrPages;
-  spotlightPost: PostOrPage;
+  posts: FrontMatterData[];
+  spotlightPost: FrontMatterData;
 }
 
 const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
@@ -33,7 +32,7 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mx-auto mt-8 px-2 md:p-0 w-full md:w-9/12">
           {posts.map((post) => (
-            <NextLink href={`/blog/${post.slug}`} key={post.id}>
+            <NextLink href={`/blog/${post.slug}`} key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
                 _hover={{ textDecoration: 'none' }}
@@ -49,16 +48,12 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await api.posts.browse({
-    order: 'created_at DESC',
-    limit: 10,
-    include: 'tags',
-  });
+  const posts = await getAllFilesFrontMatter({ type: 'blog' });
 
   return {
     props: {
       posts,
-      spotlightPost: posts[1],
+      spotlightPost: posts[0],
     },
   };
 };
