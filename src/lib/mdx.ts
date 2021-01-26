@@ -1,7 +1,13 @@
+/* eslint-disable global-require */
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import readingtime from 'reading-time';
+import renderToString from 'next-mdx-remote/render-to-string';
+import type { MdxRemote } from 'next-mdx-remote/types';
+
+// Components to use inside MDX
+import MDXComponents from 'components/MDXComponents';
 
 const root = process.cwd();
 
@@ -14,6 +20,7 @@ export interface FrontMatterData {
   summary: string;
   slug: string;
   readingTime: number;
+  tags?: string[];
 }
 
 export async function getFiles(type: DataSourceTypes): Promise<string[]> {
@@ -22,6 +29,10 @@ export async function getFiles(type: DataSourceTypes): Promise<string[]> {
 
 interface GetAllFilesPayload {
   type: DataSourceTypes;
+}
+
+export function getAllPostsFiles(type: DataSourceTypes): string[] {
+  return fs.readdirSync(path.join(root, 'data', type));
 }
 
 export async function getAllFilesFrontMatter({
@@ -51,4 +62,49 @@ export async function getAllFilesFrontMatter({
     });
 
   return result;
+}
+
+interface GetFileBySlugPayload {
+  type: DataSourceTypes;
+  slug: string;
+}
+
+export interface PostFoundMetadata {
+  mdxSource: MdxRemote.Source;
+  frontMatter: FrontMatterData;
+}
+
+export async function getFileBySlug({
+  type,
+  slug,
+}: GetFileBySlugPayload): Promise<PostFoundMetadata> {
+  const source = fs.readFileSync(path.join(root, 'data', type, `${slug}.mdx`));
+
+  const frontMatter = matter(source);
+  const frontMatterData = frontMatter.data as FrontMatterData;
+
+  const mdxSource: MdxRemote.Source = await renderToString(
+    frontMatter.content,
+    {
+      components: MDXComponents,
+      mdxOptions: {
+        rehypePlugins: [
+          require('remark-autolink-headings'),
+          require('remark-slug'),
+          require('remark-code-titles'),
+        ],
+      },
+    }
+  );
+
+  const postReadingTime = readingtime(frontMatter.content).minutes;
+
+  return {
+    mdxSource,
+    frontMatter: {
+      ...frontMatterData,
+      slug,
+      readingTime: postReadingTime < 1 ? 1 : postReadingTime,
+    },
+  };
 }

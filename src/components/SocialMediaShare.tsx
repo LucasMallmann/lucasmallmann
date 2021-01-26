@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Icon, Text } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -16,59 +16,36 @@ import {
 const SocialMediaShare: React.FC = () => {
   return (
     <>
-      <Text as="span">Compartilhe!</Text>
-      <HStack marginTop={2}>
-        <TwitterShareButton url={window.location.href}>
-          <Icon
-            as={TwitterIcon}
-            width={5}
-            height={5}
-            borderRadius={50}
-            transition="opacity 0.2s ease-in-out"
-            _hover={{ opacity: 0.8 }}
-          />
+      <span className="text-md dark:text-gray-100">Compartilhe!</span>
+      <div className="mt-2 flex">
+        <TwitterShareButton url={window.location.href} className="w-5 h-5">
+          <TwitterIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />
         </TwitterShareButton>
-        <LinkedinShareButton url={window.location.href}>
-          <Icon
-            as={LinkedinIcon}
-            width={5}
-            height={5}
-            borderRadius={50}
-            transition="opacity 0.2s ease-in-out"
-            _hover={{ opacity: 0.8 }}
-          />
+        <LinkedinShareButton
+          url={window.location.href}
+          className="w-5 h-5 ml-2"
+        >
+          <LinkedinIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />
         </LinkedinShareButton>
-        <TelegramShareButton url={window.location.href}>
-          <Icon
-            as={TelegramIcon}
-            width={5}
-            height={5}
-            borderRadius={50}
-            transition="opacity 0.2s ease-in-out"
-            _hover={{ opacity: 0.8 }}
-          />
+        <TelegramShareButton
+          url={window.location.href}
+          className="w-5 h-5 ml-2"
+        >
+          <TelegramIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />
         </TelegramShareButton>
-        <FacebookShareButton url={window.location.href}>
-          <Icon
-            as={FacebookIcon}
-            width={5}
-            height={5}
-            borderRadius={50}
-            transition="opacity 0.2s ease-in-out"
-            _hover={{ opacity: 0.8 }}
-          />
+        <FacebookShareButton
+          url={window.location.href}
+          className="w-5 h-5 ml-2"
+        >
+          <FacebookIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />
         </FacebookShareButton>
-        <WhatsappShareButton url={window.location.href}>
-          <Icon
-            as={WhatsappIcon}
-            width={5}
-            height={5}
-            borderRadius={50}
-            transition="opacity 0.2s ease-in-out"
-            _hover={{ opacity: 0.8 }}
-          />
+        <WhatsappShareButton
+          url={window.location.href}
+          className="w-5 h-5 ml-2"
+        >
+          <WhatsappIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />
         </WhatsappShareButton>
-      </HStack>
+      </div>
     </>
   );
 };

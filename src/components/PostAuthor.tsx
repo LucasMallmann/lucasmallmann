@@ -6,46 +6,50 @@ import { PostOrPage } from '@tryghost/content-api';
 // Utils
 import { dayjs } from 'utils/date';
 
+// Types
+import type { FrontMatterData } from 'lib/mdx';
+
 interface Props {
-  post: PostOrPage;
+  postMetadata: FrontMatterData;
 }
 
-const PostAuthor: React.FC<Props> = ({ post }) => {
+const PostAuthor: React.FC<Props> = ({ postMetadata }) => {
   const formattedDate = useMemo(() => {
-    return dayjs(post.published_at).format('DD [de] MMM [de] YYYY');
-  }, [post.published_at]);
+    return dayjs(postMetadata.publishedAt).format('DD [de] MMM [de] YYYY');
+  }, [postMetadata.publishedAt]);
 
   const formattedReadingTime = useMemo(() => {
-    return post.reading_time <= 1
-      ? `Leitura de ${post.reading_time} minuto`
-      : `Leitura de ${post.reading_time} minutos`;
-  }, [post.reading_time]);
+    return postMetadata.readingTime <= 1
+      ? `Leitura de ${postMetadata.readingTime} minuto`
+      : `Leitura de ${postMetadata.readingTime} minutos`;
+  }, [postMetadata.readingTime]);
 
   return (
-    <Flex alignItems="center">
-      <Box position="relative" height="36px" width="36px" borderRadius="full">
+    <div className="flex align-middle">
+      <div style={{ height: '36px', width: '36px' }}>
         <Image
           className="round-image"
           alt="Lucas Mallmann"
           src="/me.jpeg"
-          layout="fill"
-          objectFit="cover"
+          width={36}
+          height={36}
         />
-      </Box>
-      <Box marginLeft={3}>
-        <Text
-          textTransform="uppercase"
-          fontSize="sm"
-          fontWeight="semi-bold"
-          fontFamily="sans-serif"
+      </div>
+      <div className="ml-3">
+        <p
+          className="uppercase text-sm font-semibold dark:text-gray-100 tracking-wide"
+          style={{ fontFamily: 'sans-serif' }}
         >
           Lucas Mallmann
-        </Text>
-        <Text textTransform="uppercase" fontSize="12px" fontFamily="sans-serif">
+        </p>
+        <time
+          className="text-xs uppercase dark:text-gray-100"
+          style={{ fontFamily: 'sans-serif' }}
+        >
           {formattedDate} - {formattedReadingTime}
-        </Text>
-      </Box>
-    </Flex>
+        </time>
+      </div>
+    </div>
   );
 };
 

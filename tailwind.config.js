@@ -76,11 +76,15 @@ module.exports = {
       },
       height: {
         'spotlight-post': '500px',
+        'post-thumbnail': '520px',
       },
     },
   },
   variants: {
     typography: ['dark'],
+    extend: {
+      borderWidth: ['first'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };

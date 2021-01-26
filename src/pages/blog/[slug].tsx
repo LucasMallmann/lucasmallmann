@@ -4,21 +4,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
-import { PostOrPage } from '@tryghost/content-api';
-// import useVisibilitySensor from '@rooks/use-visibility-sensor';
-import {
-  Box,
-  Heading,
-  HStack,
-  Text,
-  Tag,
-  Link,
-  useStyleConfig,
-  Divider,
-} from '@chakra-ui/react';
 
-// Services
-import api from 'services/api';
+import { Box } from '@chakra-ui/react';
+
+// Types
+import { getAllPostsFiles, getFileBySlug, PostFoundMetadata } from 'lib/mdx';
 
 // Components
 import PostAuthor from 'components/PostAuthor';
@@ -27,130 +17,74 @@ const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
 });
 interface Props {
-  post: PostOrPage;
+  postMetadata: PostFoundMetadata;
 }
 
-const Post: NextPage<Props> = ({ post }) => {
-  const $postIntroductionNode = useRef<HTMLDivElement>();
+const Post: NextPage<Props> = ({ postMetadata }) => {
+  const { frontMatter, mdxSource } = postMetadata;
 
-  const postStyles = useStyleConfig('ArticlePost', {});
-
-  // const { isVisible, visibilityRect } = useVisibilitySensor(
-  //   $postIntroductioNode,
-  //   {
-  //     intervalCheck: false,
-  //     scrollCheck: true,
-  //     resizeCheck: true,
-  //   }
-  // );
+  // const postStyles = useStyleConfig('ArticlePost', {});
 
   return (
     <>
       <Head>
         <title>Home page</title>
       </Head>
-      <Box
-        marginTop={32}
-        width={['full', 'full', '4xl']}
-        marginX="auto"
-        flex={1}
-        // position="relative"
-      >
-        <Box
-          as="div"
-          maxWidth="2xl"
-          marginX="auto"
-          paddingX={[4, 0]}
-          ref={$postIntroductionNode}
-        >
-          <HStack spacing={2}>
-            {post.tags.map((tag) => (
-              <NextLink href="/" key={tag.id}>
-                <Link
-                  href="/"
-                  _hover={{
-                    textDecoration: 'none',
-                  }}
+      <div className="mt-28 md:mt-32 w-full lg:w-8/12 mx-auto">
+        <div className="max-w-2xl p-4 md:p-0 mx-auto">
+          <div className="-ml-2">
+            {frontMatter.tags.map((tag) => (
+              <NextLink
+                href="/"
+                key={`${tag}_${Math.random().toString(36).substr(2, 9)}`}
+              >
+                <span
+                  className="bg-red-400 inline-block border-solid ml-2 rounded-sm uppercase color-white text-white text-xs p-1 transition-bg duration-200 cursor-pointer hover:bg-red-500"
+                  style={{ fontFamily: 'sans-serif' }}
                 >
-                  <Tag
-                    size="md"
-                    key={tag.id}
-                    variant="solid"
-                    backgroundColor="red.400"
-                    fontWeight="bold"
-                    borderRadius="sm"
-                    color="white"
-                    transition="background-color 0.2s ease-in-out"
-                    textTransform="uppercase"
-                    fontFamily="sans-serif"
-                    fontSize="12px"
-                    _hover={{
-                      backgroundColor: 'red.500',
-                    }}
-                  >
-                    {tag.name}
-                  </Tag>
-                </Link>
+                  {tag}
+                </span>
               </NextLink>
             ))}
-          </HStack>
-          <Heading as="h1" fontSize={['4xl', '52px']}>
-            {post.title}
-          </Heading>
-          <Text as="p" fontSize="xl" marginTop={5} lineHeight="tall">
-            {post.excerpt}
-          </Text>
+          </div>
+          <h1 className="text-3xl font-semibold md:text-5xl mt-4 dark:text-gray-100">
+            {frontMatter.title}
+          </h1>
 
-          <Box marginTop={4}>
+          <p className="text-xl mt-5 leading-relaxed font-thin dark:text-gray-100">
+            {frontMatter.summary}
+          </p>
+
+          <div className="mt-4">
             <SocialMediaShare />
-          </Box>
+          </div>
 
-          <Divider
-            marginTop={8}
-            marginBottom={4}
-            height="1px"
-            backgroundColor="gray.700"
-            marginX="auto"
-          />
+          <hr className="bg-gray-750 h-px mt-8 mb-4 border-0" />
 
-          <PostAuthor post={post} />
-        </Box>
+          <PostAuthor postMetadata={frontMatter} />
+        </div>
 
-        <Box
-          position="relative"
-          width="full"
-          height={[64, '520px']}
-          marginTop={8}
-        >
+        <div className="relative w-full h-64 mt-8 md:h-post-thumbnail">
           <Image
-            alt="Mountains"
-            src={post.feature_image}
+            alt={frontMatter.title}
+            src={frontMatter.image}
             layout="fill"
             objectFit="cover"
           />
-        </Box>
-        <Box
-          width={['full', 'full', '2xl']}
-          marginTop={8}
-          marginX="auto"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          sx={postStyles}
-        />
-      </Box>
+        </div>
+      </div>
     </>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await api.posts.browse();
+  const blogPosts = getAllPostsFiles('blog');
 
-  const paths = posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-    };
-  });
+  const paths = blogPosts.map((postTitle) => ({
+    params: {
+      slug: postTitle.replace('.mdx', ''),
+    },
+  }));
 
   return {
     paths,
@@ -163,11 +97,11 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
 }) => {
   const { slug } = params;
 
-  const post = await api.posts.read({ slug }, { include: 'tags' });
+  const post = await getFileBySlug({ type: 'blog', slug });
 
   return {
     props: {
-      post,
+      postMetadata: post,
     },
   };
 };
