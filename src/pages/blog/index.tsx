@@ -12,9 +12,6 @@ const Blog: NextPage = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllFilesFrontMatter({ type: 'blog' });
-
-  console.log(posts);
-
   return { props: { posts } };
 };
 

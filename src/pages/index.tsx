@@ -1,9 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
-import NextLink from 'next/link';
-import { Link } from '@chakra-ui/react';
-
+import Link from 'next/link';
 import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
 
 import Spotlight from 'components/Spotlight';
@@ -32,14 +30,9 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mx-auto mt-8 px-2 md:p-0 w-full md:w-9/12">
           {posts.map((post) => (
-            <NextLink href={`/blog/${post.slug}`} key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                _hover={{ textDecoration: 'none' }}
-              >
-                <ArticleCard post={post} />
-              </Link>
-            </NextLink>
+            <Link href={`/blog/${post.slug}`} key={post.slug}>
+              <ArticleCard post={post} />
+            </Link>
           ))}
         </section>
       </div>

@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 import Image from 'next/image';
-import { Box, Flex, Text } from '@chakra-ui/react';
-import { PostOrPage } from '@tryghost/content-api';
 
 // Utils
 import { dayjs } from 'utils/date';
@@ -20,8 +18,8 @@ const PostAuthor: React.FC<Props> = ({ postMetadata }) => {
 
   const formattedReadingTime = useMemo(() => {
     return postMetadata.readingTime <= 1
-      ? `Leitura de ${postMetadata.readingTime} minuto`
-      : `Leitura de ${postMetadata.readingTime} minutos`;
+      ? 'Leitura de 1 minuto'
+      : `Leitura de ${Math.round(postMetadata.readingTime)} minutos`;
   }, [postMetadata.readingTime]);
 
   return (

@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import readingtime from 'reading-time';
 import renderToString from 'next-mdx-remote/render-to-string';
 import type { MdxRemote } from 'next-mdx-remote/types';
+import mdxPrism from 'mdx-prism';
 
 // Components to use inside MDX
 import MDXComponents from 'components/MDXComponents';
@@ -88,11 +89,12 @@ export async function getFileBySlug({
     {
       components: MDXComponents,
       mdxOptions: {
-        rehypePlugins: [
+        remarkPlugins: [
           require('remark-autolink-headings'),
           require('remark-slug'),
           require('remark-code-titles'),
         ],
+        rehypePlugins: [mdxPrism],
       },
     }
   );

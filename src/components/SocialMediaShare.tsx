@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@chakra-ui/react';
+
 import {
   FacebookShareButton,
   FacebookIcon,

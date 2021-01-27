@@ -1,17 +1,26 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
+import hydrate from 'next-mdx-remote/hydrate';
 
-import { Box } from '@chakra-ui/react';
+/**
+ * Types
+ */
+import type { PostFoundMetadata } from 'lib/mdx';
 
-// Types
-import { getAllPostsFiles, getFileBySlug, PostFoundMetadata } from 'lib/mdx';
-
-// Components
+/**
+ * Components
+ */
 import PostAuthor from 'components/PostAuthor';
+import MDXComponents from 'components/MDXComponents';
+
+/**
+ * Services
+ */
+import { getAllPostsFiles, getFileBySlug } from 'lib/mdx';
 
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
@@ -23,7 +32,9 @@ interface Props {
 const Post: NextPage<Props> = ({ postMetadata }) => {
   const { frontMatter, mdxSource } = postMetadata;
 
-  // const postStyles = useStyleConfig('ArticlePost', {});
+  const content = hydrate(mdxSource, {
+    components: MDXComponents,
+  });
 
   return (
     <>
@@ -39,7 +50,7 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
                 key={`${tag}_${Math.random().toString(36).substr(2, 9)}`}
               >
                 <span
-                  className="bg-red-400 inline-block border-solid ml-2 rounded-sm uppercase color-white text-white text-xs p-1 transition-bg duration-200 cursor-pointer hover:bg-red-500"
+                  className="bg-red-400 inline-block font-bold tracking-wider border-solid ml-2 rounded-sm uppercase color-white text-white text-xs p-1 transition-bg duration-200 cursor-pointer hover:bg-red-500"
                   style={{ fontFamily: 'sans-serif' }}
                 >
                   {tag}
@@ -71,6 +82,10 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
             layout="fill"
             objectFit="cover"
           />
+        </div>
+
+        <div className="prose dark:prose-dark max-w-2xl mx-auto mt-8">
+          {content}
         </div>
       </div>
     </>
