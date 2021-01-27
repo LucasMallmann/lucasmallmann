@@ -81,6 +81,7 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
             src={frontMatter.image}
             layout="fill"
             objectFit="cover"
+            priority
           />
         </div>
 

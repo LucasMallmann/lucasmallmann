@@ -31,6 +31,7 @@ const Spotlight: React.FC<Props> = ({ post }) => {
           src={post.image}
           layout="fill"
           objectFit="cover"
+          priority
         />
       </div>
       <h1 className="text-4xl md:text-5xl font-semibold text-center mt-4 dark:text-gray-200">

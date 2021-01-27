@@ -15,16 +15,7 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center max-w-5xl m-auto h-full">
         <NextLink href="/">
           <div className="flex items-center cursor-pointer">
-            <div className="w-12 h-12 relative rounded-full border-2 border-blue-500">
-              <Image
-                alt="Lucas Mallmann"
-                src="/me.jpeg"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-full"
-              />
-            </div>
-            <h1 className="ml-2 text-2xl font-semibold dark:text-gray-100">
+            <h1 className="ml-2 text-xl font-semibold dark:text-gray-100">
               Lucas Mallmann
             </h1>
           </div>
