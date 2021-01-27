@@ -42,6 +42,14 @@ module.exports = {
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
   },
   settings: {
     'import/resolver': {

@@ -31,7 +31,9 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mx-auto mt-8 px-2 md:p-0 w-full md:w-9/12">
           {posts.map((post) => (
             <Link href={`/blog/${post.slug}`} key={post.slug}>
-              <ArticleCard post={post} />
+              <a>
+                <ArticleCard post={post} />
+              </a>
             </Link>
           ))}
         </section>
