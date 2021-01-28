@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';

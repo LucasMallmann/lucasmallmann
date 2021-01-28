@@ -15,10 +15,6 @@ interface Props {
 const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
   return (
     <div className="flex-col p-0 sm:p-2 lg:p-0">
-      <Head>
-        <title>Home page</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="max-w-4xl flex-1 m-auto pt-0 md:pt-8">
         <Spotlight post={spotlightPost} />
 
