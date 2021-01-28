@@ -16,14 +16,16 @@ const BlogSEO: React.FC<Props> = ({
 }) => {
   const date = new Date(publishedAt).toISOString();
   const featuredImage = {
-    url: `https://leerob.io${image}`,
+    url: `https://personal-blog-coral.vercel.app${image}`,
     alt: title,
   };
+
+  console.log(image);
 
   return (
     <>
       <NextSeo
-        title={`${title} – Lee Robinson`}
+        title={`${title} – Lucas Mallmann`}
         description={summary}
         canonical={url}
         openGraph={{
@@ -38,13 +40,13 @@ const BlogSEO: React.FC<Props> = ({
         }}
       />
       <ArticleJsonLd
-        authorName="Lee Robinson"
+        authorName="Lucas Mallmann"
         dateModified={date}
         datePublished={date}
         description={summary}
         images={[image]}
         publisherLogo="/static/favicons/android-chrome-192x192.png"
-        publisherName="Lee Robinson"
+        publisherName="Lucas Mallmann"
         title={title}
         url={url}
       />
