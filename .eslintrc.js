@@ -50,6 +50,7 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    'operator-linebreak': 'off',
   },
   settings: {
     'import/resolver': {

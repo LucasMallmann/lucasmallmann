@@ -16,6 +16,7 @@ import type { PostFoundMetadata } from 'lib/mdx';
  */
 import PostAuthor from 'components/PostAuthor';
 import MDXComponents from 'components/MDXComponents';
+import BlogSEO from 'components/BlogSEO';
 
 /**
  * Services
@@ -38,9 +39,10 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
 
   return (
     <>
-      <Head>
-        <title>Home page</title>
-      </Head>
+      <BlogSEO
+        url={`https://personal-blog-coral.vercel.app/blog/${frontMatter.slug}`}
+        {...frontMatter}
+      />
       <div className="mt-28 md:mt-32 w-full lg:w-8/12 mx-auto">
         <div className="max-w-2xl p-4 md:p-0 mx-auto">
           <div className="-ml-2">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
-import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
 const Header: React.FC = () => {
