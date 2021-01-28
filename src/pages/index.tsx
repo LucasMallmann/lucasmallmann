@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
