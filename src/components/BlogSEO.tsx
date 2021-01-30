@@ -7,20 +7,18 @@ interface Props extends FrontMatterData {
   url: string;
 }
 
-const BlogSEO: React.FC<Props> = ({
+const BlogSEO = ({
   title,
   summary,
   publishedAt,
   image,
   url,
-}) => {
+}: Props): React.ReactNode => {
   const date = new Date(publishedAt).toISOString();
   const featuredImage = {
     url: `https://personal-blog-coral.vercel.app${image}`,
     alt: title,
   };
-
-  console.log(image);
 
   return (
     <>
