@@ -38,6 +38,7 @@ module.exports = {
     'react/no-danger': 'off',
     semi: 'off',
     '@typescript-eslint/semi': ['error'],
+    'implicit-arrow-linebreak': 'off',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },

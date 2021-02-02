@@ -9,6 +9,7 @@ import hydrate from 'next-mdx-remote/hydrate';
  * Types
  */
 import type { PostFoundMetadata } from 'lib/mdx';
+import type { PageView } from 'types/PageView';
 
 /**
  * Components
@@ -22,15 +23,32 @@ import BlogSEO from 'components/BlogSEO';
  */
 import { getAllPostsFiles, getFileBySlug } from 'lib/mdx';
 
+/**
+ * Hooks
+ */
+import { useFetch } from 'hooks/useFetch';
+import ViewCounter from 'components/ViewCounter';
+
+/**
+ * Dynamic components
+ */
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
 });
+
+/**
+ * Props type
+ */
 interface Props {
   postMetadata: PostFoundMetadata;
 }
 
 const Post: NextPage<Props> = ({ postMetadata }) => {
   const { frontMatter, mdxSource } = postMetadata;
+
+  const { data: postPageView } = useFetch<PageView>({
+    url: `/api/views/${frontMatter.slug}`,
+  });
 
   const content = hydrate(mdxSource, {
     components: MDXComponents,
@@ -67,8 +85,13 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
             {frontMatter.summary}
           </p>
 
-          <div className="mt-4">
-            <SocialMediaShare />
+          <div className="mt-4 flex flex-col md:flex-row md:justify-between md:items-center">
+            <div>
+              <SocialMediaShare />
+            </div>
+            <p className="text-sm text-gray-500 min-w-32 mt-4 md:mt-0 dark:text-gray-400">
+              <ViewCounter slug={frontMatter.slug} />
+            </p>
           </div>
 
           <hr className="bg-gray-750 h-px mt-8 mb-4 border-0" />
