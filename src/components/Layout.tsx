@@ -5,7 +5,7 @@ import Footer from 'components/Footer';
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="mt-16">
+    <div>
       <Header />
       {children}
       <Footer />

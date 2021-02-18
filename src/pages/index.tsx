@@ -5,6 +5,7 @@ import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
 
 import Spotlight from 'components/Spotlight';
 import ArticleCard from 'components/ArticleCard';
+import Square from 'components/Geometric/Square';
 
 interface Props {
   posts: FrontMatterData[];
@@ -14,7 +15,7 @@ interface Props {
 const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
   return (
     <div className="flex-col p-0 sm:p-2 lg:p-0">
-      <div className="max-w-4xl flex-1 m-auto pt-0 md:pt-8">
+      {/* <div className="max-w-4xl flex-1 m-auto pt-0 md:pt-8">
         <Spotlight post={spotlightPost} />
 
         <hr className="mt-8 border-gray-700 dark:border-gray-750 h-px w-11/12 md:w-4/5 mx-auto" />
@@ -32,7 +33,7 @@ const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
             </Link>
           ))}
         </section>
-      </div>
+      </div> */}
     </div>
   );
 };

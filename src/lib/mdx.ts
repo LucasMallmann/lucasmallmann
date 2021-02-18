@@ -55,7 +55,7 @@ export async function getAllFilesFrontMatter({
       return {
         ...(data as FrontMatterData),
         slug: slug.replace('.mdx', ''),
-        readingTime: postReadingTime < 1 ? 1 : postReadingTime,
+        readingTime: postReadingTime < 1 ? 1 : Math.round(postReadingTime),
       };
     })
     .sort((a, b) => {
@@ -106,7 +106,7 @@ export async function getFileBySlug({
     frontMatter: {
       ...frontMatterData,
       slug,
-      readingTime: postReadingTime < 1 ? 1 : postReadingTime,
+      readingTime: postReadingTime < 1 ? 1 : Math.round(postReadingTime),
     },
   };
 }

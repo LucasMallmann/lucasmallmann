@@ -1,17 +1,15 @@
 # Features to add in my blog
 
-- Number of views
+- [x] Number of views
 
-  - Most popular posts
+- [ ] Google Analytics
 
-- Social network links
+- [ ] Most popular posts
 
-- Start using next seo
+- [ ] Social network links
 
-- Use framer motion to animate somethings
+- [ ] Improve SEO
 
-- Spotify playlist with top 10 songs
+- [ ] Spotify playlist with top 10 songs
 
-- Add projects I've made
-
-  - Organize and think about some cool projects to build
+- [ ] Add projects I've made

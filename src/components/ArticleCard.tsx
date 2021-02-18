@@ -1,17 +1,38 @@
 import React, { useMemo } from 'react';
 import Image from 'next/image';
 
-// Utils
+/**
+ * Uti;s
+ */
 import { dayjs } from 'utils/date';
 
-// Types
+/**
+ * Types
+ */
 import { FrontMatterData } from 'lib/mdx';
+
+/**
+ * Hooks
+ */
+import { useFetch } from 'hooks/useFetch';
+
+/**
+ * Types
+ */
+import type { PageView } from 'types/PageView';
+import { formatToCommaNumber } from 'utils/number';
 
 interface Props {
   post: FrontMatterData;
 }
 
 const ArticleCard: React.FC<Props> = ({ post }) => {
+  const { data } = useFetch<PageView>({
+    url: `/api/views/${post.slug}`,
+  });
+
+  const views = data?.total;
+
   const formattedDate = useMemo(
     () => dayjs(post.publishedAt).format('DD [de] MMMM [de] YYYY'),
     [post.publishedAt]
@@ -42,6 +63,12 @@ const ArticleCard: React.FC<Props> = ({ post }) => {
           <p className="text-center mx-auto leading-relaxed flex-1 h-full dark:text-gray-200 font-light">
             {post.summary}
           </p>
+
+          {views && (
+            <small className="text-xs text-center block mt-2 text-gray-700 dark:text-gray-500 font-light">
+              {`${formatToCommaNumber(views)} views`}
+            </small>
+          )}
 
           <small className="text-center block mt-3 text-gray-700 dark:text-gray-200 font-light">
             {`${formattedDate} - ${formattedReadingTime}`}
