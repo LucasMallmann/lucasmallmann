@@ -3,7 +3,6 @@ import NextLink from 'next/link';
 import { useTheme } from 'next-themes';
 
 import Logo from 'components/Logo';
-import Waves from 'components/Waves';
 
 const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -14,23 +13,29 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div className="w-screen top-0 m-0 bg-gradient-to-b from-purple-500 to-purple-800 relative dark:from-gray-950 dark:via-gray-800 dark:to-gray-700">
-        <div className="flex relative z-10 items-center max-w-5xl m-auto py-8 px-4 md:px-0">
+      <div className="w-screen m-0 h-10 z-10 relative mt-8">
+        <div className="flex items-center max-w-5xl m-auto px-4 md:px-0">
           <NextLink href="/">
-            <Logo />
+            <a>
+              <Logo />
+            </a>
           </NextLink>
 
           <nav className="flex justify-between items-center ml-4">
             <div>
               <NextLink href="/">
-                <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
-                  Blog
-                </span>
+                <a>
+                  <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                    Blog
+                  </span>
+                </a>
               </NextLink>
               <NextLink href="/">
-                <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
-                  Projects
-                </span>
+                <a>
+                  <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                    Projects
+                  </span>
+                </a>
               </NextLink>
             </div>
           </nav>
@@ -63,7 +68,6 @@ const Header: React.FC = () => {
             </button>
           </div>
         </div>
-        {mounted && theme && <Waves theme={theme} />}
       </div>
     </>
   );

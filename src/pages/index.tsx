@@ -1,40 +1,190 @@
 import React from 'react';
 import { GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-import Spotlight from 'components/Spotlight';
-import ArticleCard from 'components/ArticleCard';
-import Square from 'components/Geometric/Square';
+/**
+ * Components
+ */
+import Waves from 'components/Waves';
+import FadeInWhenVisible from 'components/FadeInWhenVisible';
+import Techs from 'components/Techs';
 
 interface Props {
   posts: FrontMatterData[];
   spotlightPost: FrontMatterData;
 }
 
-const Home: NextPage<Props> = ({ spotlightPost, posts }) => {
+const animationProps = {
+  hidden: {
+    y: '-18px',
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+    },
+  },
+};
+
+const Home: NextPage<Props> = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="flex-col p-0 sm:p-2 lg:p-0">
-      {/* <div className="max-w-4xl flex-1 m-auto pt-0 md:pt-8">
-        <Spotlight post={spotlightPost} />
+    <>
+      <div className="absolute h-72 w-full top-0 z-0 bg-gradient-to-b from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700 md:h-96">
+        <div className="relative w-full h-full">
+          {theme && <Waves theme={theme} />}
+        </div>
+      </div>
 
-        <hr className="mt-8 border-gray-700 dark:border-gray-750 h-px w-11/12 md:w-4/5 mx-auto" />
-
-        <h2 className="text-center mt-8 text-3xl md:text-4xl font-semibold dark:text-gray-200">
-          Todos os artigos
-        </h2>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 mx-auto mt-8 px-2 md:p-0 w-full md:w-9/12">
-          {posts.map((post) => (
-            <Link href={`/blog/${post.slug}`} key={post.slug}>
-              <a>
-                <ArticleCard post={post} />
-              </a>
-            </Link>
-          ))}
+      <div className="flex flex-col max-w-4xl mx-auto relative z-10 p-2 mt-10 md:p-0">
+        <div className="flex flex-col items-center md:flex-row-reverse md:justify-between">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={animationProps}
+          >
+            <div className="border-green-500 border-4 rounded-full relative w-44 h-44 dark:border-purple-500">
+              <Image
+                className="round-image"
+                alt="Lucas Mallmann"
+                src="/me.jpeg"
+                layout="fill"
+              />
+            </div>
+          </motion.div>
+          <motion.h1
+            className="text-2xl relative tracking-wide leading-8 font-bold text-gray-800 md:text-gray-200 mt-4 px-2 dark:text-gray-100 md:ml-10 md:w-10/12 md:px-0 md:text-4xl"
+            initial="hidden"
+            animate="visible"
+            variants={animationProps}
+          >
+            Hi there, I’m Lucas. Front End{' '}
+            <span className="text-green-500">Developer</span>, Student, Lorem,
+            ipsum dolor..
+          </motion.h1>
+        </div>
+        <section className="mt-16 px-2 md:p-0">
+          <motion.h1
+            className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                x: '-18px',
+                opacity: 0,
+              },
+              visible: {
+                x: 0,
+                opacity: 1,
+                transition: {
+                  delay: 0.6,
+                },
+              },
+            }}
+          >
+            Sobre mim
+          </motion.h1>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                x: '-18px',
+                opacity: 0,
+              },
+              visible: {
+                x: 0,
+                opacity: 1,
+                transition: {
+                  delay: 0.8,
+                },
+              },
+            }}
+          >
+            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+              at culpa voluptates cumque illo quia, blanditiis nam, tempore
+              explicabo tenetur odio esse exercitationem vel in a illum eveniet
+              reiciendis! Dolorem omnis veritatis id, repudiandae harum
+              dignissimos iusto cupiditate sed assumenda!
+            </motion.p>
+            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Expedita, repellat minima inventore error velit illum, ducimus
+              tenetur nesciunt et aliquam, quos quia mollitia incidunt harum
+              fugit! Ipsam officia vel, deleniti adipisci odit nisi. Et ipsam
+              natus facere harum voluptatibus ex consequatur, sunt voluptate,
+              accusantium, quia ipsa fugit enim eligendi. Nostrum molestias,
+              earum facilis nam voluptates consectetur atque doloremque
+              obcaecati quam possimus incidunt repellat enim libero voluptatibus
+              fugit perspiciatis quod pariatur ex laudantium eius delectus. Qui
+              nihil adipisci consequuntur facere distinctio commodi, maiores a
+              laboriosam tempora est quam harum sapiente mollitia voluptas
+              dolorum!
+            </motion.p>
+            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+              inventore rerum sunt laboriosam atque repellat velit assumenda
+              harum dolore neque fuga perspiciatis voluptatem omnis, eos officia
+              reprehenderit nobis culpa ea quae. Incidunt quo culpa dolore eos
+              temporibus consectetur ratione, molestiae dolorem expedita, ex
+              quasi alias, optio ad odio! Mollitia amet maiores dolor architecto
+              atque similique soluta veritatis, doloremque ducimus aperiam.
+            </motion.p>
+            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+              assumenda libero, ipsum consequuntur dolorum itaque explicabo.
+              Nostrum cumque ut id perferendis. Commodi ab quod repudiandae
+              incidunt aspernatur exercitationem repellat magni.
+            </motion.p>
+          </motion.div>
         </section>
-      </div> */}
-    </div>
+
+        <FadeInWhenVisible
+          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+          hidden={{ x: '-18px', opacity: 0 }}
+        >
+          <motion.section className="mt-8 px-2 md:px-0">
+            <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
+              My Skills
+            </motion.h1>
+
+            <p className="mt-4 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+              amet consequuntur nisi. Explicabo eos cumque voluptas aperiam
+              laudantium nisi! Commodi.
+            </p>
+
+            <div className="mt-8 md:mt-12">
+              <Techs />
+            </div>
+          </motion.section>
+        </FadeInWhenVisible>
+
+        <FadeInWhenVisible
+          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+          hidden={{ x: '-18px', opacity: 0 }}
+        >
+          <motion.section className="mt-16 px-2 md:px-0">
+            <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
+              O que tenho feito ultimamente
+            </motion.h1>
+
+            <p className="mt-4 dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+              amet consequuntur nisi. Explicabo eos cumque voluptas aperiam
+              laudantium nisi! Commodi.
+            </p>
+          </motion.section>
+        </FadeInWhenVisible>
+      </div>
+    </>
   );
 };
 

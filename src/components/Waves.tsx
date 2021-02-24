@@ -1,21 +1,23 @@
 import React from 'react';
 
 interface Props {
-  theme?: string;
+  theme: string;
 }
 
 const Waves: React.FC<Props> = ({ theme }) => {
-  // const fillColor = theme === 'dark' ? '#1C252E' : '#3C43F3';
   const fillColor = theme === 'dark' ? '#1d1d1d' : '#ffffff';
 
   return (
-    <div className="overflow-hidden" style={{ minHeight: '90px' }}>
+    <div
+      className="overflow-hidden w-full absolute bottom-0 right-0"
+      style={{ height: '90px' }}
+    >
       <svg
         preserveAspectRatio="none"
         width="1440"
         height="74"
         viewBox="0 0 1440 74"
-        className="absolute w-106 bottom-0"
+        className="absolute w-106 bottom-0 bg-to-blue-400"
         fill={fillColor}
         style={{
           left: '-3%',
