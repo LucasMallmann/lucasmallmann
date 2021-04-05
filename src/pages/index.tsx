@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import Waves from 'components/Waves';
 import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
+import ProjectHightlight from 'components/ProjectHighlight';
 
 interface Props {
   posts: FrontMatterData[];
@@ -128,21 +129,6 @@ const Home: NextPage<Props> = () => {
               laboriosam tempora est quam harum sapiente mollitia voluptas
               dolorum!
             </motion.p>
-            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              inventore rerum sunt laboriosam atque repellat velit assumenda
-              harum dolore neque fuga perspiciatis voluptatem omnis, eos officia
-              reprehenderit nobis culpa ea quae. Incidunt quo culpa dolore eos
-              temporibus consectetur ratione, molestiae dolorem expedita, ex
-              quasi alias, optio ad odio! Mollitia amet maiores dolor architecto
-              atque similique soluta veritatis, doloremque ducimus aperiam.
-            </motion.p>
-            <motion.p className="text-gray-700 leading-7 mt-4 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              assumenda libero, ipsum consequuntur dolorum itaque explicabo.
-              Nostrum cumque ut id perferendis. Commodi ab quod repudiandae
-              incidunt aspernatur exercitationem repellat magni.
-            </motion.p>
           </motion.div>
         </section>
 
@@ -181,6 +167,47 @@ const Home: NextPage<Props> = () => {
               amet consequuntur nisi. Explicabo eos cumque voluptas aperiam
               laudantium nisi! Commodi.
             </p>
+
+            <div>
+              <ProjectHightlight
+                firstImage="/static/projects/nuts.jpg"
+                secondImage="/static/projects/barbecue.jpg"
+                thirdImage="/static/projects/tomato.jpg"
+              />
+            </div>
+            <div>
+              <ProjectHightlight
+                firstImage="/static/projects/nuts.jpg"
+                secondImage="/static/projects/barbecue.jpg"
+                thirdImage="/static/projects/tomato.jpg"
+              />
+            </div>
+          </motion.section>
+        </FadeInWhenVisible>
+
+        <FadeInWhenVisible
+          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
+          hidden={{ x: '-18px', opacity: 0 }}
+        >
+          <motion.section className="mt-16 px-2 md:px-0">
+            <motion.h1 className="text-3xl text-center tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
+              Vamos construir juntos{' '}
+              <span role="img" aria-label="">
+                😁
+              </span>
+            </motion.h1>
+
+            <p className="mt-4 text-center text-md md:text-lg leading-8 dark:text-gray-300">
+              Feel free to reach out if you are looking for a developer, have a
+              question, or just want to connect.
+            </p>
+
+            <a
+              href="mailto:lucasmallmann76@gmail.com"
+              className="block mt-6 font-bold text-center text-lg text-purple-500 dark:text-green-500"
+            >
+              lucasmallmann76@gmail.com
+            </a>
           </motion.section>
         </FadeInWhenVisible>
       </div>

@@ -112,12 +112,20 @@ There is no correct answer. Each has their own tradeoffs. For my simple site, I 
 
 This change, paired with `next/image`, has my [Vercel Analytics](https://vercel.com/docs/analytics) looking incredible. Zero CLS.
 
-<Image
-  alt={`Vercel Analytics`}
-  src={`/static/images/tailwind/analytics.jpg`}
-  width={1000}
-  height={782}
-/>
+<Link href="/">
+  <Image
+    alt={`Vercel Analytics`}
+    src={`/static/images/example/report.png`}
+    width={1000}
+    height={500}
+  />
+</Link>
+
+<span class="inline-grid grid-cols-3 gap-x-4">
+  <span>1</span>
+  <span>1</span>
+  <span>1</span>
+</span>
 
 I'm also evaluating using Preact in the [client-side production build](https://github.com/leerob/leerob.io/commit/74a3ebb14b81f785ea96f9c73fbe4f6c2463679c). This prevents needing [next-plugin-preact](https://github.com/preactjs/next-plugin-preact) to handle SSR and HMR ([source](https://blogify.dev/egoist/how-i-made-my-next-js-build-50-percent-smaller)). So far, I haven't noticed any issues with my small site and the results are promising. **39% smaller**.
 

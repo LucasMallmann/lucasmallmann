@@ -12,7 +12,7 @@ import MDXComponents from 'components/MDXComponents';
 
 const root = process.cwd();
 
-type DataSourceTypes = 'blog';
+type DataSourceTypes = 'blog' | 'projects';
 
 export interface FrontMatterData {
   title: string;

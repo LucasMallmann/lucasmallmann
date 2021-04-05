@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <div className="max-w-3xl mx-auto mt-10 border-solid border-t border-gray-200 py-5 px-8 dark:border-gray-600 md:grid gap-4 grid-cols-3 md:px-0">
+    <div className="max-w-3xl mx-auto mt-8 border-solid border-t border-gray-200 py-5 px-8 dark:border-gray-600 md:grid gap-4 grid-cols-3 md:px-0">
       <div className="flex flex-col">
         <Link href="/">
           <a className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200">

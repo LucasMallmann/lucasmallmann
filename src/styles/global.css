@@ -13,6 +13,42 @@
   height: 100%;
 }
 
+.slant {
+  background: #0a7a99;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  margin-top: -1px;
+  margin-bottom: 200px;
+  padding-top: 80px;
+}
+
+.slant:after {
+  background: inherit;
+  bottom: -100px;
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(3deg);
+  transform-origin: 100%;
+  z-index: -1;
+}
+
+/* Fix/hack for 1080p+ displays */
+@media screen and (min-width: 1921px) {
+  .slant {
+    padding-bottom: 5px;
+    margin-bottom: 240px !important;
+  }
+
+  .slant:after {
+    bottom: -220px !important;
+  }
+}
+
 html,
 body {
   padding: 0;
@@ -35,6 +71,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.sticky-nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: background-color 0.1 ease-in-out;
 }
 
 .prose pre {

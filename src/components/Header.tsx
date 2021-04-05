@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import { useTheme } from 'next-themes';
-
-import Logo from 'components/Logo';
+import { useRouter } from 'next/dist/client/router';
 
 const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+
+  const isHomePage = router.pathname === '/';
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
+  const classes = isHomePage
+    ? 'w-screen m-0 h-10 z-10 relative mt-8'
+    : 'sticky-nav h-16 mt-8 w-full dark:bg-gray-875 bg-opacity-60';
+
   return (
     <>
-      <div className="w-screen m-0 h-10 z-10 relative mt-8">
-        <div className="flex items-center max-w-5xl m-auto px-4 md:px-0">
+      <div className={classes}>
+        <div className="flex items-center max-w-5xl h-full m-auto px-4 md:px-0">
           <NextLink href="/">
             <a>
-              <Logo />
+              <div>
+                <p
+                  style={{ fontFamily: 'Kanit' }}
+                  className={`text-lg ${
+                    isHomePage && 'text-gray-200'
+                  } dark:text-gray-300`}
+                >
+                  Lucas Mallmann
+                </p>
+              </div>
             </a>
           </NextLink>
 
@@ -25,14 +40,22 @@ const Header: React.FC = () => {
             <div>
               <NextLink href="/">
                 <a>
-                  <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                  <span
+                    className={`mx-1 text-md ${
+                      isHomePage && 'text-gray-200'
+                    } cursor-pointer hover:opacity-80 transition-opacity duration-200 dark:text-gray-300`}
+                  >
                     Blog
                   </span>
                 </a>
               </NextLink>
               <NextLink href="/">
                 <a>
-                  <span className="mx-1 text-md text-gray-300 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                  <span
+                    className={`mx-1 text-md ${
+                      isHomePage && 'text-gray-200'
+                    } cursor-pointer hover:opacity-80 transition-opacity duration-200 dark:text-gray-300`}
+                  >
                     Projects
                   </span>
                 </a>
@@ -52,7 +75,9 @@ const Header: React.FC = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-4 w-4 text-gray-200"
+                  className={`h-4 w-4 ${
+                    isHomePage && 'text-gray-200'
+                  } dark:text-gray-300`}
                 >
                   {theme === 'dark' ? (
                     <path

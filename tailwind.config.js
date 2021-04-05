@@ -75,6 +75,7 @@ module.exports = {
           750: '#262626',
           775: '#232323',
           850: '#1C252E',
+          875: '#1d1d1d',
           950: '#0E141B',
         },
         purple: {
@@ -98,6 +99,9 @@ module.exports = {
         'mobile-light-wave': "url('/static/backgrounds/mobile-light-wave.svg')",
         'dark-wave': "url('/static/backgrounds/dark-wave.svg')",
       }),
+      margin: {
+        88: '22rem',
+      },
     },
   },
   variants: {
