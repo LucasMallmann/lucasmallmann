@@ -2,7 +2,7 @@
 
 I have been working as a software developer since 2017. I believe that education, the dissemination of knowledge and good ideas is the fastest and most effective way to improve the world!
 
-- 🧑🏼‍💻 Currently working as a Developer at <a href="https://pling.net.br" rel="nofollow"> Pling </a>
+- 🧑🏼‍💻 Currently working as a Developer at <a href="https://www.globo.com" rel="nofollow"> Globo </a>
 - 👨‍🎓 Systems Analyst
 - 🎯 Be a Software Engineer
 - ⚽️ Sometimes playing FIFA
