@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import { useTheme } from 'next-themes';
 import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
@@ -36,7 +36,7 @@ const Home: NextPage<Props> = () => {
   const { theme } = useTheme();
 
   return (
-    <>
+    <main className="overflow-hidden">
       <div className="absolute h-72 w-full top-0 z-0 bg-gradient-to-b from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700 md:h-96">
         <div className="relative w-full h-full">
           {theme && <Waves theme={theme} />}
@@ -211,19 +211,19 @@ const Home: NextPage<Props> = () => {
           </motion.section>
         </FadeInWhenVisible>
       </div>
-    </>
+    </main>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter({ type: 'blog' });
+// export const getStaticProps: GetStaticProps = async () => {
+//   const posts = await getAllFilesFrontMatter({ type: 'blog' });
 
-  return {
-    props: {
-      posts,
-      spotlightPost: posts[0],
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts,
+//       spotlightPost: posts[0],
+//     },
+//   };
+// };
 
 export default Home;

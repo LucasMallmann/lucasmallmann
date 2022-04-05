@@ -1,6 +1,6 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import hydrate from 'next-mdx-remote/hydrate';
+// import hydrate from 'next-mdx-remote/hydrate';
 
 /**
  * Components
@@ -23,9 +23,7 @@ interface Props {
 const Project: NextPage<Props> = ({ projectMetadata }) => {
   const { frontMatter, mdxSource } = projectMetadata;
 
-  const content = hydrate(mdxSource, {
-    components: MDXComponents,
-  });
+  const content = 'oioioio'
 
   return (
     <>

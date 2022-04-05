@@ -1,7 +1,10 @@
 const { spacing } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: 'class',
   theme: {
     extend: {

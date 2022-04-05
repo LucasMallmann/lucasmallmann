@@ -24,7 +24,7 @@ interface PageView {
 export default handler.get(async (req, res) => {
   const { client, db } = await connectToDatabase();
 
-  if (!client.isConnected()) {
+  if (!client) {
     return res
       .status(500)
       .json({ error: 'Could not connect to the database.' });

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   useEffect(() => setMounted(true), []);
 
   const classes = isHomePage
-    ? 'w-screen m-0 h-10 z-10 relative mt-8'
+    ? 'm-0 h-10 z-10 relative mt-8'
     : 'sticky-nav h-16 mt-8 w-full dark:bg-gray-875 bg-opacity-60';
 
   return (

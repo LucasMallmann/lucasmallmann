@@ -3,12 +3,14 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import readingtime from 'reading-time';
-import renderToString from 'next-mdx-remote/render-to-string';
-import type { MdxRemote } from 'next-mdx-remote/types';
+// import renderToString from 'next-mdx-remote/render-to-string';
+// import type { MdxRemote } from 'next-mdx-remote/types';
+import { serialize } from 'next-mdx-remote/serialize';
 import mdxPrism from 'mdx-prism';
 
 // Components to use inside MDX
 import MDXComponents from 'components/MDXComponents';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const root = process.cwd();
 
@@ -71,7 +73,7 @@ interface GetFileBySlugPayload {
 }
 
 export interface PostFoundMetadata {
-  mdxSource: MdxRemote.Source;
+  mdxSource: MDXRemoteSerializeResult;
   frontMatter: FrontMatterData;
 }
 
@@ -84,20 +86,17 @@ export async function getFileBySlug({
   const frontMatter = matter(source);
   const frontMatterData = frontMatter.data as FrontMatterData;
 
-  const mdxSource: MdxRemote.Source = await renderToString(
-    frontMatter.content,
-    {
-      components: MDXComponents,
-      mdxOptions: {
-        remarkPlugins: [
-          require('remark-autolink-headings'),
-          require('remark-slug'),
-          require('remark-code-titles'),
-        ],
-        rehypePlugins: [mdxPrism],
-      },
-    }
-  );
+  const mdxSource = await serialize(frontMatter.content, {
+    // components: MDXComponents,
+    mdxOptions: {
+      remarkPlugins: [
+        // require('remark-autolink-headings'),
+        // require('remark-slug'),
+        // require('remark-code-titles'),
+      ],
+      rehypePlugins: [mdxPrism],
+    },
+  });
 
   const postReadingTime = readingtime(frontMatter.content).minutes;
 

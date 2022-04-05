@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { IconType } from 'react-icons';
 import {
   SiReact,
-  SiNodeDotJs,
+  SiNodedotjs,
   SiJavascript,
   SiHtml5,
-  SiNextDotJs,
+  SiNextdotjs,
   SiTypescript,
 } from 'react-icons/si';
 import { ImGit } from 'react-icons/im';
@@ -59,7 +59,7 @@ const Techs: React.FC = () => {
   return (
     <section className="grid gap-4 grid-cols-2 md:grid-cols-4">
       <Tech tech="React" icon={SiReact} activeIconColor="#61dbfb" />
-      <Tech tech="nodejs" icon={SiNodeDotJs} activeIconColor="#43853D" />
+      <Tech tech="nodejs" icon={SiNodedotjs} activeIconColor="#43853D" />
       <Tech tech="github" icon={ImGit} activeIconColor="#E94E32" />
       <Tech tech="React Native" icon={SiReact} activeIconColor="#61dbfb" />
       <Tech
@@ -70,7 +70,7 @@ const Techs: React.FC = () => {
       <Tech tech="HTML & CSS" icon={SiHtml5} activeIconColor="#EA6228" />
       <Tech
         tech="NextJS"
-        icon={SiNextDotJs}
+        icon={SiNextdotjs}
         activeIconColor="#000"
         alternativeDarkColor="#F3F4F6"
       />

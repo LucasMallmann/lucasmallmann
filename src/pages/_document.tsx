@@ -8,7 +8,7 @@ import Document, {
 } from 'next/document';
 
 class MyDocument extends Document<DocumentProps> {
-  render(): JSX.Element {
+  render() {
     return (
       <Html>
         <Head>
