@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { dayjs } from 'utils/date';
 
 // Types
-import type { FrontMatterData } from 'lib/mdx';
+import { Blog } from 'contentlayer/generated';
 
-interface Props {
-  postMetadata: FrontMatterData;
-}
+type Props = {
+  postMetadata: Blog;
+};
 
-const PostAuthor: React.FC<Props> = ({ postMetadata }) => {
+export default function PostAuthor({ postMetadata }: Props) {
   const formattedDate = useMemo(() => {
     return dayjs(postMetadata.publishedAt).format('DD [de] MMM [de] YYYY');
   }, [postMetadata.publishedAt]);
@@ -49,6 +49,4 @@ const PostAuthor: React.FC<Props> = ({ postMetadata }) => {
       </div>
     </div>
   );
-};
-
-export default PostAuthor;
+}

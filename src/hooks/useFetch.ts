@@ -1,4 +1,4 @@
-import useSWR, { responseInterface as ResponseInterface } from 'swr';
+import useSWR, { SWRResponse }  from 'swr';
 
 interface FetchPayload {
   url: string;
@@ -11,7 +11,7 @@ export function useFetch<Data = unknown, Error = unknown>({
   revalidateOnFocus = true,
   method = 'GET',
 }: FetchPayload): Pick<
-  ResponseInterface<Data, Error>,
+  SWRResponse<Data, Error>,
   'data' | 'error' | 'mutate'
 > {
   const { data, error, mutate } = useSWR<Data, Error>(

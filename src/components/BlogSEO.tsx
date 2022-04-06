@@ -1,19 +1,19 @@
 import React from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
-import type { FrontMatterData } from 'lib/mdx';
+import { Blog } from 'contentlayer/generated';
 
-interface Props extends FrontMatterData {
+type Props = Blog & {
   url: string;
-}
+};
 
-const BlogSEO: React.FC<Props> = ({
+export default function BlogSEO({
   title,
   summary,
   publishedAt,
   image,
   url,
-}) => {
+}: Props) {
   const date = new Date(publishedAt).toISOString();
   const featuredImage = {
     url: `https://personal-blog-coral.vercel.app${image}`,
@@ -50,6 +50,4 @@ const BlogSEO: React.FC<Props> = ({
       />
     </>
   );
-};
-
-export default BlogSEO;
+}

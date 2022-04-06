@@ -1,33 +1,17 @@
 import React from 'react';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
-import hydrate from 'next-mdx-remote/hydrate';
-
-/**
- * Types
- */
-import type { PostFoundMetadata } from 'lib/mdx';
-import type { PageView } from 'types/PageView';
+import { allBlogs, Blog } from 'contentlayer/generated';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 /**
  * Components
  */
 import PostAuthor from 'components/PostAuthor';
-import MDXComponents from 'components/MDXComponents';
 import BlogSEO from 'components/BlogSEO';
-
-/**
- * Services
- */
-import { getAllPostsFiles, getFileBySlug } from 'lib/mdx';
-
-/**
- * Hooks
- */
-import { useFetch } from 'hooks/useFetch';
 import ViewCounter from 'components/ViewCounter';
+import components from 'components/MDXComponents';
 
 /**
  * Dynamic components
@@ -39,31 +23,23 @@ const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
 /**
  * Props type
  */
-interface Props {
-  postMetadata: PostFoundMetadata;
-}
+type Props = {
+  post: Blog;
+};
 
-const Post: NextPage<Props> = ({ postMetadata }) => {
-  const { frontMatter, mdxSource } = postMetadata;
-
-  const { data: postPageView } = useFetch<PageView>({
-    url: `/api/views/${frontMatter.slug}`,
-  });
-
-  const content = hydrate(mdxSource, {
-    components: MDXComponents,
-  });
+export default function Post({ post }: Props) {
+  const Component = useMDXComponent(post.body.code);
 
   return (
     <>
       <BlogSEO
-        url={`https://personal-blog-coral.vercel.app/blog/${frontMatter.slug}`}
-        {...frontMatter}
+        url={`https://personal-blog-coral.vercel.app/blog/${post.slug}`}
+        {...post}
       />
       <div className="mt-28 md:mt-32 w-full lg:w-8/12 mx-auto">
         <div className="max-w-2xl p-4 md:p-0 mx-auto">
           <div className="-ml-2">
-            {frontMatter.tags.map((tag) => (
+            {post.tags.map((tag) => (
               <NextLink
                 href="/"
                 key={`${tag}_${Math.random().toString(36).substr(2, 9)}`}
@@ -78,31 +54,31 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
             ))}
           </div>
           <h1 className="text-3xl font-semibold md:text-5xl mt-4 dark:text-gray-100">
-            {frontMatter.title}
+            {post.title}
           </h1>
 
           <p className="text-xl mt-5 leading-relaxed font-thin dark:text-gray-100">
-            {frontMatter.summary}
+            {post.summary}
           </p>
 
           <div className="mt-4 flex flex-col md:flex-row md:justify-between md:items-center">
             <div>
               <SocialMediaShare />
             </div>
-            <p className="text-sm text-gray-500 min-w-32 mt-4 md:mt-0 dark:text-gray-400">
-              <ViewCounter slug={frontMatter.slug} />
-            </p>
+            {/* <p className="text-sm text-gray-500 min-w-32 mt-4 md:mt-0 dark:text-gray-400">
+              <ViewCounter slug={post.slug} />
+            </p> */}
           </div>
 
           <hr className="bg-gray-750 h-px mt-8 mb-4 border-0" />
 
-          <PostAuthor postMetadata={frontMatter} />
+          <PostAuthor postMetadata={post} />
         </div>
 
         <div className="relative w-full h-64 mt-8 md:h-post-thumbnail">
           <Image
-            alt={frontMatter.title}
-            src={frontMatter.image}
+            alt={post.title}
+            src={post.image}
             layout="fill"
             objectFit="cover"
             priority
@@ -110,40 +86,27 @@ const Post: NextPage<Props> = ({ postMetadata }) => {
         </div>
 
         <div className="prose dark:prose-dark max-w-2xl mx-auto mt-8">
-          {content}
+          <Component
+            components={
+              {
+                ...components,
+              } as any
+            }
+          />
         </div>
       </div>
     </>
   );
-};
+}
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const blogPosts = getAllPostsFiles('blog');
-
-  const paths = blogPosts.map((postTitle) => ({
-    params: {
-      slug: postTitle.replace('.mdx', ''),
-    },
-  }));
-
+export async function getStaticPaths() {
   return {
-    paths,
+    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
-};
+}
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
-  params,
-}) => {
-  const { slug } = params;
-
-  const post = await getFileBySlug({ type: 'blog', slug });
-
-  return {
-    props: {
-      postMetadata: post,
-    },
-  };
-};
-
-export default Post;
+export async function getStaticProps({ params }) {
+  const post = allBlogs.find((post) => post.slug === params.slug);
+  return { props: { post } };
+}

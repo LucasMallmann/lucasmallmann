@@ -28,10 +28,7 @@ export async function connectToDatabase(): Promise<Connection> {
     return { client: cachedClient, db: cachedDb };
   }
 
-  const client = await MongoClient.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const client = await MongoClient.connect(uri);
 
   const db = client.db(dbName);
 

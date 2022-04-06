@@ -1,7 +1,4 @@
-// import React from 'react';
-import { GetStaticProps, NextPage } from 'next';
 import { useTheme } from 'next-themes';
-import { FrontMatterData, getAllFilesFrontMatter } from 'lib/mdx';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -13,10 +10,6 @@ import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
 import ProjectHightlight from 'components/ProjectHighlight';
 
-interface Props {
-  posts: FrontMatterData[];
-  spotlightPost: FrontMatterData;
-}
 
 const animationProps = {
   hidden: {
@@ -32,7 +25,7 @@ const animationProps = {
   },
 };
 
-const Home: NextPage<Props> = () => {
+export default function Home() {
   const { theme } = useTheme();
 
   return (
@@ -214,16 +207,3 @@ const Home: NextPage<Props> = () => {
     </main>
   );
 };
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const posts = await getAllFilesFrontMatter({ type: 'blog' });
-
-//   return {
-//     props: {
-//       posts,
-//       spotlightPost: posts[0],
-//     },
-//   };
-// };
-
-export default Home;

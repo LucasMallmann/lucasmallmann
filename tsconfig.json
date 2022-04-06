@@ -21,14 +21,16 @@
     "paths": {
       "@/components/*": [
         "src/components/*"
-      ]
+      ],
+      "contentlayer/generated": ["../.contentlayer/generated"]
     },
     "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules"

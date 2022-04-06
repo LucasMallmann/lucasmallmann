@@ -9,29 +9,19 @@ import { dayjs } from 'utils/date';
 /**
  * Types
  */
-import { FrontMatterData } from 'lib/mdx';
-
-/**
- * Hooks
- */
-import { useFetch } from 'hooks/useFetch';
-
-/**
- * Types
- */
-import type { PageView } from 'types/PageView';
 import { formatToCommaNumber } from 'utils/number';
+import { Blog } from 'contentlayer/generated';
 
-interface Props {
-  post: FrontMatterData;
-}
+type Props = {
+  post: Blog;
+};
 
-const ArticleCard: React.FC<Props> = ({ post }) => {
-  const { data } = useFetch<PageView>({
-    url: `/api/views/${post.slug}`,
-  });
+export default function ArticleCard({ post }: Props) {
+  // const { data } = useFetch<PageView>({
+  //   url: `/api/views/${post.slug}`,
+  // });
 
-  const views = data?.total;
+  const views = 0;
 
   const formattedDate = useMemo(
     () => dayjs(post.publishedAt).format('DD [de] MMMM [de] YYYY'),
@@ -77,6 +67,4 @@ const ArticleCard: React.FC<Props> = ({ post }) => {
       </div>
     </div>
   );
-};
-
-export default ArticleCard;
+}

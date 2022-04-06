@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { dayjs } from 'utils/date';
 
 // Types
-import { FrontMatterData } from 'lib/mdx';
+import { Blog } from 'contentlayer/generated';
 
-interface Props {
-  post: FrontMatterData;
-}
+type Props = {
+  post: Blog;
+};
 
-const Spotlight: React.FC<Props> = ({ post }) => {
+export default function Spotlight({ post }: Props) {
   const formattedDate = useMemo(
     () => dayjs(post.publishedAt).format('DD [de] MMMM [de] YYYY'),
     [post.publishedAt]
@@ -49,6 +49,4 @@ const Spotlight: React.FC<Props> = ({ post }) => {
       </div>
     </div>
   );
-};
-
-export default Spotlight;
+}

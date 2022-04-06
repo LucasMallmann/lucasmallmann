@@ -26,7 +26,7 @@ export default handler
 
     const { client, db } = await connectToDatabase();
 
-    if (!client.isConnected()) {
+    if (!client) {
       return res
         .status(500)
         .json({ error: 'Could not connect to the database.' });
@@ -43,7 +43,7 @@ export default handler
 
     const { client, db } = await connectToDatabase();
 
-    if (!client.isConnected()) {
+    if (!client) {
       return res
         .status(500)
         .json({ error: 'Could not connect to the database.' });
