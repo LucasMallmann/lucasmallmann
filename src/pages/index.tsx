@@ -37,8 +37,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col max-w-3xl mx-auto relative z-10 p-2 mt-10 md:p-0">
-        <div className="flex flex-col items-center md:flex-row-reverse md:justify-between">
+      <div className="flex flex-col max-w-3xl mx-auto relative z-10 mt-10 md:p-0">
+        <div className="flex flex-col items-center px-8 md:px-0 md:flex-row-reverse md:justify-between">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.h1
-            className="text-2xl relative tracking-wide leading-8 font-bold text-gray-800 md:text-gray-200 mt-4 px-2 dark:text-gray-100 md:ml-10 md:w-10/12 md:px-0 md:text-4xl"
+            className="text-2xl relative md:tracking-wide font-bold text-gray-800 md:text-gray-200 mt-4 dark:text-gray-100 md:ml-10 md:w-10/12 md:px-0 md:text-4xl"
             initial="hidden"
             animate="visible"
             variants={animationProps}
@@ -64,9 +64,9 @@ export default function Home() {
             ipsum dolor..
           </motion.h1>
         </div>
-        <section className="mt-16 px-2 md:p-0">
+        <section className="mt-4 md:mt-16 px-8 md:px-0">
           <motion.h1
-            className="text-3xl tracking-wide leading-8 font-bold text-gray-800 mt-6 dark:text-gray-200"
+            className="text-3xl leading-8 font-bold text-gray-800 mt-6 dark:text-gray-300"
             initial="hidden"
             animate="visible"
             variants={{
@@ -126,7 +126,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className='mt-10'>
+        <section className="mt-10 px-8 md:px-0">
           <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 mb-4 dark:text-gray-200">
             Work Experience
           </h1>
@@ -206,7 +206,7 @@ export default function Home() {
           visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
           hidden={{ x: '-18px', opacity: 0 }}
         >
-          <motion.section className="mt-10 px-2 md:px-0">
+          <motion.section className="mt-10 px-8 md:px-0">
             <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
               My Skills
             </motion.h1>
@@ -228,7 +228,7 @@ export default function Home() {
           hidden={{ x: '-18px', opacity: 0 }}
         >
           <motion.section className="mt-16 px-2 md:px-0">
-            <motion.h1 className="text-3xl text-center tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
+            <motion.h1 className="text-3xl tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
               Vamos construir juntos{' '}
               <span role="img" aria-label="">
                 😁

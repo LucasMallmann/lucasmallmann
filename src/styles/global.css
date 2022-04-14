@@ -215,3 +215,6 @@ input[type='email'] {
   @apply my-0;
 }
 
+.round-image {
+  border-radius: 50%;
+}
