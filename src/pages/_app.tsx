@@ -1,3 +1,5 @@
+import 'styles/global.css';
+
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -6,7 +8,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
 import { AnimateSharedLayout } from 'framer-motion';
 
-import 'styles/global.css';
 
 /**
  * Components

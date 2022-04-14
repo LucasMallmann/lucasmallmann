@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface Props {
+type Props = {
   theme: string;
-}
+};
 
-const Waves: React.FC<Props> = ({ theme }) => {
-  const fillColor = theme === 'dark' ? '#1d1d1d' : '#ffffff';
+export default function Waves({ theme }) {
+  const fillColor = theme === 'dark' ? '#111827' : '#F9FAFB';
 
   return (
     <div
@@ -29,6 +29,4 @@ const Waves: React.FC<Props> = ({ theme }) => {
       </svg>
     </div>
   );
-};
-
-export default Waves;
+}

@@ -1,6 +1,8 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { RiCalendarLine, RiNewspaperLine } from 'react-icons/ri';
+import { MdOutlineLocationOn } from 'react-icons/md';
 
 /**
  * Components
@@ -8,8 +10,7 @@ import { motion } from 'framer-motion';
 import Waves from 'components/Waves';
 import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
-import ProjectHightlight from 'components/ProjectHighlight';
-
+import Work from 'components/Work';
 
 const animationProps = {
   hidden: {
@@ -36,7 +37,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col max-w-4xl mx-auto relative z-10 p-2 mt-10 md:p-0">
+      <div className="flex flex-col max-w-3xl mx-auto relative z-10 p-2 mt-10 md:p-0">
         <div className="flex flex-col items-center md:flex-row-reverse md:justify-between">
           <motion.div
             initial="hidden"
@@ -65,7 +66,7 @@ export default function Home() {
         </div>
         <section className="mt-16 px-2 md:p-0">
           <motion.h1
-            className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200"
+            className="text-3xl tracking-wide leading-8 font-bold text-gray-800 mt-6 dark:text-gray-200"
             initial="hidden"
             animate="visible"
             variants={{
@@ -125,11 +126,87 @@ export default function Home() {
           </motion.div>
         </section>
 
+        <section className='mt-10'>
+          <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 mb-4 dark:text-gray-200">
+            Work Experience
+          </h1>
+
+          <Work
+            jobTitle="Senior Front End Developer"
+            company="Apple Inc."
+            location="São Paulo - BR"
+            period="April, 2022 - current"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            laborum fugit labore, numquam id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis.
+          </Work>
+
+          <hr className="my-4 dark:border-gray-500" />
+
+          <Work
+            jobTitle="Senior Front End Developer"
+            company="Apple Inc."
+            location="São Paulo - BR"
+            period="April, 2022 - current"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            laborum fugit labore, numquam id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis.
+          </Work>
+
+          <hr className="my-4 dark:border-gray-500" />
+
+          <Work
+            jobTitle="Senior Front End Developer"
+            company="Apple Inc."
+            location="São Paulo - BR"
+            period="April, 2022 - current"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            laborum fugit labore, numquam id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis.
+          </Work>
+
+          <hr className="my-4 dark:border-gray-500" />
+
+          <Work
+            jobTitle="Senior Front End Developer"
+            company="Apple Inc."
+            location="São Paulo - BR"
+            period="April, 2022 - current"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            laborum fugit labore, numquam id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis. id rerum blanditiis non iusto
+            provident delectus! Sint quaerat neque, enim rem aspernatur debitis
+            consequuntur porro veritatis.
+          </Work>
+        </section>
+
         <FadeInWhenVisible
           visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
           hidden={{ x: '-18px', opacity: 0 }}
         >
-          <motion.section className="mt-8 px-2 md:px-0">
+          <motion.section className="mt-10 px-2 md:px-0">
             <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
               My Skills
             </motion.h1>
@@ -142,38 +219,6 @@ export default function Home() {
 
             <div className="mt-8 md:mt-12">
               <Techs />
-            </div>
-          </motion.section>
-        </FadeInWhenVisible>
-
-        <FadeInWhenVisible
-          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
-          hidden={{ x: '-18px', opacity: 0 }}
-        >
-          <motion.section className="mt-16 px-2 md:px-0">
-            <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
-              O que tenho feito ultimamente
-            </motion.h1>
-
-            <p className="mt-4 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-              amet consequuntur nisi. Explicabo eos cumque voluptas aperiam
-              laudantium nisi! Commodi.
-            </p>
-
-            <div>
-              <ProjectHightlight
-                firstImage="/static/projects/nuts.jpg"
-                secondImage="/static/projects/barbecue.jpg"
-                thirdImage="/static/projects/tomato.jpg"
-              />
-            </div>
-            <div>
-              <ProjectHightlight
-                firstImage="/static/projects/nuts.jpg"
-                secondImage="/static/projects/barbecue.jpg"
-                thirdImage="/static/projects/tomato.jpg"
-              />
             </div>
           </motion.section>
         </FadeInWhenVisible>
@@ -206,4 +251,4 @@ export default function Home() {
       </div>
     </main>
   );
-};
+}

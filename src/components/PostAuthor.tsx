@@ -34,16 +34,10 @@ export default function PostAuthor({ postMetadata }: Props) {
         />
       </div>
       <div className="ml-3">
-        <p
-          className="uppercase text-sm font-semibold dark:text-gray-100 tracking-wide"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <p className="uppercase text-sm font-semibold dark:text-gray-100 tracking-wide">
           Lucas Mallmann
         </p>
-        <time
-          className="text-xs uppercase dark:text-gray-100"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <time className="text-xs uppercase dark:text-gray-100">
           {formattedDate} - {formattedReadingTime}
         </time>
       </div>

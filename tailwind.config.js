@@ -1,4 +1,4 @@
-const { spacing } = require('tailwindcss/defaultTheme');
+const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -9,9 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // sans: ['"Merriweather"', 'Inter'],
-        sans: ['Inter'],
-        display: ['Inter', 'ui-sans-serif'],
+        sans: ['IBM Plex Sans', ...fontFamily.sans]
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -102,16 +100,10 @@ module.exports = {
         'mobile-light-wave': "url('/static/backgrounds/mobile-light-wave.svg')",
         'dark-wave': "url('/static/backgrounds/dark-wave.svg')",
       }),
-      margin: {
-        88: '22rem',
-      },
     },
   },
   variants: {
-    typography: ['dark'],
-    extend: {
-      borderWidth: ['first'],
-    },
+    typography: ['dark']
   },
   plugins: [require('@tailwindcss/typography')],
 };

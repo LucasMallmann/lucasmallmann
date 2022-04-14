@@ -15,7 +15,7 @@ const ProjectHightlight: React.FC<Props> = ({
   thirdImage,
 }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
+    <div className="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
       <div className="relative z-10 col-start-1 pt-48 row-start-1 px-4 pb-3 bg-gradient-to-t from-gray-750 sm:bg-none md:pt-0">
         <p className="text-sm font-medium text-white sm:mb-1 sm:text-gray-500 dark:text-gray-400">
           Entire house

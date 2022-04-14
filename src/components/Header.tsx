@@ -14,18 +14,17 @@ const Header: React.FC = () => {
   useEffect(() => setMounted(true), []);
 
   const classes = isHomePage
-    ? 'm-0 h-10 z-10 relative mt-8'
+    ? 'm-0 h-10 z-10 relative mt-4'
     : 'sticky-nav h-16 mt-8 w-full dark:bg-gray-875 bg-opacity-60';
 
   return (
     <>
       <div className={classes}>
-        <div className="flex items-center max-w-5xl h-full m-auto px-4 md:px-0">
+        <div className="flex items-center max-w-5xl h-full m-auto px-4">
           <NextLink href="/">
             <a>
               <div>
                 <p
-                  style={{ fontFamily: 'Kanit' }}
                   className={`text-lg ${
                     isHomePage && 'text-gray-200'
                   } dark:text-gray-300`}
