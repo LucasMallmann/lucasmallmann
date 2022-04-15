@@ -6,6 +6,7 @@ import { allBlogs } from 'contentlayer/generated';
  * Services
  */
 import { pick } from 'contentlayer/client';
+import BlogPost from 'components/BlogPost';
 
 const title = 'Lucas Mallmann – Blog';
 const url = 'https://personal-blog-coral.vercel.app/blog';
@@ -15,8 +16,7 @@ const description =
 export default function Blog(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-
-  console.log(props.posts)
+  console.log(props.posts);
 
   return (
     <>
@@ -30,8 +30,23 @@ export default function Blog(
           description,
         }}
       />
-      <div className="flex-col">
-        <h1 className="text-center">Blog page</h1>
+      <div className="flex-col max-w-3xl m-auto px-8">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
+            Meu Blog pessoal
+          </h1>
+          <p className='text-gray-800 dark:text-gray-100'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+            quisquam vel omnis quo consectetur maiores id doloremque enim vero?
+            Recusandae hic ipsa autem inventore reiciendis id magnam iusto, quae
+            sapiente.
+          </p>
+        </div>
+
+        <div className="mt-8">
+          <BlogPost />
+          <BlogPost />
+        </div>
       </div>
     </>
   );

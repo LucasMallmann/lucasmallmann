@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 
   const classes = isHomePage
     ? 'm-0 h-10 z-10 relative mt-4'
-    : 'sticky-nav h-16 mt-8 w-full dark:bg-gray-875 bg-opacity-60';
+    : 'sticky-nav h-16 w-full bg-opacity-60';
 
   return (
     <>
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
           <nav className="flex justify-between items-center ml-4">
             {/* <div> */}
-              <NextLink href="/">
+              <NextLink href="/blog">
                 <a>
                   <strong
                     className={`mx-1 text-md ${
