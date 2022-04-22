@@ -30,7 +30,7 @@ export default function Blog(
           description,
         }}
       />
-      <div className="flex-col max-w-3xl m-auto px-8">
+      <div className="flex-col max-w-3xl mx-auto mt-12 px-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
             Meu Blog pessoal
