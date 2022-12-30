@@ -17,10 +17,6 @@ type Props = {
 };
 
 export default function ArticleCard({ post }: Props) {
-  // const { data } = useFetch<PageView>({
-  //   url: `/api/views/${post.slug}`,
-  // });
-
   const views = 0;
 
   const formattedDate = useMemo(

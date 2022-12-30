@@ -10,7 +10,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
  */
 import PostAuthor from 'components/PostAuthor';
 import BlogSEO from 'components/BlogSEO';
-import ViewCounter from 'components/ViewCounter';
 import components from 'components/MDXComponents';
 
 /**
@@ -65,9 +64,6 @@ export default function Post({ post }: Props) {
             <div>
               <SocialMediaShare />
             </div>
-            {/* <p className="text-sm text-gray-500 min-w-32 mt-4 md:mt-0 dark:text-gray-400">
-              <ViewCounter slug={post.slug} />
-            </p> */}
           </div>
 
           <hr className="bg-gray-750 h-px mt-8 mb-4 border-0" />
