@@ -6,14 +6,15 @@ interface Props {
   visible: Variant;
   hidden: Variant;
   duration?: number;
+  children: React.ReactNode;
 }
 
-const FadeInWhenVisible: React.FC<Props> = ({
+const FadeInWhenVisible = ({
   children,
   visible,
   hidden,
   duration = 0.3,
-}) => {
+}: Props) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
