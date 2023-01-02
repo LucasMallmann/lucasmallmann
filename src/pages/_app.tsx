@@ -8,7 +8,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
 import { AnimateSharedLayout } from 'framer-motion';
 
-
 /**
  * Components
  */

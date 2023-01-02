@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
-  src: url(/fonts/ibm-plex-sans-var.woff2) format('woff2');
+  src: url(/fonts/ibm-plex-sans-var.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: italic;
   font-weight: 100 900;
   font-display: optional;
-  src: url(/fonts/ibm-plex-sans-var-italic.woff2) format('woff2');
+  src: url(/fonts/ibm-plex-sans-var-italic.woff2) format("woff2");
 }
 
 ::selection {
@@ -37,13 +37,13 @@ html {
 
 /* https://seek-oss.github.io/capsize/ */
 .capsize::before {
-  content: '';
+  content: "";
   margin-bottom: -0.098em;
   display: table;
 }
 
 .capsize::after {
-  content: '';
+  content: "";
   margin-top: -0.219em;
   display: table;
 }
@@ -83,7 +83,7 @@ html {
 
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;
-  content: '#';
+  content: "#";
 }
 
 .prose *:hover > .anchor {
@@ -169,8 +169,8 @@ html {
   @apply text-yellow-500;
 }
 
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   @apply text-gray-800 dark:text-gray-50;
 }
 
@@ -196,8 +196,8 @@ pre {
 }
 
 /* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -217,4 +217,16 @@ input[type='email'] {
 
 .round-image {
   border-radius: 50%;
+}
+
+.intro::after {
+  background-image: url(https://www.inkdrop.app/section-separator.svg/section-separator.svg);
+  background-size: cover;
+  content: "";
+  display: block;
+  margin-left: -48px;
+  padding-bottom: calc(11.546% + 6px);
+  position: relative;
+  z-index: 0;
+  bottom: 0;
 }

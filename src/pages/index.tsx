@@ -1,8 +1,6 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { RiCalendarLine, RiNewspaperLine } from 'react-icons/ri';
-import { MdOutlineLocationOn } from 'react-icons/md';
 
 /**
  * Components
@@ -11,6 +9,7 @@ import Waves from 'components/Waves';
 import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
 import Work from 'components/Work';
+import classNames from 'classnames';
 
 const animationProps = {
   hidden: {
@@ -31,11 +30,13 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden">
-      <div className="absolute h-72 w-full top-0 z-0 bg-gradient-to-b from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700 md:h-96">
-        <div className="relative w-full h-full">
-          {theme && <Waves theme={theme} />}
-        </div>
-      </div>
+      <div
+        className={classNames(
+          'h-72 w-full z-0 bg-gradient-to-b',
+          'from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700',
+          'absolute inset-0 z-0'
+        )}
+      ></div>
 
       <div className="flex flex-col max-w-3xl mx-auto relative z-10 mt-10 md:p-0">
         <div className="flex flex-col items-center px-8 md:px-0 md:flex-row-reverse md:justify-between">
@@ -49,7 +50,7 @@ export default function Home() {
                 className="round-image"
                 alt="Lucas Mallmann"
                 src="/me.jpeg"
-                layout="fill"
+                fill
               />
             </div>
           </motion.div>

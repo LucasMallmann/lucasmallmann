@@ -11,16 +11,16 @@ const SeeAlsoProject: React.FC = () => {
         whileHover={{ scale: 1.05 }}
       >
         <Link href="/">
-          <a>
-            <Image
-              src="/static/projects/nuts.jpg"
-              width={500}
-              height={340}
-              layout="responsive"
-              objectFit="cover"
-              alt="projeto 02"
-            />
-          </a>
+
+          <Image
+            src="/static/projects/nuts.jpg"
+            width={500}
+            height={340}
+            layout="responsive"
+            objectFit="cover"
+            alt="projeto 02"
+          />
+
         </Link>
       </motion.figure>
 
@@ -32,10 +32,12 @@ const SeeAlsoProject: React.FC = () => {
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti porro
         suscipit amet necessitatibus tenetur.
       </p>
-      <Link href="/projetos/primeiro-projeto">
-        <a className="block bg-purple-500 w-full text-white text-base font-semibold px-6 py-2 rounded-lg mt-6 hover:bg-purple-600 transition-color duration-200 text-center">
+      <Link
+        href="/projetos/primeiro-projeto"
+        className="block bg-purple-500 w-full text-white text-base font-semibold px-6 py-2 rounded-lg mt-6 hover:bg-purple-600 transition-color duration-200 text-center">
+        
           See project
-        </a>
+        
       </Link>
     </div>
   );
