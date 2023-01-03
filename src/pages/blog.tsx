@@ -16,8 +16,6 @@ const description =
 export default function Blog(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  console.log(props.posts);
-
   return (
     <>
       <NextSeo
@@ -35,7 +33,7 @@ export default function Blog(
           <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
             Meu Blog pessoal
           </h1>
-          <p className='text-gray-800 dark:text-gray-100'>
+          <p className="text-gray-800 dark:text-gray-100">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
             quisquam vel omnis quo consectetur maiores id doloremque enim vero?
             Recusandae hic ipsa autem inventore reiciendis id magnam iusto, quae

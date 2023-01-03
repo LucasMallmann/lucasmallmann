@@ -1,6 +1,7 @@
 import 'styles/global.css';
 
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
+import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
@@ -19,7 +20,17 @@ import MDXComponents from 'components/MDXComponents';
  */
 import SEO from 'config/next-seo.config';
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <ThemeProvider attribute="class">
       <AnimateSharedLayout>
@@ -31,9 +42,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
             />
           </Head>
           <DefaultSeo {...SEO} />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          {getLayout(<Component {...pageProps} />)}
         </MDXProvider>
       </AnimateSharedLayout>
     </ThemeProvider>

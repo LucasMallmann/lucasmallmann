@@ -1,6 +1,7 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 /**
  * Components
@@ -9,63 +10,19 @@ import Waves from 'components/Waves';
 import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
 import Work from 'components/Work';
-import classNames from 'classnames';
 
-const animationProps = {
-  hidden: {
-    y: '-18px',
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.4,
-    },
-  },
-};
+import { NextPageWithLayout } from './_app';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import Intro from 'components/Intro';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   const { theme } = useTheme();
 
   return (
-    <main className="overflow-hidden">
-      <div
-        className={classNames(
-          'h-72 w-full z-0 bg-gradient-to-b',
-          'from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700',
-          'absolute inset-0 z-0'
-        )}
-      ></div>
-
-      <div className="flex flex-col max-w-3xl mx-auto relative z-10 mt-10 md:p-0">
-        <div className="flex flex-col items-center px-8 md:px-0 md:flex-row-reverse md:justify-between">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={animationProps}
-          >
-            <div className="border-green-500 border-4 rounded-full relative w-44 h-44 dark:border-purple-500">
-              <Image
-                className="round-image"
-                alt="Lucas Mallmann"
-                src="/me.jpeg"
-                fill
-              />
-            </div>
-          </motion.div>
-          <motion.h1
-            className="text-2xl relative md:tracking-wide font-bold text-gray-800 md:text-gray-200 mt-4 dark:text-gray-100 md:ml-10 md:w-10/12 md:px-0 md:text-4xl"
-            initial="hidden"
-            animate="visible"
-            variants={animationProps}
-          >
-            Hi there, I’m Lucas. Front End{' '}
-            <span className="text-green-500">Developer</span>, Student, Lorem,
-            ipsum dolor..
-          </motion.h1>
-        </div>
-        <section className="mt-4 md:mt-16 px-8 md:px-0">
+    <main className="overflow-hidden px-8">
+      <div className="flex flex-col max-w-3xl mx-auto z-10 md:p-0">
+        <section className="mt-4 px-8 md:px-0">
           <motion.h1
             className="text-3xl leading-8 font-bold text-gray-800 mt-6 dark:text-gray-300"
             initial="hidden"
@@ -252,4 +209,37 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+Home.getLayout = (page) => {
+  return (
+    <>
+      <div
+        className={classNames(
+          'z bg-gradient-to-b relative',
+          'from-purple-500 to-purple-800 dark:from-gray-950 dark:via-gray-800 dark:to-gray-700 pb-20'
+        )}
+      >
+        <Header />
+        <Intro />
+        <div className="custom-shape-divider-bottom-1672704025">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              className="shape-fill fill-gray-50 dark:fill-gray-900"
+            />
+          </svg>
+        </div>
+      </div>
+      {page}
+      <Footer />
+    </>
+  );
+};
+
+export default Home;

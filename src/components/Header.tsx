@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <div className={cn('px-8 z-10')}>
       <div className="max-w-3xl w-full mx-auto flex items-center pt-8 pb-8 sm:pb-16">
-        <nav className="flex items-center flex-1">
+        <nav className="flex items-center flex-1 space-x-2 sm:space-x-0">
           <NavItem href={'/'} text="Home" isHomePage={isHomePage} />
           <NavItem href={'/blog'} text="Blog" isHomePage={isHomePage} />
           <NavItem href={'/projects'} text="Projects" isHomePage={isHomePage} />
