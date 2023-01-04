@@ -7,15 +7,18 @@ import { allBlogs } from 'contentlayer/generated';
  */
 import { pick } from 'contentlayer/client';
 import BlogPost from 'components/BlogPost';
+import { NextPageWithLayout } from './_app';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 const title = 'Lucas Mallmann – Blog';
 const url = 'https://personal-blog-coral.vercel.app/blog';
 const description =
   'Ideias sobre tecnologia, desenvolvimento de software, carreira e reflexões sobre a vida.';
 
-export default function Blog(
+const Blog: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
-) {
+) => {
   return (
     <>
       <NextSeo
@@ -28,7 +31,7 @@ export default function Blog(
           description,
         }}
       />
-      <div className="flex-col max-w-3xl mx-auto mt-12 px-8">
+      <div className="flex-col max-w-3xl mx-auto">
         <div>
           <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
             Meu Blog pessoal
@@ -48,7 +51,7 @@ export default function Blog(
       </div>
     </>
   );
-}
+};
 
 export function getStaticProps() {
   const posts = allBlogs
@@ -66,3 +69,15 @@ export function getStaticProps() {
     },
   };
 }
+
+Blog.getLayout = (page) => {
+  return (
+    <>
+      <Header />
+      <main className="px-8">{page}</main>
+      <Footer />
+    </>
+  );
+};
+
+export default Blog;

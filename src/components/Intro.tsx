@@ -44,8 +44,8 @@ const Intro = () => {
         variants={animationProps}
       >
         Hi there, I’m Lucas. Full Stack {` `}
-        <span className="text-green-500">Developer</span>, Student, Lorem, ipsum
-        dolor..
+        <span className="text-green-500">Developer</span> from Brazil and a life
+        learner.
       </motion.h1>
     </div>
   );

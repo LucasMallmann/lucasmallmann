@@ -1,6 +1,6 @@
-const title = 'Lucas Mallmann – Developer, escritor, criador.';
+const title = 'Lucas Mallmann – Developer, writer, crator.';
 
-const description = 'Fullstack Developer e um entusiasta Javascript.';
+const description = 'Fullstack Developer based in Brazil.';
 
 const SEO = {
   title,
