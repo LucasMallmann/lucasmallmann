@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div
       className={classNames(
-        'max-w-3xl mx-auto w-full mt-8 border-solid border-t border-gray-200',
+        'max-w-2xl mx-auto w-full mt-8 border-solid border-t border-gray-200',
         'py-5 px-8 dark:border-gray-600 md:grid gap-4 grid-cols-3 md:px-0'
       )}
     >

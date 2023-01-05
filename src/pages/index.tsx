@@ -21,7 +21,7 @@ import WorkExperience from 'components/WorkExperience';
 const Home: NextPageWithLayout = () => {
   return (
     <main className="overflow-hidden px-8">
-      <div className="flex flex-col max-w-3xl mx-auto z-10 md:p-0">
+      <div className="flex flex-col max-w-2xl mx-auto z-10 md:p-0">
         <Aboutme />
 
         <section className="mt-10">

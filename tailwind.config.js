@@ -2,14 +2,14 @@ const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['IBM Plex Sans', ...fontFamily.sans]
+        sans: ['IBM Plex Sans', ...fontFamily.sans],
       },
       typography: (theme) => {
         return {
@@ -24,11 +24,8 @@ module.exports = {
                 code: { color: theme('colors.blue.400') },
               },
               'h1,h2,h3,h4': {
-                color: theme('colors.gray.800'),  
+                color: theme('colors.gray.800'),
                 'scroll-margin-top': spacing[32],
-              },
-              p: {
-                color: theme('colors.gray.700')
               },
               code: { color: theme('colors.pink.500') },
               'blockquote p:first-of-type::before': false,
@@ -75,7 +72,7 @@ module.exports = {
               },
             },
           },
-        }
+        };
       },
       colors: {
         gray: {
@@ -92,7 +89,7 @@ module.exports = {
     },
   },
   variants: {
-    typography: ['dark']
+    typography: ['dark'],
   },
   plugins: [require('@tailwindcss/typography')],
 };
