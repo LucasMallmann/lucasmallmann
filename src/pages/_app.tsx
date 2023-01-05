@@ -7,7 +7,6 @@ import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
-import { AnimateSharedLayout } from 'framer-motion';
 
 /**
  * Components
@@ -33,18 +32,13 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <ThemeProvider attribute="class">
-      <AnimateSharedLayout>
-        <MDXProvider components={MDXComponents}>
-          <Head>
-            <meta
-              content="width=device-width, initial-scale=1"
-              name="viewport"
-            />
-          </Head>
-          <DefaultSeo {...SEO} />
-          {getLayout(<Component {...pageProps} />)}
-        </MDXProvider>
-      </AnimateSharedLayout>
+      <MDXProvider components={MDXComponents}>
+        <Head>
+          <meta content="width=device-width, initial-scale=1" name="viewport" />
+        </Head>
+        <DefaultSeo {...SEO} />
+        {getLayout(<Component {...pageProps} />)}
+      </MDXProvider>
     </ThemeProvider>
   );
 };

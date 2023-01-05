@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import dynamic from 'next/dynamic';
 import { allBlogs, Blog } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
@@ -13,7 +14,10 @@ import components from 'components/MDXComponents';
 import { NextPageWithLayout } from 'pages/_app';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import SocialMediaShare from 'components/SocialMediaShare';
+
+const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
+  ssr: false,
+});
 
 type Props = {
   post: Blog;

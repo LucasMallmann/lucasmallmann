@@ -1,15 +1,9 @@
-import { useTheme } from 'next-themes';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
 /**
  * Components
  */
-import Waves from 'components/Waves';
-import FadeInWhenVisible from 'components/FadeInWhenVisible';
 import Techs from 'components/Techs';
-import Work from 'components/Work';
 
 import { NextPageWithLayout } from './_app';
 import Header from 'components/Header';
@@ -131,50 +125,40 @@ const Home: NextPageWithLayout = () => {
           </div>
         </section>
 
-        <FadeInWhenVisible
-          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
-          hidden={{ x: '-18px', opacity: 0 }}
-        >
-          <motion.section className="mt-10 px-8 md:px-0">
-            <motion.h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
-              My Skills
-            </motion.h1>
+        <section className="mt-10 px-8 md:px-0">
+          <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
+            My Skills
+          </h1>
 
-            <p className="mt-4 dark:text-gray-300">
-              These are some of the tools & languages I'm confortable with.
-            </p>
+          <p className="mt-4 dark:text-gray-300">
+            These are some of the tools & languages I'm confortable with.
+          </p>
 
-            <div className="mt-5">
-              <Techs />
-            </div>
-          </motion.section>
-        </FadeInWhenVisible>
+          <div className="mt-5">
+            <Techs />
+          </div>
+        </section>
 
-        <FadeInWhenVisible
-          visible={{ x: 0, opacity: 1, transition: { delay: 0.4 } }}
-          hidden={{ x: '-18px', opacity: 0 }}
-        >
-          <motion.section className="mt-16 px-2 md:px-0">
-            <motion.h1 className="text-3xl tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
-              Let's build together!
-              <span role="img" aria-label="">
-                😁
-              </span>
-            </motion.h1>
+        <section className="mt-16 px-2 md:px-0">
+          <h1 className="text-3xl tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
+            Let's build together!
+            <span role="img" aria-label="">
+              😁
+            </span>
+          </h1>
 
-            <p className="mt-4 text-center text-md md:text-lg leading-8 dark:text-gray-300">
-              Feel free to reach out if you are looking for a developer, have a
-              question, or just want to connect.
-            </p>
+          <p className="mt-4 text-center text-md md:text-lg leading-8 dark:text-gray-300">
+            Feel free to reach out if you are looking for a developer, have a
+            question, or just want to connect.
+          </p>
 
-            <a
-              href="mailto:lucasmallmann76@gmail.com"
-              className="block mt-6 font-bold text-center text-lg text-purple-500 dark:text-green-500"
-            >
-              lucasmallmann76@gmail.com
-            </a>
-          </motion.section>
-        </FadeInWhenVisible>
+          <a
+            href="mailto:lucasmallmann76@gmail.com"
+            className="block mt-6 font-bold text-center text-lg text-purple-500 dark:text-green-500"
+          >
+            lucasmallmann76@gmail.com
+          </a>
+        </section>
       </div>
     </main>
   );

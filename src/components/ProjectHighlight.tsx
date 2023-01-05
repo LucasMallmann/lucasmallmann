@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 interface Props {
   firstImage: string;
@@ -21,11 +20,9 @@ const ProjectHightlight: React.FC<Props> = ({
           Entire house
         </p>
         <Link href="/projetos/primeiro-projeto">
-
-          <motion.h1 className="text-xl font-semibold text-white cursor-pointer sm:text-2xl sm:leading-7 sm:text-black md:text-3xl dark:text-gray-100 hover:opacity-80 transition-opacity duration-200">
+          <h1 className="text-xl font-semibold text-white cursor-pointer sm:text-2xl sm:leading-7 sm:text-black md:text-3xl dark:text-gray-100 hover:opacity-80 transition-opacity duration-200">
             Beach House in Collingwood
-          </motion.h1>
-
+          </h1>
         </Link>
       </div>
       <div className="col-start-1 row-start-2 md:pb-0 md:px-4">
@@ -41,53 +38,40 @@ const ProjectHightlight: React.FC<Props> = ({
       </div>
       <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
         <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
-          <motion.figure className="relative col-span-3 row-span-2 md:col-span-2 cursor-pointer">
+          <figure className="relative col-span-3 row-span-2 md:col-span-2 cursor-pointer">
             <Link href="/projetos/primeiro-projeto">
-
               <Image
                 src={firstImage}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg hover:scale-50"
-                layout="fill"
-                objectFit="cover"
               />
-
             </Link>
-          </motion.figure>
-          <motion.figure className="relative hidden md:block cursor-pointer">
+          </figure>
+          <figure className="relative hidden md:block cursor-pointer">
             <Link href="/">
-
               <Image
                 src={secondImage}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100 "
-                layout="fill"
-                objectFit="cover"
               />
-
             </Link>
-          </motion.figure>
-          <motion.figure className="relative hidden cursor-pointer md:block">
+          </figure>
+          <figure className="relative hidden cursor-pointer md:block">
             <Link href="/">
-
               <Image
                 src={thirdImage}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100"
-                layout="fill"
-                objectFit="cover"
               />
-
             </Link>
-          </motion.figure>
+          </figure>
         </div>
       </div>
       <Link
         href="/projetos/primeiro-projeto"
-        className="bg-purple-500 w-full text-white text-base font-semibold px-6 py-2 rounded-lg mt-4 md:ml-4 md:w-56 hover:bg-purple-600 transition-color duration-200 text-center">
-        
-          Check availability
-        
+        className="bg-purple-500 w-full text-white text-base font-semibold px-6 py-2 rounded-lg mt-4 md:ml-4 md:w-56 hover:bg-purple-600 transition-color duration-200 text-center"
+      >
+        Check availability
       </Link>
     </div>
   );

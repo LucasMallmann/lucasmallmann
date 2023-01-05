@@ -9,8 +9,8 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { ImGit } from 'react-icons/im';
-import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
+import classNames from 'classnames';
 
 interface TechProps {
   tech: string;
@@ -34,14 +34,17 @@ const Tech: React.FC<TechProps> = ({
       : isActive && activeIconColor;
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.2 }}
-      className="p-3 flex items-center flex-col justify-center cursor-pointer hover:shadow"
+    <div
+      className={classNames(
+        'p-3 flex items-center flex-col',
+        'justify-center cursor-pointer hover:shadow',
+        'transform hover:scale-[1.1] transition-all'
+      )}
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
     >
       <Icon
-        className="mb-2 text-gray-600 transition transition-colors duration-200 ease-in-out dark:text-gray-400"
+        className="mb-2 text-gray-600 transition duration-200 ease-in-out dark:text-gray-400"
         size={32}
         color={iconColor || undefined}
       />
@@ -51,7 +54,7 @@ const Tech: React.FC<TechProps> = ({
       >
         {tech}
       </strong>
-    </motion.div>
+    </div>
   );
 };
 
