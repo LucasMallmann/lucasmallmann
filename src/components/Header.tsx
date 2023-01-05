@@ -14,7 +14,7 @@ function NavItem({ href, text, isHomePage }) {
       className={cn(
         'dark:text-gray-100',
         'rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all',
-        'p1 sm:px-3 sm:py-2',
+        'p-1 sm:px-3 sm:py-2',
         isHomePage ? 'text-gray-100 hover:bg-purple-500' : '',
         isActive && 'font-semibold'
       )}
@@ -36,10 +36,9 @@ const Header = () => {
   return (
     <div className={cn('px-8 z-10')}>
       <div className="max-w-2xl w-full mx-auto flex items-center pt-8 pb-8 sm:pb-16">
-        <nav className="flex items-center flex-1 space-x-2 sm:space-x-0">
+        <nav className="flex items-center flex-1 space-x-3 sm:space-x-0">
           <NavItem href={'/'} text="Home" isHomePage={isHomePage} />
           <NavItem href={'/blog'} text="Blog" isHomePage={isHomePage} />
-          <NavItem href={'/projects'} text="Projects" isHomePage={isHomePage} />
         </nav>
         <button
           aria-label="Toggle Dark Mode"

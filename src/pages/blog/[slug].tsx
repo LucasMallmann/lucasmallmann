@@ -14,6 +14,7 @@ import components from 'components/MDXComponents';
 import { NextPageWithLayout } from 'pages/_app';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import classNames from 'classnames';
 
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
@@ -33,7 +34,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
         {...post}
       />
       <div className="w-full lg:w-8/12 mx-auto">
-        <div className="max-w-2xl p-4 md:p-0 mx-auto">
+        <div className="max-w-2xl px-8 md:p-0 mx-auto">
           <div className="-ml-2">
             {post.tags.map((tag) => (
               <NextLink
@@ -42,7 +43,11 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
                 legacyBehavior
               >
                 <span
-                  className="bg-red-400 inline-block font-bold tracking-wider border-solid ml-2 rounded-sm uppercase color-white text-white text-xs p-1 transition-bg duration-200 cursor-pointer hover:bg-red-500"
+                  className={classNames(
+                    'bg-red-400 inline-block font-semibold tracking-wider',
+                    'ml-2 rounded-sm lowercase color-white text-white text-xs p-1',
+                    'transition-bg duration-200 cursor-pointer hover:bg-red-500'
+                  )}
                   style={{ fontFamily: 'sans-serif' }}
                 >
                   {tag}
@@ -69,7 +74,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
           <PostAuthor postMetadata={post} />
         </div>
 
-        <div className="relative w-full h-64 mt-8 md:h-post-thumbnail">
+        <div className="relative w-full h-[328px] mt-8 md:h-post-thumbnail">
           <Image
             alt={post.title}
             src={post.image}
@@ -79,7 +84,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
           />
         </div>
 
-        <div className="prose dark:!prose-dark max-w-2xl mx-auto mt-8">
+        <div className="prose dark:!prose-dark max-w-2xl px-8 sm:px-0 mx-auto mt-8">
           <Component
             components={
               {

@@ -18,13 +18,13 @@ const Footer = () => {
           Home
         </Link>
         <Link
-          href="/"
+          href="/#about"
           className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200"
         >
-          Sobre
+          About
         </Link>
         <Link
-          href="/"
+          href="/blog"
           className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200"
         >
           Blog
@@ -33,20 +33,23 @@ const Footer = () => {
 
       <div className="flex flex-col">
         <a
-          href="/"
+          href="https://github.com/lucasmallmann"
           className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+          target="_blank"
         >
           Github
         </a>
         <a
-          href="/"
+          href="https://www.linkedin.com/in/lucas-mallmann-372745148/"
           className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+          target="_blank"
         >
           Linkedin
         </a>
         <a
-          href="/"
+          href="https://twitter.com/lucasmallmann76"
           className="text-md mb-3 dark:text-gray-400 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+          target="_blank"
         >
           Twitter
         </a>

@@ -1,4 +1,4 @@
-const title = 'Lucas Mallmann – Developer, writer, crator.';
+const title = 'Lucas Mallmann – Developer, writer, creator.';
 
 const description = 'Fullstack Developer based in Brazil.';
 

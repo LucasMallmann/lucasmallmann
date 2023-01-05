@@ -40,18 +40,16 @@ const Blog: NextPageWithLayout = (
         }}
       />
       <div className="flex-col max-w-2xl mx-auto">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
-            Blog
-          </h1>
-          <p className="text-gray-800 dark:text-gray-100">
-            I've been writing about software development as a way to teach what
-            I've already know, but also learn and contribute to the community.
-            You can use the search below to filter by title.
-          </p>
-        </div>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
+          Blog
+        </h1>
+        <p className="text-gray-800 dark:text-gray-100">
+          I've been writing about software development as a way to teach what
+          I've already know, but also learn and contribute to the community. You
+          can use the search below to filter by title.
+        </p>
 
-        <div className="relative w-full mb-4 mt-2">
+        <div className="relative w-full mt-4">
           <input
             aria-label="Search articles"
             type="text"

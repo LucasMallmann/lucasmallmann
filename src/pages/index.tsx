@@ -125,7 +125,7 @@ const Home: NextPageWithLayout = () => {
           </div>
         </section>
 
-        <section className="mt-10 px-8 md:px-0">
+        <section className="mt-10">
           <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
             My Skills
           </h1>

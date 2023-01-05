@@ -16,7 +16,7 @@ import {
 const SocialMediaShare: React.FC = () => {
   return (
     <>
-      <span className="text-md  dark:text-gray-100">Compartilhe!</span>
+      <span className="text-md  dark:text-gray-100">Share!</span>
       <div className="mt-2 flex">
         <TwitterShareButton url={window.location.href} className="w-5 h-5">
           <TwitterIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />

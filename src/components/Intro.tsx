@@ -22,7 +22,8 @@ const Intro = () => {
       <h1
         className={classNames(
           'text-2xl md:tracking-wide text-center sm:text-left',
-          'font-semibold text-gray-200 mt-4 md:ml-10 md:w-10/12 md:px-0 md:text-4xl'
+          'font-semibold text-gray-200 mt-4 md:ml-10 md:w-10/12 md:px-0 md:text-4xl',
+          'px-2 sm:px-8'
         )}
       >
         Hi there, I’m Lucas. Full Stack {` `}

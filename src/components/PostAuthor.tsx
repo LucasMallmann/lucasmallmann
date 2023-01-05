@@ -13,14 +13,8 @@ type Props = {
 
 export default function PostAuthor({ postMetadata }: Props) {
   const formattedDate = useMemo(() => {
-    return dayjs(postMetadata.publishedAt).format('DD [de] MMM [de] YYYY');
+    return dayjs(postMetadata.publishedAt).format('MMMM DD, YYYY');
   }, [postMetadata.publishedAt]);
-
-  const formattedReadingTime = useMemo(() => {
-    return postMetadata.readingTime <= 1
-      ? 'Leitura de 1 minuto'
-      : `Leitura de ${Math.round(postMetadata.readingTime)} minutos`;
-  }, [postMetadata.readingTime]);
 
   return (
     <div className="flex align-middle">
@@ -38,7 +32,7 @@ export default function PostAuthor({ postMetadata }: Props) {
           Lucas Mallmann
         </p>
         <time className="text-xs uppercase dark:text-gray-100">
-          {formattedDate} - {formattedReadingTime}
+          {formattedDate} - {postMetadata.readingTime.text}
         </time>
       </div>
     </div>
