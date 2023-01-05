@@ -16,7 +16,7 @@ export default function BlogSEO({
 }: Props) {
   const date = new Date(publishedAt).toISOString();
   const featuredImage = {
-    url: `https://personal-blog-coral.vercel.app${image}`,
+    url: `https://lucasmallmann.dev${image}`,
     alt: title,
   };
 

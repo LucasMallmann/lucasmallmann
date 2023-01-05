@@ -5,16 +5,16 @@ const description = 'Fullstack Developer based in Brazil.';
 const SEO = {
   title,
   description,
-  canonical: 'https://personal-blog-coral.vercel.app',
+  canonical: 'https://lucasmallmann.dev',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://personal-blog-coral.vercel.app',
+    url: 'https://lucasmallmann.dev',
     title,
     description,
     images: [
       {
-        url: 'https://personal-blog-coral.vercel.app/static/images/banner.png',
+        url: 'https://lucasmallmann.dev/static/images/banner.png',
         alt: title,
         width: 1280,
         height: 720,

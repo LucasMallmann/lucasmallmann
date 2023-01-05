@@ -13,7 +13,7 @@ import Footer from 'components/Footer';
 import classNames from 'classnames';
 
 const title = 'Lucas Mallmann – Blog';
-const url = 'https://personal-blog-coral.vercel.app/blog';
+const url = 'https://lucasmallmann.dev/blog';
 const description =
   'Ideias sobre tecnologia, desenvolvimento de software, carreira e reflexões sobre a vida.';
 

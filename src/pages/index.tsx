@@ -33,9 +33,11 @@ const Home: NextPageWithLayout = () => {
                 FullStack Developer
               </WorkExperience.Description>
               <WorkExperience.Content>
-                I work developing new features for the homepage, improving ADs
-                performance, webvitals, and AB Testing. I also take care of the
-                editor's app integration with the website.
+                I work as a software developer for the third most visited
+                website in Brazil. I work improving ADs performance, webvitals,
+                and AB Testing for new features. I work with the editor's app
+                integration for the website. Globo.com has more than 17 million
+                pageviews everyday.
               </WorkExperience.Content>
               <WorkExperience.Tags
                 tags={[

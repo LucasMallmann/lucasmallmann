@@ -30,7 +30,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
   return (
     <>
       <BlogSEO
-        url={`https://personal-blog-coral.vercel.app/blog/${post.slug}`}
+        url={`https://lucasmallmann.dev/blog/${post.slug}`}
         {...post}
       />
       <div className="w-full lg:w-8/12 mx-auto">
