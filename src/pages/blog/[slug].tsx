@@ -15,8 +15,13 @@ import { NextPageWithLayout } from 'pages/_app';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
+  ssr: false,
+});
+
+const Comments = dynamic(() => import('components/Comments'), {
   ssr: false,
 });
 
@@ -26,13 +31,11 @@ type Props = {
 
 const Post: NextPageWithLayout = ({ post }: Props) => {
   const Component = useMDXComponent(post.body.code);
+  const router = useRouter();
 
   return (
     <>
-      <BlogSEO
-        url={`https://lucasmallmann.dev/blog/${post.slug}`}
-        {...post}
-      />
+      <BlogSEO url={`https://lucasmallmann.dev/blog/${post.slug}`} {...post} />
       <div className="w-full lg:w-8/12 mx-auto">
         <div className="max-w-2xl px-8 md:p-0 mx-auto">
           <div className="-ml-2">
@@ -92,6 +95,11 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
               } as any
             }
           />
+        </div>
+
+        {/* Comments */}
+        <div className="mt-8 px-8">
+          <Comments title={post.title} url={router.pathname} id={post.slug} />
         </div>
       </div>
     </>
