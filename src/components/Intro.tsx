@@ -16,6 +16,7 @@ const Intro = () => {
             alt="Lucas Mallmann"
             src="/me.jpeg"
             fill
+            priority
           />
         </div>
       </div>

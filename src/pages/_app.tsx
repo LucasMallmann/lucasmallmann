@@ -8,10 +8,6 @@ import { ThemeProvider } from 'next-themes';
 import { MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
 
-/**
- * Components
- */
-import Layout from 'components/Layout';
 import MDXComponents from 'components/MDXComponents';
 
 /**
