@@ -1,21 +1,36 @@
 ---
-title: 'An Update From Lucas (#1)'
-publishedAt: '2019-02-10'
-summary: "An archived verison of Lucas Mallmann's newsletter – subscribe to get early access."
+title: 'Boosting Web Performance: Unleashing the power of prefetch with quicklink'
+publishedAt: '2023-27-06'
+summary: 'Accelerating web performance: how can quicklink help you to prefetch links, improve user experience, and load content faster?'
 image: '/static/images/banner.png'
-tags: ['blog', 'javascript', 'programming']
+tags: ['webperf', 'prefetch', 'programming']
 ---
 
-# Trying new things
+# What is quicklink?
 
-My site is an opportunity to try new tech and form opinions on what I enjoy using. I learn best by building real things. After some evaluation, I've landed on the following tech stack:
+[Quicklink](https://github.com/GoogleChromeLabs/quicklink) is a javascript library that improves subsequent page loads by prefetching or prerendering in view-port links.
 
-- Next.js (Upgraded to `v10`)
-- Tailwind CSS (Switched from Chakra UI)
-- `next-mdx-remote` (Switched from `next-mdx-enhanced`)
-- Deployed with Vercel
+You can tell the browser to pre-load links you want, and when the user
+actually clicks on them, the page will load faster because
+the browser has already fetched the HTML for that link.
 
-I've improved performance, added new features, and cleaned up some code. Let's dive into why I chose this tech stack.
+Quicklink provides two main features: `prefetching` and `preloading`.
+
+## How is this useful?
+
+Imagine a scenario where you have a website with multiple links
+that take the user to different pages. But you've noticed that there
+are some links that are popular than others, and users tend to click them more often.
+Wouldn't it make sense to load these links before hand somehow, so the
+user can have a better experience?
+
+Of course it does, and that's when quicklink comes in handy.
+With this strategy, you could prefetch the links you want to boost
+your website performance, and most important, improve the user experience.
+
+## How does this work?
+
+Well, does it mean the browser will load my page
 
 ## Next.js 10
 
