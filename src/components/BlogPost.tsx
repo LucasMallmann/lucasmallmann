@@ -7,11 +7,18 @@ type Props = {
   date: string;
   description: string;
   tags: string[];
+  slug: string;
 };
 
-export default function BlogPost({ title, date, description, tags }: Props) {
+export default function BlogPost({
+  title,
+  date,
+  description,
+  tags,
+  slug,
+}: Props) {
   return (
-    <Link href={`/blog/example`} className="w-full block mb-8">
+    <Link href={`/blog/${slug}`} className="w-full block mb-8">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h4 className="w-full text-2xl font-medium md:text-xl">{title}</h4>
         <small className="w-32 md:my-2 text-left text-gray-600 dark:text-gray-500 md:text-right">

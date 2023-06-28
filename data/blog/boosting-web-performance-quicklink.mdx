@@ -1,0 +1,159 @@
+---
+title: 'Boosting Web Performance: Unleashing the power of prefetch with quicklink'
+publishedAt: '2023-06-27'
+summary: 'Accelerating web performance: how can quicklink help you to prefetch links, improve user experience, and load content faster?'
+image: '/static/images/boosting-web-performance-quicklink/banner.jpg'
+tags: ['webperf', 'prefetch', 'programming']
+---
+
+# What is quicklink?
+
+[Quicklink](https://github.com/GoogleChromeLabs/quicklink) is a javascript library that improves subsequent page loads by prefetching or prerendering in view-port links.
+
+You can tell the browser to pre-load links you want, and when the user
+actually clicks on them, the page will load faster because
+the browser has already fetched the HTML for that link.
+
+Quicklink provides two main features: `prefetching` and `preloading`. The main difference between them is that with
+prefetching, which is what we're gonna see today, the browser will only fetch the HTML for the link. With preloading,
+the browser will use [speculation rules](https://github.com/WICG/nav-speculation/blob/main/triggers.md) to load the
+links before hand. This requires a little bit more of work, so we'll leave it for another post. :)
+
+## How is this useful?
+
+Imagine a scenario where you have a website with multiple links
+that take the user to different pages. But you've noticed that there
+are some links that are popular than others, and users tend to click them more often.
+Wouldn't it make sense to load these links before hand somehow, so the
+user can have a better experience?
+
+Of course it does, and that's when quicklink comes in handy.
+With this strategy, you could prefetch the links you want to boost
+your website performance, and most important, improve the user experience, since the page is going
+to load faster.
+
+## How does this work?
+
+In order to pretech the subsequent urls, quickinlink:
+
+- Detects links in the viewport
+- Waits until the browser is idle, using [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
+- Prefetches using `<link rel=prefetch>` or XHR.
+
+## Practical example
+
+I've set up a minimal html blog in order to show you how quicklink works. You can find the code [here](https://github.com/LucasMallmann/blog-quicklink).
+You can download the source code, and follow along with the tutorial if you want. There is a [branch](https://github.com/LucasMallmann/blog-quicklink/tree/quicklink) which already
+has the quicklink implemetation, so you can check it out if you get stuck, or just want to see the implementation.
+
+```bash
+$ git clone https://github.com/LucasMallmann/blog-quicklink.git
+$ cd blog-quicklink
+```
+
+The project has a simple structure, and it's made with [vitejs](https://vitejs.dev/).
+If you run the project and open at `http://localhost:3000`, you'll see a simple blog with some links, like this one below:
+
+<Image
+  alt="Vercel Analytics"
+  src="/static/images/boosting-web-performance-quicklink/sample-blog.png"
+  width={672}
+  height={300}
+/>
+
+## Testing the navigation performance
+
+I used the performance chrome tab to run these tests. What I've done is to click in these urls, and measure how much time they take to load (including web vitals like FCP, LCP, TFB) with and without quicklink.
+
+**Note**: I've run these tests all with the same configuration: Network throtle `Fast 3g` and CPU `4x slowdown`. This is not required, but it's a good practice to ensure you are simulating a slower device with a worse internet connection.
+
+### Without quicklink
+
+<Image
+  alt="Blog without quicklink"
+  src="/static/images/boosting-web-performance-quicklink/without-quicklink.gif"
+  width={672}
+  height={300}
+  quality={100}
+/>
+
+<Image
+  alt="Without quicklink performance report"
+  src="/static/images/boosting-web-performance-quicklink/without-quicklink-report.png"
+  width={672}
+  height={300}
+  quality={100}
+/>
+
+As you can see, the [LCP](https://web.dev/lcp/) metric hit in about 1.20s. Let's see how we can improve this!
+
+## Implementing quicklink
+
+First, you can download it from this [source](https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js), or you can download it from the [github repository](https://github.com/GoogleChromeLabs/quicklink) and pick the `quicklink.umd.js`.
+
+I copied the file, and put it in `public/quicklink.umd.js`. After this, you can go to your `index.html` main file, and load the script from your public directory. You can put at the end of the `body` tag, like this:
+
+```html
+<body>
+  ...
+  <script async src="/quicklink.umd.js"></script>
+</body>
+```
+
+Now, we need to tell quicklink which links it should watch and prefetch. This can be done by adding another script tag at the end of the body tag again:
+
+```html
+<body>
+  ...
+  <script>
+    window.addEventListener('load', () => {
+      const linksToPrefetch = document.querySelectorAll('.post-list a');
+
+      quicklink.listen({
+        el: linksToPrefetch,
+        limit: 10, // Optional limit to set the maximum number of pages to prefetch
+        delay: 0, // The amount of time each link needs to stay inside the viewport before being prefetched, in milliseconds.
+      });
+    });
+  </script>
+</body>
+```
+
+The `linksToPrefetch` variable contains the links you want to prefetch, by using a plain HTMLSelector.
+
+Now when you run the dev server again, you can see the blog pages also appear in the [network tab](https://developer.chrome.com/docs/devtools/network/), which shows that they are being prefetched
+
+<Image
+  alt="Network calls with quicklink"
+  src="/static/images/boosting-web-performance-quicklink/network-with-quicklink.png"
+  width={672}
+  height={300}
+  quality={100}
+/>
+
+## Testing quicklink
+
+**Advice:** I recommend you to run `npm run build`, and then `npm run preview`to test the performance, since the files are compressed and production ready, and not in dev mode like in `npm run dev`.
+
+Alright, let's see if our idea has improved something or not! The test is the same: using the performance tab, click on the **record** button, and navigate from the main `index.html` file to a blog post, like `post-blog-1.html`:
+
+<Image
+  alt="With quicklink performance report"
+  src="/static/images/boosting-web-performance-quicklink/with-quicklink-report.png"
+  width={672}
+  height={300}
+  quality={100}
+/>
+
+As you can see, the LCP metric went from `1.20s` to ~ `636ms`, which means this webvital hit much sooner than when it didn't have quicklink. We can see another improvements as well, I'm just using LCP as a baseline :)
+
+- 📈 LCP from `~1.2s` to `~636ms`
+- 📈 Load event from `~1.31s` to `~731ms`
+- 📈 DCL from `~1.24s` to `~623ms`
+- 📈 Rendering from `~99ms` to `~79ms`
+
+## Conclusion
+
+Implementing Quicklink is a fantastic idea to enhance page loading speed and provide an improved user experience! I highly recommend giving it a try on your websites and gauging the benefits firsthand. It's especially valuable to measure specific impacts such as faster loading of ads resulting in enhanced viewability, increased user engagement, and quicker image loading.
+
+I genuinely hope you found this blog post enjoyable. It marks my debut in the world of blogging, and I'm thrilled with the outcome. As time progresses, I aspire to deliver more valuable content for you. Please don't hesitate to reach out if you have any questions or simply want to engage in a conversation. Special thanks to [Gilberto](https://twitter.com/gilberto_cocchi), who introduced me to this topic and provided invaluable assistance in my professional journey!

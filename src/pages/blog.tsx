@@ -93,6 +93,7 @@ const Blog: NextPageWithLayout = (
                 description={post.summary}
                 tags={post.tags}
                 title={post.title}
+                slug={post.slug}
               />
             ))
           )}

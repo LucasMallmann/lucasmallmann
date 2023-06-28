@@ -77,7 +77,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
           <PostAuthor postMetadata={post} />
         </div>
 
-        <div className="relative w-full h-[328px] mt-8 md:h-post-thumbnail">
+        <div className="relative w-full max-w-3xl mx-auto h-[380px] mt-8 md:h-post-thumbnail rounded">
           <Image
             alt={post.title}
             src={post.image}
@@ -98,7 +98,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
         </div>
 
         {/* Comments */}
-        <div className="mt-8 px-8">
+        <div className="mt-8 px-8 max-w-3xl mx-auto">
           <Comments title={post.title} url={router.pathname} id={post.slug} />
         </div>
       </div>
