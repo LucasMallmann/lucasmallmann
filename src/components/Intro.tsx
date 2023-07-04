@@ -17,6 +17,8 @@ const Intro = () => {
             src="/me.jpeg"
             fill
             priority
+            width={168}
+            height={168}
           />
         </div>
       </div>

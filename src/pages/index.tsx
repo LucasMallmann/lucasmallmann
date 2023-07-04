@@ -11,7 +11,6 @@ import Footer from 'components/Footer';
 import Intro from 'components/Intro';
 import Aboutme from 'components/Aboutme';
 import WorkExperience from 'components/WorkExperience';
-import Head from 'next/head';
 
 const Home: NextPageWithLayout = () => {
   return (
