@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/dist/client/router';
 import cn from 'classnames';
+import LangSwitcher from './LangSwitcher';
 
 function NavItem({ href, text, isHomePage }) {
   const router = useRouter();
@@ -40,6 +41,7 @@ const Header = () => {
           <NavItem href={'/'} text="Home" isHomePage={isHomePage} />
           <NavItem href={'/blog'} text="Blog" isHomePage={isHomePage} />
         </nav>
+        <LangSwitcher />
         <button
           aria-label="Toggle Dark Mode"
           type="button"
