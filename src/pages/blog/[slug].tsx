@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useTransition } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
@@ -16,7 +17,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
-import { GetStaticPaths } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
@@ -42,7 +43,7 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
           <div className="-ml-2">
             {post.tags.map((tag) => (
               <NextLink
-                href="/"
+                href={`/blog?tag=${tag}`}
                 key={`${tag}_${Math.random().toString(36).substr(2, 9)}`}
                 legacyBehavior
               >
@@ -122,10 +123,11 @@ export const getStaticPaths: GetStaticPaths = ({ locales }) => {
   };
 };
 
-export async function getStaticProps({ params }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+export const getStaticProps: GetStaticProps = ({ params, locale }) => {
+  const slugPosts = allBlogs.filter((post) => post.slug === params.slug);
+  const post = slugPosts.find((post) => post.lang === locale);
   return { props: { post } };
-}
+};
 
 Post.getLayout = (page) => (
   <>

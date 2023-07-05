@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 
 import {
@@ -14,9 +15,11 @@ import {
 } from 'react-share';
 
 const SocialMediaShare: React.FC = () => {
+  const { t } = useTranslation('blog');
+
   return (
     <>
-      <span className="text-md  dark:text-gray-100">Share!</span>
+      <span className="text-md  dark:text-gray-100">{t('share')}</span>
       <div className="mt-2 flex">
         <TwitterShareButton url={window.location.href} className="w-5 h-5">
           <TwitterIcon className="w-5 h-5 rounded-full hover:opacity-80 transition-opacity duration-200" />

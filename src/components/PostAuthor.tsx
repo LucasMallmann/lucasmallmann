@@ -6,12 +6,17 @@ import { dayjs } from 'utils/date';
 
 // Types
 import { Blog } from 'contentlayer/generated';
+import { useRouter } from 'next/router';
 
 type Props = {
   postMetadata: Blog;
 };
 
 export default function PostAuthor({ postMetadata }: Props) {
+  const { locale } = useRouter();
+
+  dayjs.locale(locale);
+
   const formattedDate = useMemo(() => {
     return dayjs(postMetadata.publishedAt).format('MMMM DD, YYYY');
   }, [postMetadata.publishedAt]);

@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from 'react';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { allBlogs } from 'contentlayer/generated';
 /**
@@ -11,6 +11,7 @@ import { NextPageWithLayout } from './_app';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import classNames from 'classnames';
+import useTranslation from 'next-translate/useTranslation';
 
 const title = 'Lucas Mallmann – Blog';
 const url = 'https://lucasmallmann.dev/blog';
@@ -21,6 +22,8 @@ const Blog: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
   const { posts } = props;
+
+  const { t } = useTranslation('blog');
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) =>
@@ -43,17 +46,13 @@ const Blog: NextPageWithLayout = (
         <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 my-4 tracking-tight md:text-5xl md:mt-4">
           Blog
         </h1>
-        <p className="text-gray-800 dark:text-gray-100">
-          I've been writing about software development as a way to teach what
-          I've already know, but also learn and contribute to the community. You
-          can use the search below to filter by title.
-        </p>
+        <p className="text-gray-800 dark:text-gray-100">{t('description')}</p>
 
         <div className="relative w-full mt-4">
           <input
             aria-label="Search articles"
             type="text"
-            placeholder="Search articles"
+            placeholder={t('search')}
             className={classNames(
               'block w-full px-4 py-2 text-gray-900',
               'bg-white border border-gray-200 rounded-md dark:border-gray-900',
@@ -79,11 +78,11 @@ const Blog: NextPageWithLayout = (
 
         <Suspense fallback={null}>
           <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
-            All Posts
+            {t('heading')}
           </h3>
           {!filteredBlogPosts.length ? (
             <p className="mb-4 text-gray-600 dark:text-gray-400">
-              No posts found.
+              {t('notFound')}
             </p>
           ) : (
             filteredBlogPosts.map((post) => (
@@ -103,11 +102,12 @@ const Blog: NextPageWithLayout = (
   );
 };
 
-export function getStaticProps() {
+export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
     .map((post) =>
-      pick(post, ['slug', 'title', 'summary', 'publishedAt', 'tags'])
+      pick(post, ['slug', 'title', 'summary', 'publishedAt', 'tags', 'lang'])
     )
+    .filter((post) => post.lang === locale)
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
@@ -118,7 +118,7 @@ export function getStaticProps() {
       posts,
     },
   };
-}
+};
 
 Blog.getLayout = (page) => {
   return (

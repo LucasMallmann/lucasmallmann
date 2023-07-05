@@ -25,7 +25,7 @@ const computedFields: ComputedFields = {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: 'blog/*.mdx',
+  filePathPattern: '**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -33,6 +33,7 @@ export const Blog = defineDocumentType(() => ({
     summary: { type: 'string', required: true },
     image: { type: 'string', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
+    lang: { type: 'string', required: true },
   },
   computedFields,
 }));
@@ -57,6 +58,5 @@ const contentLayerConfig = makeSource({
     ],
   },
 });
-
 
 export default contentLayerConfig;
