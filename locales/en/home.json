@@ -1,0 +1,54 @@
+{
+  "description": {
+    "initial": "Hi there, I’m Lucas. Full Stack",
+    "final": "from Brazil and a life learner."
+  },
+  "about": {
+    "title": "About me",
+    "first": "Hello, welcome to my blog! My name is Lucas Mallmann. I've been working as a software engineer since 2017. I believe that education, the dissemination of knowledge and good ideas, is the fastest and most effective way to improve the world!",
+    "second": "I currently work as a Software Developer at Globo. I started programming in the year 2016, and my interest in the world of development is only increasing every day! I always try to learn and apply new technologies, which is one of the reasons why I built this blog, because I believe that the best way to learn is to teach.",
+    "third": "I like music a lot, am passionate about games, an adventurer in cooking, and in my free time I love to philosophize about life. Despite being a technology-oriented blog, don't be surprised if we bring some reflections here.",
+    "fourth": "Many dreams and goals of mine were born out of online resources I found about technology. I believe it's my duty, and I'll be extremely happy if I can repay you a little of that learning and what brought me here! #keepgoing."
+  },
+  "work": {
+    "title": "Work Experience",
+    "globo": {
+      "title": "Globo.com",
+      "role": "Fullstack Developer",
+      "description": "I work as a software developer for the third most visited website in Brazil. I work improving ADs performance, webvitals, and AB Testing for new features. I work with the editor's app integration for the website. Globo.com has more than 17 million pageviews everyday."
+    },
+    "pling": {
+      "title": "Pling",
+      "role": "Fullstack Developer",
+      "description": "Worked implementing PWA for more than ten web apps, implementing real-time and push notification services for them. Besides, I developed offline support, and also was responsible for the teams's web api."
+    },
+    "codeleap": {
+      "title": "Codeleap",
+      "role": "Mobile Developer",
+      "description": "Worked on various projects, developing dark theme support for Bereable.app. Implemented a market place for small products."
+    },
+    "climatempo": {
+      "title": "Climatempo",
+      "role": "Junior Developer",
+      "description": "Responsible for implementing a forest fire history search in the SMAC system, which is used by large clients in order to receive meteorological alerts."
+    },
+    "objective": {
+      "title": "Objective",
+      "role": "Mid Developer",
+      "description": "Reponsible for implementing automation systems for creating ADs in AdManager. Created the main company website, which helped the employers to manage the clients."
+    },
+    "inpe": {
+      "title": "INPE",
+      "role": "Internship",
+      "description": "Worked developing a scientifc article, which was published on 2017. Developed a workflow where the meteorological data was processed using just python instead of Fortran."
+    }
+  },
+  "skills": {
+    "title": "My Skills",
+    "description": "These are some of the tools & languages I'm confortable with."
+  },
+  "cta": {
+    "title": "Let's build together?",
+    "description": "Feel free to reach out if you are looking for a developer, have a question, or just want to connect."
+  }
+}

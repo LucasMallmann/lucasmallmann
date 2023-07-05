@@ -1,7 +1,10 @@
 import classNames from 'classnames';
+import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 
 const Intro = () => {
+  const { t } = useTranslation('home');
+
   return (
     <div
       className={classNames(
@@ -15,7 +18,6 @@ const Intro = () => {
             className="round-image"
             alt="Lucas Mallmann"
             src="/me.jpeg"
-            fill
             priority
             width={168}
             height={168}
@@ -29,9 +31,10 @@ const Intro = () => {
           'px-2 sm:px-8'
         )}
       >
-        Hi there, I’m Lucas. Full Stack {` `}
-        <span className="text-green-500">Developer</span> from Brazil and a life
-        learner.
+        {t('description.initial')} {` `}
+        <span className="text-green-500">Developer</span>
+        {` `}
+        {t('description.final')}
       </h1>
     </div>
   );

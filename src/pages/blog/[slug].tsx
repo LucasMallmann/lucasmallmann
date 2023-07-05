@@ -16,6 +16,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
+import { GetStaticPaths } from 'next';
 
 const SocialMediaShare = dynamic(() => import('components/SocialMediaShare'), {
   ssr: false,
@@ -106,12 +107,20 @@ const Post: NextPageWithLayout = ({ post }: Props) => {
   );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = ({ locales }) => {
+  const paths = [];
+
+  allBlogs.forEach((blog) => {
+    locales.forEach((locale) => {
+      paths.push({ params: { slug: blog.slug }, locale });
+    });
+  });
+
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
+    paths,
     fallback: false,
   };
-}
+};
 
 export async function getStaticProps({ params }) {
   const post = allBlogs.find((post) => post.slug === params.slug);

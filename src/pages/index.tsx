@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import useTranslation from 'next-translate/useTranslation';
 
 /**
  * Components
@@ -13,6 +14,8 @@ import Aboutme from 'components/Aboutme';
 import WorkExperience from 'components/WorkExperience';
 
 const Home: NextPageWithLayout = () => {
+  const { t } = useTranslation('home');
+
   return (
     <>
       <main className="overflow-hidden px-8">
@@ -21,7 +24,7 @@ const Home: NextPageWithLayout = () => {
 
           <section className="mt-10">
             <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 mb-4 dark:text-gray-200">
-              Work Experience
+              {t('work.title')}
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -31,14 +34,10 @@ const Home: NextPageWithLayout = () => {
               >
                 <WorkExperience.Title>Globo.com</WorkExperience.Title>
                 <WorkExperience.Description>
-                  FullStack Developer
+                  {t('work.globo.role')}
                 </WorkExperience.Description>
                 <WorkExperience.Content>
-                  I work as a software developer for the third most visited
-                  website in Brazil. I work improving ADs performance,
-                  webvitals, and AB Testing for new features. I work with the
-                  editor's app integration for the website. Globo.com has more
-                  than 17 million pageviews everyday.
+                  {t('work.globo.description')}
                 </WorkExperience.Content>
                 <WorkExperience.Tags
                   tags={[
@@ -57,13 +56,10 @@ const Home: NextPageWithLayout = () => {
               >
                 <WorkExperience.Title>Pling</WorkExperience.Title>
                 <WorkExperience.Description>
-                  FullStack Developer
+                  {t('work.pling.role')}
                 </WorkExperience.Description>
                 <WorkExperience.Content>
-                  Worked implementing PWA for more than ten web apps,
-                  implementing real-time and push notification services for
-                  them. Besides, I developed offline support, and also was
-                  responsible for the teams's web api.
+                  {t('work.pling.description')}
                 </WorkExperience.Content>
                 <WorkExperience.Tags
                   tags={['Nextjs', 'Typescript', 'Node.js', 'Mongodb', 'React']}
@@ -75,11 +71,10 @@ const Home: NextPageWithLayout = () => {
               >
                 <WorkExperience.Title>Codeleap</WorkExperience.Title>
                 <WorkExperience.Description>
-                  Mobile Developer
+                  {t('work.codeleap.role')}
                 </WorkExperience.Description>
                 <WorkExperience.Content>
-                  Worked on various projects, developing dark theme support for
-                  Bereable.app. Implemented a market place for small products.
+                  {t('work.codeleap.description')}
                 </WorkExperience.Content>
                 <WorkExperience.Tags
                   tags={[
@@ -97,15 +92,28 @@ const Home: NextPageWithLayout = () => {
               >
                 <WorkExperience.Title>Climatempo</WorkExperience.Title>
                 <WorkExperience.Description>
-                  Junior Developer
+                  {t('work.climatempo.role')}
                 </WorkExperience.Description>
                 <WorkExperience.Content>
-                  Responsible for implementing a forest fire history search in
-                  the SMAC system, which is used by large clients in order to
-                  receive meteorolical alerts.
+                  {t('work.climatempo.description')}
                 </WorkExperience.Content>
                 <WorkExperience.Tags
                   tags={['PHP 7', 'Node.js', 'Fastify', 'Microservices']}
+                />
+              </WorkExperience>
+              <WorkExperience
+                className="from-red-400  via-yellow-400 to-orange-400"
+                href="https://www.climatempo.com.br/"
+              >
+                <WorkExperience.Title>Objective</WorkExperience.Title>
+                <WorkExperience.Description>
+                  {t('work.objective.role')}
+                </WorkExperience.Description>
+                <WorkExperience.Content>
+                  {t('work.objective.description')}
+                </WorkExperience.Content>
+                <WorkExperience.Tags
+                  tags={['PHP 7', 'Node.js', 'React', 'Redux', 'Typescript']}
                 />
               </WorkExperience>
               <WorkExperience
@@ -114,15 +122,13 @@ const Home: NextPageWithLayout = () => {
               >
                 <WorkExperience.Title>INPE</WorkExperience.Title>
                 <WorkExperience.Description>
-                  Internship
+                  {t('work.inpe.role')}
                 </WorkExperience.Description>
                 <WorkExperience.Content>
-                  Worked developing a scientifc article, which was published on
-                  2017. Developed a workflow where the meteorological data was
-                  processed using just python instead of Fortran.
+                  {t('work.inpe.description')}
                 </WorkExperience.Content>
                 <WorkExperience.Tags
-                  tags={['PHP 7', 'Node.js', 'Fastify', 'Microservices']}
+                  tags={['Python', 'GRADs', 'Linux', 'Bash']}
                 />
               </WorkExperience>
             </div>
@@ -130,12 +136,10 @@ const Home: NextPageWithLayout = () => {
 
           <section className="mt-10">
             <h1 className="text-3xl tracking-wide leading-8 font-bold text-gray-800 dark:text-gray-200">
-              My Skills
+              {t('skills.title')}
             </h1>
 
-            <p className="mt-4 dark:text-gray-300">
-              These are some of the tools & languages I'm confortable with.
-            </p>
+            <p className="mt-4 dark:text-gray-300">{t('skills.description')}</p>
 
             <div className="mt-5">
               <Techs />
@@ -144,15 +148,14 @@ const Home: NextPageWithLayout = () => {
 
           <section className="mt-16 px-2 md:px-0">
             <h1 className="text-3xl tracking-wide leading-8 text-center font-bold text-gray-800 dark:text-gray-200">
-              Let's build together!
+              {t('cta.title')}
               <span role="img" aria-label="">
                 😁
               </span>
             </h1>
 
             <p className="mt-4 text-center text-md md:text-lg leading-8 dark:text-gray-300">
-              Feel free to reach out if you are looking for a developer, have a
-              question, or just want to connect.
+              {t('cta.description')}
             </p>
 
             <a

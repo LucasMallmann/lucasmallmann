@@ -1,0 +1,54 @@
+{
+  "description": {
+    "initial": "Olá, sou o Lucas. Full Stack",
+    "final": "do Brasil e um aprendiz da vida."
+  },
+  "about": {
+    "title": "Sobre mim",
+    "first": "Olá, seja bem-vindo ao meu blog! Meu nome é Lucas Mallmann. Trabalho como engenheiro de software desde 2017. Acredito que a educação, a disseminação do conhecimento e boas ideias são a maneira mais rápida e eficaz de melhorar o mundo!",
+    "second": "Atualmente, trabalho como Desenvolvedor de Software na Globo. Comecei a programar no ano de 2016 e meu interesse pelo mundo do desenvolvimento só aumenta a cada dia! Sempre procuro aprender e aplicar novas tecnologias, e essa é uma das razões pelas quais criei este blog, pois acredito que a melhor maneira de aprender é ensinar.",
+    "third": "Gosto muito de música, sou apaixonado por jogos, aventureiro na cozinha e, no meu tempo livre, adoro filosofar sobre a vida. Apesar de ser um blog orientado para a tecnologia, não se surpreenda se trouxermos algumas reflexões aqui.",
+    "fourth": "Muitos dos meus sonhos e objetivos nasceram a partir de recursos online que encontrei sobre tecnologia. Acredito que é meu dever e ficarei extremamente feliz se puder retribuir um pouco desse aprendizado e do que me trouxe até aqui! #keepgoing."
+  },
+  "work": {
+    "title": "Experiência Profissional",
+    "globo": {
+      "title": "Globo.com",
+      "role": "Desenvolvedor Full Stack",
+      "description": "Trabalho como desenvolvedor de software para o terceiro site mais visitado no Brasil. Trabalho melhorando o desempenho dos anúncios, webvitals e testes AB para novas features. Trabalho com a integração do aplicativo dos editores para o site. A Globo.com tem mais de 17 milhões de visualizações de página todos os dias."
+    },
+    "pling": {
+      "title": "Pling",
+      "role": "Desenvolvedor Full Stack",
+      "description": "Trabalhei implementando PWA para mais de dez aplicativos da web, implementando serviços de notificação em tempo real e push para eles. Além disso, desenvolvi suporte offline e também fui responsável pela API web da equipe."
+    },
+    "codeleap": {
+      "title": "Codeleap",
+      "role": "Desenvolvedor Mobile",
+      "description": "Trabalhei em vários projetos, desenvolvendo suporte ao tema dark para o Bereable.app. Implementei também um marketplace para produtos."
+    },
+    "climatempo": {
+      "title": "Climatempo",
+      "role": "Desenvolvedor Júnior",
+      "description": "Responsável por implementar uma busca de histórico de incêndios florestais no sistema SMAC, usado por grandes clientes para receber alertas meteorológicos."
+    },
+    "objective": {
+      "title": "Objective",
+      "role": "Mid Developer",
+      "description": "Responsável por implementar sistemas de automação para criar anúncios no AdManager. Criou o site principal da empresa, que ajudou os empregadores a gerenciar os clientes."
+    },
+    "inpe": {
+      "title": "INPE",
+      "role": "Estágio",
+      "description": "Trabalhei desenvolvendo um artigo científico, que foi publicado em 2017. Desenvolvi um workflow em que os dados meteorológicos eram processados apenas usando Python em vez de Fortran."
+    }
+  },
+  "skills": {
+    "title": "Minhas Habilidades",
+    "description": "Essas são algumas das linguages & ferramentas que estou familiarizado."
+  },
+  "cta": {
+    "title": "Vamos construir algo juntos?",
+    "description": "Sinta-se à vontade para entrar em contato se estiver procurando um desenvolvedor, tiver uma pergunta ou apenas quiser se conectar."
+  }
+}
